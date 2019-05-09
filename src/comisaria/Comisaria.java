@@ -4,18 +4,35 @@
  * and open the template in the editor.
  */
 package comisaria;
-
+import BasedeDatos.*; 
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JFrame;
 /**
  *
  * @author alfon
  */
 public class Comisaria {
-
+    /** 
+    * @param args 
+    * @throws Exception  
+    */ 
+    //Objeto de tipo Conexion para gestionar la conexion a la base de datos 
+    public static Conexion miConexion;
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args)  throws Exception  {
+        //Realizamos la conexión 
+        miConexion=new Conexion("127.0.0.1", "comisaria","root",""); 
+        if (miConexion.conectar()==false) 
+        { 
+            System.out.println("No se ha podido conectar a la base de datos");
+        } else {
+            System.out.println("Conexión satisfactoria a la base de datos");
+        }
+        
     }
     
 }
