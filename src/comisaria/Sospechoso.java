@@ -8,7 +8,7 @@ package comisaria;
 /**
  *
  * @author jlove
- */
+ */ 
 public class Sospechoso {
     private String nombre;
     private String apellidos;
