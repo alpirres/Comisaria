@@ -17,6 +17,6 @@ public class Sospechoso {
     Correo correo;
     Direccion dir;
     Matricula matricula;
-    
+    int a;
     
 }
