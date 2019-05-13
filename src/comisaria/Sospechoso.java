@@ -20,5 +20,5 @@ public class Sospechoso {
     Direccion dir;
     Matricula matricula;
     ArrayList<Sospechoso> acompanante;
-    
+
 }
