@@ -5,10 +5,22 @@
  */
 package comisaria;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jlove
  */
 class Correo {
+    private int idCorreo;
+    private ArrayList<String> correos;
+    
+    public ArrayList<String> getCorreo(){
+        return this.correos;
+    }
+    public void setCorreo(String mail){
+        correos.add(mail);
+    }
+    
     
 }

@@ -5,6 +5,8 @@
  */
 package comisaria;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jlove
@@ -17,5 +19,6 @@ public class Sospechoso {
     Correo correo;
     Direccion dir;
     Matricula matricula;
+    ArrayList<Sospechoso> acompanante;
     
 }
