@@ -12,13 +12,17 @@ import java.util.ArrayList;
  * @author jlove
  */
 public class Sospechoso {
-    private String nombre;
-    private String apellidos;
+
+    String nombre;
+    String apellidos;
     int id;
     Telefono telefono;
     Correo correo;
-    Direccion dir;
+    Direccion direccion;
     Matricula matricula;
     ArrayList<Sospechoso> acompanante;
+    String antecedentes;
+    String hechos;
+    
 
 }
