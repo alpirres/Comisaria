@@ -12,15 +12,44 @@ import java.util.ArrayList;
  * @author jlove
  */
 class Correo {
-    private int idCorreo;
+
+    int id;
     private ArrayList<String> correos;
+
+    public Correo(int id, ArrayList<String> dir) {
+        this.setCorreo((String[]) dir.toArray());
+        this.id = id;
+    }
     
-    public ArrayList<String> getCorreo(){
+    public ArrayList<String> getCorreo() {
         return this.correos;
     }
-    public void setCorreo(String mail){
-        correos.add(mail);
+
+    public void setCorreo(String[] mail) {
+        String[] cor = new String[existeCorreo(mail).length];
+
+        for (int i = 0; i < existeCorreo(mail).length; i++) {
+            cor[i] = existeCorreo(mail)[i];
+        }
+        
+        for (int i = 0; i < cor.length; i++) {
+          this.correos.add(cor[i]);  
+        }
     }
     
-    
+    public String[] existeCorreo(String[] corre){
+        ArrayList<String> almacen = new ArrayList<>();
+        
+        for (int i = 0; i < corre.length; i++) {
+            for (int j = 0; j < this.correos.size(); j++) {
+                if (!corre[i].equals(this.correos.get(j))) {
+                    almacen.add(corre[i]);
+
+                }
+            }
+        }
+
+        return (String[]) almacen.toArray();
+    }
+
 }

@@ -6,59 +6,63 @@
 package comisaria;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
  * @author jlove
  */
-
-
 class Telefono {
-    
+
     private ArrayList<Integer> telefonos;
     protected int id;
-    
-    public Telefono(int id, ArrayList<Integer> tel){
-        this.telefonos = tel; 
-        this.id=id;
+
+    public Telefono(int id, ArrayList<Integer> tel) {
+        int [] tmp=tel.stream().mapToInt(Integer::intValue).toArray(); //Object to INT
+        setTelefono(tmp);
+        this.id = id;
     }
-    
-    
-    
-    
-    public ArrayList<Integer> getTelefono(){
-        
+
+    public ArrayList<Integer> getTelefono() {
+
         return telefonos;
     }
-    
-    public void setTelefono(int[] t){
+
+    public void setTelefono(int[] t) {
         
-        for(int i=0; i<t.length; i++){
-            this.telefonos.add(t[i]);
+        int[] dir = new int[existeTelefono(t).length];
+
+        for (int i = 0; i < existeTelefono(t).length; i++) {
+            dir[i] = existeTelefono(t)[i];
         }
+        
+        for (int i = 0; i < dir.length; i++) {
+          this.telefonos.add(dir[i]);  
+        }
+
     }
-    
-    /** 
-     * Recibe un Array de String, comprueba si hay alguna coincidencia 
-     * y devuelve un ArrayList con las coincidencias.
-     * 
+
+    /**
+     * Recibe un Array de String, comprueba si hay alguna coincidencia y
+     * devuelve un ArrayList con las coincidencias.
+     *
      * @Author: Nightm4re
      * @param d
      * @return ArrayList<String>
-     * 
+     *
      */
-    
-    public ArrayList<Integer> existeTelefono(int[] t){
-        ArrayList<Integer> telExist = null;
-        
-        for(int i=0; i<t.length; i++){
-            for(int j=0; j<this.telefonos.size(); j++){
-                if(t[i] == telefonos.get(j)){
+    public Integer[] existeTelefono(int[] t) {
+        ArrayList<Integer> telExist = new ArrayList<>();
+
+        for (int i = 0; i < t.length; i++) {
+            for (int j = 0; j < this.telefonos.size(); j++) {
+                if (t[i]== telefonos.get(j)) {
                     telExist.add(t[i]);
-                            
+
                 }
-            }      
+            }
         }
-        return telExist;
+        return (Integer[]) telExist.toArray();
+        
     }
 }

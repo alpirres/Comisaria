@@ -11,56 +11,56 @@ import java.util.ArrayList;
  *
  * @author jlove
  */
-
-
 class Direccion {
-    
+
     private ArrayList<String> direcciones;
     protected int id;
-    
-    public Direccion(int id, ArrayList<String> dir){
-        this.direcciones = dir; 
-        this.id=id;
-    }
-    
-    
-    
-    
-    public ArrayList<String> getMatriculas(){
 
-        return direcciones;
-    }  
-    
-    public void setMatricula(String[] a){
-        
-        for(int i=0; i<a.length; i++){
-            this.direcciones.add(a[i]);
+    public Direccion(int id, ArrayList<String> dir) {
+        this.setDireccion((String[]) dir.toArray());
+        this.id = id;
+    }
+
+    public ArrayList<String> getDireccion() {
+
+        return this.direcciones;
+    }
+
+    public void setDireccion(String[] di) {
+        String[] dir = new String[existeDireccion(di).length];
+
+        for (int i = 0; i < existeDireccion(di).length; i++) {
+            dir[i] = existeDireccion(di)[i];
         }
         
+        for (int i = 0; i < dir.length; i++) {
+          this.direcciones.add(dir[i]);  
+        }
+        
+
     }
-    
-    /** 
-     * Recibe un Array de String, comprueba si hay alguna coincidencia 
-     * y devuelve un ArrayList con las coincidencias.
-     * 
+
+    /**
+     * Recibe un Array de String, comprueba si hay alguna coincidencia y
+     * devuelve un ArrayList con las coincidencias.
+     *
      * @Author: Nightm4re
      * @param d
      * @return ArrayList<String>
-     * 
+     *
      */
-    
-    public ArrayList<String> existeMatricula(String[] d){
-        ArrayList<String> dirExist = null;
-        
-        for(int i=0; i<d.length; i++){
-            for(int j=0; j<this.direcciones.size(); j++){
-                if(d[i].equals(direcciones.get(j))){
+    public String[] existeDireccion(String[] d) {
+        ArrayList<String> dirExist = new ArrayList<>();
+
+        for (int i = 0; i < d.length; i++) {
+            for (int j = 0; j < this.direcciones.size(); j++) {
+                if (d[i].equals(direcciones.get(j))) {
                     dirExist.add(d[i]);
-                            
+
                 }
-            }      
+            }
         }
-   
-        return dirExist;
+
+        return (String[]) dirExist.toArray();
     }
 }
