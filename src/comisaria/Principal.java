@@ -7,6 +7,7 @@ package comisaria;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.HashMap;
 
 /**
  *
@@ -140,10 +141,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel13.setText("Matrículas");
 
         jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matrícula 1", "Añadir matrícula..." }));
         jComboBox4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox4ItemStateChanged(evt);
+            }
+        });
+        jComboBox4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox4MouseClicked(evt);
             }
         });
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
@@ -404,7 +409,7 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -483,7 +488,8 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -491,10 +497,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         anadirSospechosoDatos.setVisible(true);
         anadirSospechosoDatos.setLocationRelativeTo(this);
-        
+        if (jComboBox4.getItemCount() == 0) {
+            HashMap<String, String> itemMap = new HashMap<String, String>();
+            itemMap.put("Añadir matrícula...", "");
+            for (String key : itemMap.keySet()) {
+                jComboBox4.addItem(key);
+               
+                System.out.println("Creando " + key);
+            }
+        }
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -507,29 +522,39 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void anadirSospechosoDatosWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_anadirSospechosoDatosWindowClosed
-  
+
     }//GEN-LAST:event_anadirSospechosoDatosWindowClosed
 
     private void jComboBox4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox4ItemStateChanged
-        
-        
+
+
     }//GEN-LAST:event_jComboBox4ItemStateChanged
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
 
+        System.out.println("Accion en ComboBox");
         String item = jComboBox4.getSelectedItem().toString();
-        if(item.equals("Añadir matrícula...")){
-            jComboBox4.removeItemAt(jComboBox4.getItemCount()-1);
-            int numObjetos = jComboBox4.getItemCount()+1;
-            jComboBox4.addItem("Matrícula "+numObjetos);
-            jComboBox4.setSelectedIndex(jComboBox4.getItemCount()-1);
-            jComboBox4.addItem("Añadir matrícula...");
+        if (item.equals("Añadir matrícula...")) {
+            jComboBox4.removeItemAt(jComboBox4.getItemCount() - 1);
+            int numObjetos = jComboBox4.getItemCount() + 1;
             
-                }
-        
-        System.out.println("Estoy activado");
-        
+            HashMap<String, String> itemMapNew = new HashMap<String, String>();
+            itemMapNew.put("Matrícula "+numObjetos, "");
+            for (String key : itemMapNew.keySet()) {
+                jComboBox4.addItem(key);
+            }
+            
+            jComboBox4.setSelectedIndex(jComboBox4.getItemCount() - 1);
+            jComboBox4.addItem("Añadir matrícula...");
+
+        }
+
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox4MouseClicked
+
+
+    }//GEN-LAST:event_jComboBox4MouseClicked
 
     /**
      * @param args the command line arguments
