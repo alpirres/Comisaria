@@ -14,12 +14,12 @@ import java.util.regex.Pattern;
  */
 public class Utils {
 
-    public boolean validaTelefono(int telef) {
+    public static boolean validaTelefono(int telef) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
         almacen.append(telef);
         String texto = almacen.toString();
-        String expresion = "^(\\+34|0034|34)?[\\s|\\-|\\.]?[6|7|8|9][\\s|\\-|\\.]?([0-9][\\s|\\-|\\.]?){8}$";
+        String expresion = "^[6|7|8|9]([0-9]){8}$";
         Pattern patron = Pattern.compile(expresion);
 
         Matcher matcher = patron.matcher(texto);
@@ -31,7 +31,7 @@ public class Utils {
 
     }
     
-    public boolean validaCorreo(String correo) {
+    public static boolean validaCorreo(String correo) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
         almacen.append(correo);
@@ -48,7 +48,7 @@ public class Utils {
 
     }
     
-    public boolean validaMatricula(String matri) {
+    public static boolean validaMatricula(String matri) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
         almacen.append(matri);
@@ -66,6 +66,23 @@ public class Utils {
             if (matcher2.matches()) {
                 correcto=true;
             }
+        }
+
+        return correcto;
+
+    }
+    
+    public static boolean validaDireccion(String direc) {
+        boolean correcto = false;
+        StringBuilder almacen = new StringBuilder();
+        almacen.append(direc);
+        String texto = almacen.toString();
+        String expresion = "^\\w+.\\d+$";
+        Pattern patron = Pattern.compile(expresion);
+
+        Matcher matcher = patron.matcher(texto);
+        if (matcher.matches()) {
+            correcto = true;
         }
 
         return correcto;

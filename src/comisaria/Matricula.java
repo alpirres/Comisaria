@@ -11,55 +11,56 @@ import java.util.ArrayList;
  *
  * @author jlove
  */
-
-
 class Matricula {
-    
+
     private ArrayList<String> matriculas;
     protected int id;
-    
-    public Matricula(int id, ArrayList<String> mat){
-        this.matriculas = mat; 
-        this.id=id;
+
+    public Matricula(int id, ArrayList<String> mat) {
+        this.setMatricula((String[]) mat.toArray());
+        this.id = id;
     }
-    
-    
-    
-    
-    public ArrayList<String> getMatriculas(){
+
+    public ArrayList<String> getMatriculas() {
 
         return matriculas;
-    }  
-    
-    public void setMatricula(String[] a){
-        
-        for(int i=0; i<a.length; i++){
-            this.matriculas.add(a[i]);
+    }
+
+    public void setMatricula(String[] a) {
+
+        String[] dir = new String[existeMatricula(a).length];
+
+        for (int i = 0; i < existeMatricula(a).length; i++) {
+            dir[i] = existeMatricula(a)[i];
         }
         
+        for (int i = 0; i < dir.length; i++) {
+          this.matriculas.add(dir[i]);  
+        }
+
     }
-    
-    /** 
-     * Recibe un Array de String, comprueba si hay alguna coincidencia 
-     * y devuelve un ArrayList con las coincidencias.
-     * 
+
+    /**
+     * Recibe un Array de String, comprueba si hay alguna coincidencia y
+     * devuelve un ArrayList con las coincidencias.
+     *
      * @Author: Nightm4re
      * @param d
      * @return ArrayList<String>
-     * 
-     */    
-    public ArrayList<String> existeMatricula(String[] a){
-        ArrayList<String> matExist = null;
-        
-        for(int i=0; i<a.length; i++){
-            for(int j=0; j<this.matriculas.size(); j++){
-                if(a[i].equals(matriculas.get(j))){
+     *
+     */
+    public String[] existeMatricula(String[] a) {
+        ArrayList<String> matExist = new ArrayList<>();
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < this.matriculas.size(); j++) {
+                if (a[i].equals(matriculas.get(j))) {
                     matExist.add(a[i]);
-                            
+
                 }
-            }      
+            }
         }
-   
-        return matExist;
+
+        return (String[]) matExist.toArray();
     }
 }
