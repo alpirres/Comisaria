@@ -63,4 +63,14 @@ class Direccion {
 
         return (String[]) dirExist.toArray();
     }
+    
+    public void eliminaDireccion(String[] elidir){
+        for (int i = 0; i < elidir.length; i++) {
+            for (int j = 0; j < this.direcciones.size(); j++) {
+                if (elidir[i].equals(this.direcciones.get(j))) {
+                    this.direcciones.remove(j);
+                }
+            }
+        }
+    }
 }

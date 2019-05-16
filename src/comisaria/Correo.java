@@ -51,5 +51,15 @@ class Correo {
 
         return (String[]) almacen.toArray();
     }
+    
+    public void eliminaCorreo(String[] elicorr){
+        for (int i = 0; i < elicorr.length; i++) {
+            for (int j = 0; j < this.correos.size(); j++) {
+                if (elicorr[i].equals(this.correos.get(j))) {
+                    this.correos.remove(j);
+                }
+            }
+        }
+    }
 
 }

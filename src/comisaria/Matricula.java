@@ -63,4 +63,14 @@ class Matricula {
 
         return (String[]) matExist.toArray();
     }
+    
+    public void eliminaMatricula(String[] elimat){
+        for (int i = 0; i < elimat.length; i++) {
+            for (int j = 0; j < this.matriculas.size(); j++) {
+                if (elimat[i].equals(this.matriculas.get(j))) {
+                    this.matriculas.remove(j);
+                }
+            }
+        }
+    }
 }

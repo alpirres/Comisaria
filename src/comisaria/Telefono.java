@@ -65,4 +65,14 @@ class Telefono {
         return (Integer[]) telExist.toArray();
         
     }
+    
+    public void eliminaTelefono(int[] elitel){
+        for (int i = 0; i < elitel.length; i++) {
+            for (int j = 0; j < this.telefonos.size(); j++) {
+                if (elitel[i]==this.telefonos.get(j)) {
+                    this.telefonos.remove(j);
+                }
+            }
+        }
+    }
 }
