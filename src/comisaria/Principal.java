@@ -684,7 +684,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
         if (!jTextField7.getText().equals(null)) {
-            datosGui.setValueNum(jTextField7.getText(), ComboBoxDire.getSelectedItem().toString());
+            datosGui.setValueDir(jTextField7.getText(), ComboBoxDire.getSelectedItem().toString());
         }
         System.out.println(datosGui.getItemsMapDir().toString());
     }//GEN-LAST:event_jTextField7KeyReleased
@@ -703,7 +703,7 @@ public class Principal extends javax.swing.JFrame {
             //System.out.println(datosGui.getItemsMapMat().toString());
         }
 
-        jTextField4.setText(datosGui.getValueNum(ComboBoxCorr.getSelectedItem().toString()));
+        jTextField5.setText(datosGui.getValueCor(ComboBoxCorr.getSelectedItem().toString()));
     }//GEN-LAST:event_ComboBoxCorrActionPerformed
 
     private void ComboBoxDireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxDireActionPerformed
@@ -713,14 +713,15 @@ public class Principal extends javax.swing.JFrame {
             ComboBoxDire.removeItemAt(ComboBoxDire.getItemCount() - 1);
             int numObjetos = ComboBoxDire.getItemCount() + 1;
 
-            datosGui.anadirKeyValueNum("Dirección " + numObjetos, "");
+            datosGui.anadirKeyValueDir("Dirección " + numObjetos, "");
             ComboBoxDire.addItem("Dirección " + numObjetos);
             ComboBoxDire.setSelectedIndex(ComboBoxDire.getItemCount() - 1);
             ComboBoxDire.addItem("Añadir dirección...");
             //System.out.println(datosGui.getItemsMapMat().toString());
         }
 
-        jTextField4.setText(datosGui.getValueNum(ComboBoxNum.getSelectedItem().toString()));
+        jTextField7.setText(datosGui.getValueDir(ComboBoxDire.getSelectedItem().toString()));
+        System.out.println(datosGui.getValueDir(ComboBoxDire.getSelectedItem().toString()));
     }//GEN-LAST:event_ComboBoxDireActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
