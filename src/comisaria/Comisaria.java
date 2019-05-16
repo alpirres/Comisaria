@@ -5,10 +5,9 @@
  */
 package comisaria;
 
-import BasedeDatos.*;
+import BasedeDatos.Conexion;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JFrame;
 
 /**
  *
@@ -28,14 +27,15 @@ public class Comisaria {
      */
     public static void main(String[] args) throws Exception {
         //Realizamos la conexión 
-        /*miConexion=new Conexion("127.0.0.1", "comisaria","root",""); 
+        miConexion=new Conexion("127.0.0.1","comisaria","root","");
+        miConexion.inicializar();
         if (miConexion.conectar()==false) 
         { 
             System.out.println("No se ha podido conectar a la base de datos");
         } else {
             System.out.println("Conexión satisfactoria a la base de datos");
         }
-         */
+         
 
     }
 
