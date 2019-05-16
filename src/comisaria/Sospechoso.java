@@ -15,6 +15,7 @@ import comisaria.Utils;
  */
 public class Sospechoso {
 
+    static int idglobal = 0;
     String nombre;
     String apellidos;
     int id;
@@ -22,13 +23,28 @@ public class Sospechoso {
     Correo correos;
     Direccion direccion;
     Matricula matricula;
-    ArrayList<Sospechoso> acompanante;
+    ArrayList<Integer> acompanante;
     String antecedentes;
     String hechos;
     File fotos;
 
-    public Sospechoso(String n, String a, int i, int[] tel, String[] cor, String[] direc, String[] mat, int[] sus, String ant, String hech, File fot) {
+    public Sospechoso(String n, String a, int[] tel, String[] cor, String[] direc, String[] mat, int[] sus, String ant, String hech) {
+        cambiaNombre(n);
+        cambiaApellido(a);
+        id = sumaId();
+        cambiaTelefono(tel);
+        cambiaCorreo(cor);
+        cambiaDireccion(direc);
+        cambiaMatricula(mat);
+        añadeAcompanante(sus);
+        cambiaAntecedente(ant);
+        cambiaHechos(hech);
 
+    }
+
+    public int sumaId() {
+        idglobal++;
+        return this.idglobal;
     }
 
     public void cambiaNombre(String nom) {
@@ -40,18 +56,6 @@ public class Sospechoso {
     public void cambiaApellido(String apel) {
 
         this.apellidos = apel;
-
-    }
-
-    public void cambiaAntecedente(String coment) {
-
-        this.antecedentes = coment;
-
-    }
-
-    public void cambiaHechos(String hec) {
-
-        this.hechos = hec;
 
     }
 
@@ -69,7 +73,42 @@ public class Sospechoso {
 
     public void cambiaDireccion(String[] direc) {
 
-        this.matricula.setMatricula(direc);
+        this.direccion.setDireccion(direc);
 
+    }
+
+    public void cambiaMatricula(String[] matri) {
+
+        this.matricula.setMatricula(matri);
+
+    }
+
+    public void cambiaAntecedente(String coment) {
+
+        this.antecedentes = coment;
+
+    }
+
+    public void cambiaHechos(String hec) {
+
+        this.hechos = hec;
+
+    }
+
+    public void añadeAcompanante(int[] acompa) {
+        for (int i = 0; i < acompa.length; i++) {
+            this.acompanante.add(acompa[i]);
+        }
+
+    }
+
+    public void eliminaAcompanante(int[] acomp) {
+        for (int i = 0; i < acomp.length; i++) {
+            for (int j = 0; j < this.acompanante.size(); j++) {
+                if (acomp[i] == this.acompanante.get(j)) {
+                    this.acompanante.remove(j);
+                }
+            }
+        }
     }
 }
