@@ -9,6 +9,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -736,6 +738,14 @@ public class Principal extends javax.swing.JFrame {
             filePath = fileChooser.getSelectedFile().getAbsolutePath();
             System.out.println(filePath);
             jButton3.setVisible(false);
+            BufferedImage myPicture = null;
+            try{
+            myPicture = ImageIO.read(new File(filePath));
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+            jScrollPane2.add(picLabel);
         }else{
             System.out.println("Cancelado");
         }
