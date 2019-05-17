@@ -5,7 +5,7 @@
  */
 package BasedeDatos;
 import static comisaria.Comisaria.miConexion;
-import comisaria.Sospechoso;
+import comisaria.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ import java.sql.Statement;
  * @author jlove
  */
 public class Consultas {
-        public static boolean insertarSospechoso(Sospechoso sosp) throws SQLException
+        public static boolean insertSospechoso(Sospechoso sosp) throws SQLException
 	{
 		boolean insertados=true;
 		int i;
@@ -27,27 +27,18 @@ public class Consultas {
 		
 		
 		
-		//comando sql generico para la inserción
-		lineaSQL="INSERT INTO SOSPECHOSO (Nombre, Apellidos, Antecedentes) values ("+sosp.nombre+","+sosp.apellidos+","+sosp.antecedentes+");";
+		//comando sql generico para la inserción de sospechoso
+		lineaSQL="INSERT INTO SOSPECHOSO (IDSosp, Nombre, Apellidos, Antecedentes) values ("+sosp.id+","+sosp.nombre+","+sosp.apellidos+","+sosp.antecedentes+");"
+                        +MatToConsulta(sosp);
 	try
 	{
 		
 		
 		//conectamos el objeto preparedStmt a la base de datos
-		 PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
-		
-		 for(i=1; i<3; i++)
-		 {
-			 preparedStmt.setString(1, sosp.nombre);
-			 preparedStmt.setString(2, sosp.apellidos);
-			 preparedStmt.setString(3, nuevoSocio.getApellidosSocio());
-			 preparedStmt.setString(4, nuevoSocio.getDireccionSocio());
-			 preparedStmt.setString(5, nuevoSocio.getEmailSocio());
-			 preparedStmt.setString(6, nuevoSocio.getTelefonoSocio());
-
-			// la ejecutamos
-			preparedStmt.execute();
-	 }
+		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
+                preparedStmt.execute();
+                insertados=true;
+	
          // habría que cerrar la conexion
 	}catch(SQLException se)
 	{
@@ -61,6 +52,13 @@ public class Consultas {
 		
 		
 	}
+        
+        public String MatToConsulta(Sospechoso sosp){
+            StringBuilder cons=new StringBuilder();
+            for(int i=0; i<sosp.matricula.matriculas.size();i++){
+                
+            }
+        }
 	
 	//Método que nos muestra todos los socios que hay insertados actualmente
 	public static void mostrarSocios() throws SQLException
