@@ -88,4 +88,38 @@ public class Utils {
         return correcto;
 
     }
+    
+    public static boolean validaNombre(String nom) {
+        boolean correcto = false;
+        StringBuilder almacen = new StringBuilder();
+        almacen.append(nom);
+        String texto = almacen.toString();
+        String expresion = "^((([A-Z]|[Á-É-Í-Ó-Ú])([a-z]|[ñ]|[á-é-í-ó-ú])+)(.|\\s))+$";
+        Pattern patron = Pattern.compile(expresion);
+
+        Matcher matcher = patron.matcher(texto);
+        if (matcher.matches()) {
+            correcto = true;
+        }
+
+        return correcto;
+
+    }
+    
+    public static boolean validaApellido(String apell) {
+        boolean correcto = false;
+        StringBuilder almacen = new StringBuilder();
+        almacen.append(apell);
+        String texto = almacen.toString();
+        String expresion = "^((([A-Z]|[Á-É-Í-Ó-Ú])([a-z]|[ñ]|[á-é-í-ó-ú])+)(.|\\s))+$";
+        Pattern patron = Pattern.compile(expresion);
+
+        Matcher matcher = patron.matcher(texto);
+        if (matcher.matches()) {
+            correcto = true;
+        }
+
+        return correcto;
+
+    }
 }
