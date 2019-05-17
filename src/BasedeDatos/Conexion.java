@@ -7,9 +7,17 @@ package BasedeDatos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.Statement;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -24,11 +32,36 @@ public class Conexion {
     String password; //Password 
     private boolean estado=false;//Estado de la conexión
     
-    public Conexion(String host, String bbdd,String login, String password) {
-        this.host=host;
-        this.bbdd=bbdd;
-        this.login=login; 
-        this.password=password;
+    public Conexion() throws ParserConfigurationException, SAXException, IOException {
+        File file=new File("Conectobd.xml");
+        DocumentBuilder dBuilder;
+        dBuilder = DocumentBuilderFactory.newInstance()
+                .newDocumentBuilder();
+        Document doc = dBuilder.parse(file);
+        if (doc.hasChildNodes()) {
+            NodeList nodeList = doc
+                    .getDocumentElement()
+                    .getChildNodes();
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    switch (node.getNodeName()) {
+                        case "host":
+                            this.host = node.getTextContent();
+                            break;
+                        case "basededatos":
+                            this.bbdd = node.getTextContent();
+                            break;
+                        case "usuario":
+                            this.login = node.getTextContent();
+                            break;
+                        case "contraseña":
+                            this.password = node.getTextContent();
+                            break;
+                    }
+                }
+            }
+}
     } 
     /*Método: conectar() 
         Tipo: boolean 
