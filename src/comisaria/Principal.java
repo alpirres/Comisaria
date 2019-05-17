@@ -5,17 +5,20 @@
  */
 package comisaria;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JList;
 
 /**
  *
@@ -43,8 +46,8 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         anadirSospechosoDatos = new javax.swing.JDialog();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jButton3 = new javax.swing.JButton();
+        imagenesVisor = new javax.swing.JScrollPane();
+        listaImagenes = new javax.swing.JList<>();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -101,15 +104,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jButton3);
+        listaImagenes.setLayoutOrientation(javax.swing.JList.HORIZONTAL_WRAP);
+        imagenesVisor.setViewportView(listaImagenes);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Nombre");
@@ -279,7 +275,7 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jTextField3)))
                     .addGroup(anadirSospechosoDatosLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imagenesVisor, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(anadirSospechosoDatosLayout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -316,7 +312,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(anadirSospechosoDatosLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imagenesVisor, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -727,29 +723,42 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboBoxDireActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int returnVal = fileChooser.showOpenDialog(fileChooser);
         String filePath = null;
         
-        if (returnVal == fileChooser.APPROVE_OPTION){
+        JLabel nuevo = new JLabel();
+        
+        
+        
+        
+        
+        
+        
+        /*if (returnVal == fileChooser.APPROVE_OPTION){
             filePath = fileChooser.getSelectedFile().getAbsolutePath();
             System.out.println(filePath);
-            jButton3.setVisible(false);
+            
             BufferedImage myPicture = null;
+            Image dimg=null;
             try{
             myPicture = ImageIO.read(new File(filePath));
+            dimg = myPicture.getScaledInstance(borrame.getWidth(), borrame.getHeight(),
+        Image.SCALE_SMOOTH);
             }catch(Exception e){
                 e.printStackTrace();
             }
-            JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-            jScrollPane2.add(picLabel);
+            borrame.setIcon(new ImageIcon(dimg));
+            jScrollPane2.add(borrame);
+            //picLabel.setText("VAMOOOOOOOOOOOOOOOOOO");
+           // picLabel.setVisible(true);
+            //this.add(picLabel);
+            System.out.println(myPicture);
         }else{
             System.out.println("Cancelado");
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
+        }*/
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -793,9 +802,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxNum;
     private javax.swing.JDialog anadirSospechosoDatos;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JScrollPane imagenesVisor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -820,7 +829,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -836,5 +844,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JList<String> listaImagenes;
     // End of variables declaration//GEN-END:variables
 }

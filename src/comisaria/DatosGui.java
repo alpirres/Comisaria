@@ -5,9 +5,11 @@
  */
 package comisaria;
 
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
 /**
  *
  * @author Nightm4re
@@ -19,7 +21,7 @@ public class DatosGui {
     private HashMap<String, String> corItemsMap = new HashMap<String, String>();
     private HashMap<String, String> telItemsMap = new HashMap<String, String>();
     private HashMap<String, String> matItemsMap = new HashMap<String, String>();
-    
+    public ArrayList<Image> listaImagenes;
     
     protected DatosGui(){
         

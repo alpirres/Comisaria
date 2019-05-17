@@ -26,7 +26,7 @@ public class Sospechoso {
     ArrayList<Integer> acompanante;
     String antecedentes;
     String hechos;
-    File fotos;
+    File[] fotos;
 
     public Sospechoso(String n, String a, int[] tel, String[] cor, String[] direc, String[] mat, int[] sus, String ant, String hech) {
         cambiaNombre(n);
