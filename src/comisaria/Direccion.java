@@ -11,9 +11,9 @@ import java.util.ArrayList;
  *
  * @author jlove
  */
-class Direccion {
+public class Direccion {
 
-    private ArrayList<String> direcciones;
+    public ArrayList<String> direcciones;
     protected int id;
 
     public Direccion(int id, ArrayList<String> dir) {

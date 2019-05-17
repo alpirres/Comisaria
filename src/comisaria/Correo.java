@@ -11,12 +11,12 @@ import java.util.ArrayList;
  *
  * @author omar
  */
-class Correo {
+public class Correo {
 
     //Atributos
     /* Variable que almacena el*/
     int id;
-    private ArrayList<String> correos;
+    public ArrayList<String> correos;
 
     public Correo(int id, ArrayList<String> dir) {
         this.setCorreo((String[]) dir.toArray());

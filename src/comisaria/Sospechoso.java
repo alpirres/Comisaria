@@ -39,7 +39,7 @@ public class Sospechoso {
     /*
     Variable que almacena los correos del sospechoso
      */
-    public Correo correos;
+    public Correo correo;
     /*
     Variable que almacena las direcciones del sospechoso
      */
@@ -145,7 +145,7 @@ public class Sospechoso {
      */
     public void cambiaCorreo(String[] corr) {
 
-        this.correos.setCorreo(corr);
+        this.correo.setCorreo(corr);
 
     }
 

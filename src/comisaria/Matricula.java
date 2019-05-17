@@ -11,9 +11,9 @@ import java.util.ArrayList;
  *
  * @author jlove
  */
-class Matricula {
+public class Matricula {
 
-    private ArrayList<String> matriculas;
+    public ArrayList<String> matriculas;
     protected int id;
 
     public Matricula(int id, ArrayList<String> mat) {

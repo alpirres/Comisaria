@@ -12,9 +12,9 @@ import java.util.Objects;
  *
  * @author jlove
  */
-class Telefono {
+public class Telefono {
 
-    private ArrayList<Integer> telefonos;
+    public ArrayList<Integer> telefonos;
     protected int id;
 
     public Telefono(int id, ArrayList<Integer> tel) {

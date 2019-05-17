@@ -27,9 +27,9 @@ public class Consultas {
 		
 		
 		
-		//comando sql generico para la inserción de sospechoso
+		//comando sql generico para la inserción de sospechoso, y llamada a los metodos de inserts de las demas tablas
 		lineaSQL="INSERT INTO SOSPECHOSO (IDSosp, Nombre, Apellidos, Antecedentes) values ("+sosp.id+","+sosp.nombre+","+sosp.apellidos+","+sosp.antecedentes+");"
-                        +MatToConsulta(sosp);
+                        +MatToConsulta(sosp)+DirToConsulta(sosp)+TelToConsulta(sosp)+CorrToConsulta(sosp);
 	try
 	{
 		
@@ -53,13 +53,39 @@ public class Consultas {
 		
 	}
         
-        public String MatToConsulta(Sospechoso sosp){
+        public static String MatToConsulta(Sospechoso sosp){
             StringBuilder cons=new StringBuilder();
             for(int i=0; i<sosp.matricula.matriculas.size();i++){
-                
+                cons.append("INSERT INTO MATRICULA ("+sosp.matricula.matriculas.get(i)+");"
+                            +"INSERT INTO POSEE("+sosp.id+","+sosp.matricula.matriculas.get(i)+");");
             }
+            return cons.toString();
         }
-	
+        public static String DirToConsulta(Sospechoso sosp){
+            StringBuilder cons=new StringBuilder();
+            for(int i=0; i<sosp.direccion.direcciones.size();i++){
+                cons.append("INSERT INTO DIRECCION ("+sosp.direccion.direcciones.get(i)+");"
+                            +"INSERT INTO VIVE("+sosp.id+","+sosp.direccion.direcciones.get(i)+");");
+            }
+            return cons.toString();
+        }
+        public static String TelToConsulta(Sospechoso sosp){
+            StringBuilder cons=new StringBuilder();
+            for(int i=0; i<sosp.telefono.telefonos.size();i++){
+                cons.append("INSERT INTO TELEFONO ("+sosp.telefono.telefonos.get(i)+");"
+                            +"INSERT INTO TIENE("+sosp.id+","+sosp.telefono.telefonos.get(i)+");");
+            }
+            return cons.toString();
+        }
+        public static String CorrToConsulta(Sospechoso sosp){
+            StringBuilder cons=new StringBuilder();
+            for(int i=0; i<sosp.correo.correos.size();i++){
+                cons.append("INSERT INTO TELEFONO ("+sosp.correo.correos.get(i)+");"
+                            +"INSERT INTO TIENE("+sosp.id+","+sosp.correo.correos.get(i)+");");
+            }
+            return cons.toString();
+        }
+        	
 	//Método que nos muestra todos los socios que hay insertados actualmente
 	public static void mostrarSocios() throws SQLException
 	{
