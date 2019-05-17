@@ -15,23 +15,21 @@ import comisaria.Utils;
  */
 public class Sospechoso {
 
-    static int idglobal = 0;
-    String nombre;
-    String apellidos;
-    int id;
-    Telefono telefono;
-    Correo correos;
-    Direccion direccion;
-    Matricula matricula;
-    ArrayList<Integer> acompanante;
-    String antecedentes;
-    String hechos;
-    File[] fotos;
+    public String nombre;
+    public String apellidos;
+    public int id;
+    public Telefono telefono;
+    public Correo correos;
+    public Direccion direccion;
+    public Matricula matricula;
+    public ArrayList<Integer> acompanante;
+    public String antecedentes;
+    public String hechos;
+    public File[] fotos;
 
     public Sospechoso(String n, String a, int[] tel, String[] cor, String[] direc, String[] mat, int[] sus, String ant, String hech) {
         cambiaNombre(n);
         cambiaApellido(a);
-        id = sumaId();
         cambiaTelefono(tel);
         cambiaCorreo(cor);
         cambiaDireccion(direc);
@@ -40,11 +38,6 @@ public class Sospechoso {
         cambiaAntecedente(ant);
         cambiaHechos(hech);
 
-    }
-
-    public int sumaId() {
-        idglobal++;
-        return this.idglobal;
     }
 
     public void cambiaNombre(String nom) {

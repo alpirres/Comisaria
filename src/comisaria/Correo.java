@@ -9,10 +9,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jlove
+ * @author omar
  */
 class Correo {
 
+    //Atributos
+    /* Variable que almacena el*/
     int id;
     private ArrayList<String> correos;
 

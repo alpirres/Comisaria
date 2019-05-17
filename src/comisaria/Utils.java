@@ -30,7 +30,7 @@ public class Utils {
         return correcto;
 
     }
-    
+
     public static boolean validaCorreo(String correo) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
@@ -47,7 +47,7 @@ public class Utils {
         return correcto;
 
     }
-    
+
     public static boolean validaMatricula(String matri) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
@@ -62,16 +62,16 @@ public class Utils {
         Matcher matcher2 = patron2.matcher(texto);
         if (matcher.matches()) {
             correcto = true;
-        }else{
+        } else {
             if (matcher2.matches()) {
-                correcto=true;
+                correcto = true;
             }
         }
 
         return correcto;
 
     }
-    
+
     public static boolean validaDireccion(String direc) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
@@ -88,7 +88,7 @@ public class Utils {
         return correcto;
 
     }
-    
+
     public static boolean validaNombre(String nom) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
@@ -105,7 +105,7 @@ public class Utils {
         return correcto;
 
     }
-    
+
     public static boolean validaApellido(String apell) {
         boolean correcto = false;
         StringBuilder almacen = new StringBuilder();
