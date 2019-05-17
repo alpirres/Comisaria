@@ -90,7 +90,7 @@ public class Sospechoso {
         añadeAcompanante(sus);
         cambiaAntecedente(ant);
         cambiaHechos(hech);
-
+        
     }
 
     /**
