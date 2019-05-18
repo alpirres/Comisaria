@@ -27,7 +27,7 @@ public class Comisaria {
      */
     public static void main(String[] args) throws Exception {
         //Realizamos la conexión 
-        miConexion=new Conexion("127.0.0.1","comisaria","root","");
+        miConexion=new Conexion();
         miConexion.inicializar();
         if (miConexion.conectar()==false) 
         { 
