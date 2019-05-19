@@ -8,6 +8,8 @@ package comisaria;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
@@ -129,5 +131,14 @@ public class DatosGui {
         return telItemsMap;
     }
     
-    
+    protected byte[] showImagen(File archivo){
+        byte[] bytesImg= new byte[1024*1000];
+        try {
+            FileInputStream entrada = new FileInputStream(archivo);
+            entrada.read(bytesImg);
+            
+        } catch (Exception e) {
+        }
+        return bytesImg;
+    }    
 }

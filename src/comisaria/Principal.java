@@ -120,7 +120,6 @@ public class Principal extends javax.swing.JFrame {
         visorImagenes.setMinimumSize(new java.awt.Dimension(888, 258));
         visorImagenes.setPreferredSize(new java.awt.Dimension(888, 258));
 
-        contenedorVisor.setAutoscrolls(true);
         contenedorVisor.setMaximumSize(new java.awt.Dimension(900000, 258));
         contenedorVisor.setPreferredSize(new java.awt.Dimension(100, 100));
 
@@ -128,11 +127,11 @@ public class Principal extends javax.swing.JFrame {
         contenedorVisor.setLayout(contenedorVisorLayout);
         contenedorVisorLayout.setHorizontalGroup(
             contenedorVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 886, Short.MAX_VALUE)
         );
         contenedorVisorLayout.setVerticalGroup(
             contenedorVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 239, Short.MAX_VALUE)
         );
 
         visorImagenes.setViewportView(contenedorVisor);
