@@ -12,78 +12,68 @@ import java.sql.SQLException;
 import java.sql.Statement;
 /**
  *
- * @author jlove
+ * @author alfon
  */
 public class Delete {
-    public static int eliminarSocioPorCodigo(int codigo) throws SQLException
-	{
-				
-		//Cadena donde irán las sentencias sql
-		String lineaSQL;
-		//Objeto de tipo Statement
-		PreparedStatement preparedStmt;
-		//Número de filas actualizadas
-		int nFilas=0;
-		
-		
-		//Cadena update
-		lineaSQL="delete from SOCIOS where codigoSocio = ?";
-		try
-		{		
-		
-			//conectamos el objeto preparedStmt a la base de datos
-			preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
+    
+    /**
+     * 
+     * @param codigo
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
+    public static int eliminarSospID(int sospid) throws SQLException, Exception{		
+        //Cadena donde irán las sentencias sql
+        String lineaSQL;
+        //Objeto de tipo Statement
+        PreparedStatement preparedStmt;
+        //Número de filas actualizadas
+        int nFilas=0;
+        //Cadena update
+        lineaSQL="delete from SOSPECHOSO where IDSosp = ?";
+        try{
+            //conectamos el objeto preparedStmt a la base de datos
+            preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
 			
-			//agregamos los valores que faltan a la linea SQL
-		    preparedStmt.setInt (1, codigo);
+            //agregamos los valores que faltan a la linea SQL
+            preparedStmt.setInt (1, sospid);
 		
-			// la ejecutamos
-			nFilas=preparedStmt.executeUpdate();
+            // la ejecutamos
+            nFilas=preparedStmt.executeUpdate();
 		       
-			// habría que cerrar la conexion
-		}catch(SQLException se)
-		{
-		
-			se.printStackTrace();
-		}
-		
-		return nFilas;
-		
+            // cerrarmos la conexion
+            miConexion.cerrarConexion();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+        return nFilas;	
 	}
 	
-	//Método qu elimina todos los socios
-	//Devuelve el número de filas afectadas
-	public static int eliminarSocios() throws SQLException
-	{
-				
-		//Cadena donde irán las sentencias sql
-		String lineaSQL;
-		//Objeto de tipo Statement
-		PreparedStatement preparedStmt;
-		//Número de filas actualizadas
-		int nFilas=0;
-		
-		
-		//Cadena update
-		lineaSQL="delete from SOCIOS";
-		try
-		{		
-		
-			//conectamos el objeto preparedStmt a la base de datos
-			preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
+	public static int eliminar(int codigo) throws SQLException, Exception{		
+        //Cadena donde irán las sentencias sql
+        String lineaSQL;
+        //Objeto de tipo Statement
+        PreparedStatement preparedStmt;
+        //Número de filas actualizadas
+        int nFilas=0;
+        //Cadena update
+        lineaSQL="delete from SOSPECHOSO where IDSosp = ?";
+        try{
+            //conectamos el objeto preparedStmt a la base de datos
+            preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
 			
-					
-			// la ejecutamos
-			nFilas=preparedStmt.executeUpdate();
+            //agregamos los valores que faltan a la linea SQL
+            preparedStmt.setInt (1, codigo);
+		
+            // la ejecutamos
+            nFilas=preparedStmt.executeUpdate();
 		       
-			// habría que cerrar la conexion
-		}catch(SQLException se)
-		{
-		
-			se.printStackTrace();
-		}
-		
-		return nFilas;
-		
+            // cerrarmos la conexion
+            miConexion.cerrarConexion();
+        }catch(SQLException se){
+            se.printStackTrace();
+        }
+        return nFilas;	
 	}
 }

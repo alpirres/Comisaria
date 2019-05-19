@@ -33,7 +33,7 @@ public class Conexion {
     private boolean estado=false;//Estado de la conexión
     
     public Conexion() throws ParserConfigurationException, SAXException, IOException {
-        File file=new File("Conectobd.xml");
+        File file=new File("Conextobd.xml");
         DocumentBuilder dBuilder;
         dBuilder = DocumentBuilderFactory.newInstance()
                 .newDocumentBuilder();

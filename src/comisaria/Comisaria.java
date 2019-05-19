@@ -34,6 +34,7 @@ public class Comisaria {
             System.out.println("No se ha podido conectar a la base de datos");
         } else {
             System.out.println("Conexión satisfactoria a la base de datos");
+            Principal.main(args);
         }
          
 
