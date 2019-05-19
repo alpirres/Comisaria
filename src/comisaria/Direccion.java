@@ -37,18 +37,15 @@ public class Direccion {
      * @param di Array de direcciones a almacenar
      */
     public void setDireccion(String[] di) {
-        int contador = 0;
-
+        direcciones.add(di[0]);
         for (int i = 0; i < di.length; i++) {
-            for (int j = 0; j < this.direcciones.size(); j++) {
-                if (!di[i].equals(this.direcciones.get(j))) {
-                    contador++;
+            for (int j = 0; j < direcciones.size(); j++) {
+                if (!direcciones.contains(di[i])) {
+                    direcciones.add(di[i]);
+
                 }
             }
-            if (contador == this.direcciones.size()) {
-                this.direcciones.add(di[i]);
-                contador = 0;
-            }
+
         }
 
     }

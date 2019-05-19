@@ -37,18 +37,15 @@ public class Telefono {
      * @param t Array de telefonos a guardar.
      */
     public void setTelefono(String[] t) {
-        int contador = 0;
-
+        telefonos.add(t[0]);
         for (int i = 0; i < t.length; i++) {
-            for (int j = 0; j < this.telefonos.size(); j++) {
-                if (!t[i].equals(this.telefonos.get(j))) {
-                    contador++;
+            for (int j = 0; j < telefonos.size(); j++) {
+                if (!telefonos.contains(t[i])) {
+                    telefonos.add(t[i]);
+
                 }
             }
-            if (contador == this.telefonos.size()) {
-                this.telefonos.add(t[i]);
-                contador = 0;
-            }
+
         }
 
     }

@@ -37,20 +37,17 @@ public class Correo {
      * @param mail Array de correos a guardar
      */
     public void setCorreo(String[] mail) {
-        int contador = 0;
 
+        correos.add(mail[0]);
         for (int i = 0; i < mail.length; i++) {
-            for (int j = 0; j < this.correos.size(); j++) {
-                if (mail[i] != this.correos.get(j) ) {
-                    contador++;
+            for (int j = 0; j < correos.size(); j++) {
+                if (!correos.contains(mail[i])) {
+                    correos.add(mail[i]);
+
                 }
             }
-            if (contador == this.correos.size()) {
-                this.correos.add(mail[i]);
-                contador=0;
-            }
-        }
 
+        }
     }
 
     /**

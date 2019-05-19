@@ -37,18 +37,15 @@ public class Matricula {
      * @param a
      */
     public void setMatricula(String[] a) {
-        int contador = 0;
-
+        matriculas.add(a[0]);
         for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < this.matriculas.size(); j++) {
-                if (!a[i].equals(this.matriculas.get(j))) {
-                    contador++;
+            for (int j = 0; j < matriculas.size(); j++) {
+                if (!matriculas.contains(a[i])) {
+                    matriculas.add(a[i]);
+
                 }
             }
-            if (contador == this.matriculas.size()) {
-                this.matriculas.add(a[i]);
-                contador = 0;
-            }
+
         }
 
     }
