@@ -33,7 +33,7 @@ public class Conexion {
     private boolean estado=false;//Estado de la conexión
     
     public Conexion() throws ParserConfigurationException, SAXException, IOException {
-        File file=new File("Conectobd.xml");
+        File file=new File("Conextobd.xml");
         DocumentBuilder dBuilder;
         dBuilder = DocumentBuilderFactory.newInstance()
                 .newDocumentBuilder();
@@ -88,7 +88,7 @@ public class Conexion {
  
             try
             {
-                FileReader fr = new FileReader(new File("src\\assets\\comisariaBBDD.sql"));
+                FileReader fr = new FileReader(new File("src\\assets\\comisariabbdd.sql"));
                 // be sure to not have line starting with "--" or "/*" or any other non aplhabetical character
 
                 BufferedReader br = new BufferedReader(fr);
