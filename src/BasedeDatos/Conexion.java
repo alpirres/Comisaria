@@ -116,11 +116,7 @@ public class Conexion {
                 }
             }catch(Exception e){
                 System.out.println("*** Error : "+e.toString());
-                System.out.println("*** ");
-                System.out.println("*** Error : ");
                 e.printStackTrace();
-                System.out.println("################################################");
-                System.out.println(sb.toString());
             }
             this.miConexion.close();
     }

@@ -16,10 +16,10 @@ import java.sql.Statement;
  */
 public class Update {
     /**
-     * 
-     * @param sospid
-     * @param nuevoNombre
-     * @return
+     * funcion que actualiza el nombre del sospechos
+     * @param sospid id del sospechoso
+     * @param nuevoNombre String con el nuevo nombre
+     * @return numero de filas afectadas 
      * @throws SQLException
      * @throws Exception 
      */
@@ -52,10 +52,10 @@ public class Update {
 	}
     
     /**
-     * 
-     * @param sospid
-     * @param nuevoApellido
-     * @return
+     * funcion que actualiza el apellido del sospechoso 
+     * @param sospid int id del sospechoso
+     * @param nuevoApellido String von el nuevo apellido
+     * @return numero de filas afectadas
      * @throws SQLException
      * @throws Exception 
      */
@@ -88,10 +88,10 @@ public class Update {
 	}
     
     /**
-     * 
-     * @param sospid
-     * @param nuevoAntecedente
-     * @return
+     * funcion que actualiza los antecedentes del sospechoso 
+     * @param sospid int id del sospechoso
+     * @param nuevoAntecedente String que contiene los nuevos antecedentes
+     * @return numero de filas afectadas
      * @throws SQLException
      * @throws Exception 
      */
@@ -124,10 +124,10 @@ public class Update {
 	}
     
     /**
-     * 
-     * @param sospid
-     * @param nuevoHecho
-     * @return
+     * funcion que actualiza los hechos del sospechoso 
+     * @param sospid int id del sospechoso
+     * @param nuevoHecho String que contiene los nuevos hechos
+     * @return numero de filas afectadas
      * @throws SQLException
      * @throws Exception 
      */
@@ -160,10 +160,9 @@ public class Update {
 	}
     
     /**
-     * 
-     * @param sospid
-     * @param nuevoEmail
-     * @return
+     * funcion que actualiza los Emails del sospechoso 
+     * @param corr  objeto email de donde se obtendrá el id del sospechoso y el array de nuevos correos
+     * @return numero de filas afectadas
      * @throws SQLException
      * @throws Exception 
      */
@@ -196,6 +195,13 @@ public class Update {
         return nFilas;	
 	}
     
+    /**
+     * funcion que actualiza las matriculas 
+     * @param mat objeto matrivula de donde se obtendrá el id de sospechoso y el array de nuevos correos
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
     public static int actualizarMatricula(Matricula mat) throws SQLException, Exception{
         //Cadena donde irán las sentencias sql
         String lineaSQL;
@@ -224,6 +230,13 @@ public class Update {
         return nFilas;	
 	}
     
+    /**
+     * funcion que actualiza las direcciones
+     * @param dir objeto direccion de donde se obtendrá el id del sospechoso y el array de nuevos correos
+     * @return numero de filas afectadas
+     * @throws SQLException
+     * @throws Exception 
+     */
     public static int actualizarDireccion(Direccion dir) throws SQLException, Exception{
         //Cadena donde irán las sentencias sql
         String lineaSQL;
@@ -252,6 +265,13 @@ public class Update {
         return nFilas;	
 	}
     
+    /**
+     * funcion que actualiza los telefonos
+     * @param tlf objeto telefono de donde se obtendrá el id del sospechoso y el array de nuevos correos
+     * @return numero de filas afectadas
+     * @throws SQLException
+     * @throws Exception 
+     */
     public static int actualizarTlf(Telefono tlf) throws SQLException, Exception{
         //Cadena donde irán las sentencias sql
         String lineaSQL;

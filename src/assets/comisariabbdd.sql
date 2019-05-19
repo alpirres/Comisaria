@@ -39,8 +39,9 @@ CREATE TABLE IF NOT EXISTS `posee` (
 CREATE TABLE IF NOT EXISTS `sospechoso` (
   `IDSosp` bigint(20) unsigned NOT NULL,
   `Nombre` char(25) NOT NULL,
-  `Apellidos` char(40) NOT NULL,
-  `Antecedentes` blob NOT NULL,
+  `Apellidos` char(40) DEFAULT NULL,
+  `Antecedentes` blob DEFAULT NULL,
+  `Hechos` blob ,
   PRIMARY KEY (`IDSosp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 CREATE TABLE IF NOT EXISTS `telefono` (

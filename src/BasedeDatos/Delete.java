@@ -17,63 +17,36 @@ import java.sql.Statement;
 public class Delete {
     
     /**
-     * 
-     * @param codigo
-     * @return
+     * funcion que elimina un sospechoso por su id
+     * @param codigo int que contiene el id
+     * @return numero de filas afectadas
      * @throws SQLException
      * @throws Exception 
      */
     public static int eliminarSospID(int sospid) throws SQLException, Exception{		
-        //Cadena donde irán las sentencias sql
-        String lineaSQL;
-        //Objeto de tipo Statement
-        PreparedStatement preparedStmt;
-        //Número de filas actualizadas
-        int nFilas=0;
-        //Cadena update
-        lineaSQL="delete from SOSPECHOSO where IDSosp = ?";
-        try{
-            //conectamos el objeto preparedStmt a la base de datos
-            preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
-			
-            //agregamos los valores que faltan a la linea SQL
-            preparedStmt.setInt (1, sospid);
-		
-            // la ejecutamos
-            nFilas=preparedStmt.executeUpdate();
-		       
-            // cerrarmos la conexion
-            miConexion.cerrarConexion();
-        }catch(SQLException se){
-            se.printStackTrace();
-        }
-        return nFilas;	
-	}
-	
-	public static int eliminar(int codigo) throws SQLException, Exception{		
-        //Cadena donde irán las sentencias sql
-        String lineaSQL;
-        //Objeto de tipo Statement
-        PreparedStatement preparedStmt;
-        //Número de filas actualizadas
-        int nFilas=0;
-        //Cadena update
-        lineaSQL="delete from SOSPECHOSO where IDSosp = ?";
-        try{
-            //conectamos el objeto preparedStmt a la base de datos
-            preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
-			
-            //agregamos los valores que faltan a la linea SQL
-            preparedStmt.setInt (1, codigo);
-		
-            // la ejecutamos
-            nFilas=preparedStmt.executeUpdate();
-		       
-            // cerrarmos la conexion
-            miConexion.cerrarConexion();
-        }catch(SQLException se){
-            se.printStackTrace();
-        }
-        return nFilas;	
-	}
+    //Cadena donde irán las sentencias sql
+    String lineaSQL;
+    //Objeto de tipo Statement
+    PreparedStatement preparedStmt;
+    //Número de filas actualizadas
+    int nFilas=0;
+    //Cadena update
+    lineaSQL="delete from SOSPECHOSO where IDSosp = ?";
+    try{
+        //conectamos el objeto preparedStmt a la base de datos
+        preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
+
+        //agregamos los valores que faltan a la linea SQL
+        preparedStmt.setInt (1, sospid);
+
+        // la ejecutamos
+        nFilas=preparedStmt.executeUpdate();
+
+        // cerrarmos la conexion
+        miConexion.cerrarConexion();
+    }catch(SQLException se){
+        se.printStackTrace();
+    }
+    return nFilas;	
+    }
 }
