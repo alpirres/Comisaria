@@ -6,84 +6,62 @@
 package comisaria;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  *
- * @author jlove
+ * @author omar
  */
 public class Telefono {
 //Atributos
 
     /*Variable para almacenar todos los telefonos del sospechoso*/
-    public ArrayList<Integer> telefonos;
+    public ArrayList<String> telefonos;
     /* Variable que almacena el id del sospechoso*/
-    protected int id;
-/**
- * Constructor para inicializar las variables.
- * @param id Recibe el id del sospechoso
- * @param tel Recibe el listado de telefonos
- */
-    public Telefono(int id, ArrayList<Integer> tel) {
-        int [] tmp=tel.stream().mapToInt(Integer::intValue).toArray(); //Object to INT
-        setTelefono(tmp);
+    public int id;
+
+    /**
+     * Constructor para inicializar las variables.
+     *
+     * @param id Recibe el id del sospechoso
+     * @param tel Recibe el listado de telefonos
+     */
+    public Telefono(int id, String[] tel) {
+        this.setTelefono(tel);
         this.id = id;
-    }
-/**
- * Método para obtener el lsitado de teléfonos del sospechoso
- * @return 
- */
-    public ArrayList<Integer> getTelefono() {
-
-        return telefonos;
-    }
-/**
- * Método que permite guardar teléfonos una vez se comprueba que no lo están ya.
- * @param t Array de telefonos a guardar.
- */
-    public void setTelefono(int[] t) {
-        
-        int[] dir = new int[existeTelefono(t).length];
-
-        for (int i = 0; i < existeTelefono(t).length; i++) {
-            dir[i] = existeTelefono(t)[i];
-        }
-        
-        for (int i = 0; i < dir.length; i++) {
-          this.telefonos.add(dir[i]);  
-        }
-
     }
 
     /**
-     * Recibe un Array de String, comprueba si hay alguna coincidencia y
-     * devuelve un ArrayList con los teléfonos no existentes.
-     * @param d Array de telefonos a analizar.
-     * @return Integer[] Array de enteros con los telefonos que se van a guardar.
+     * Método que permite guardar teléfonos una vez se comprueba que no lo están
+     * ya.
      *
+     * @param t Array de telefonos a guardar.
      */
-    public Integer[] existeTelefono(int[] t) {
-        ArrayList<Integer> telExist = new ArrayList<>();
+    public void setTelefono(String[] t) {
+        int contador = 0;
 
         for (int i = 0; i < t.length; i++) {
             for (int j = 0; j < this.telefonos.size(); j++) {
-                if (t[i]!= telefonos.get(j)) {
-                    telExist.add(t[i]);
-
+                if (!t[i].equals(this.telefonos.get(j))) {
+                    contador++;
                 }
             }
+            if (contador == this.telefonos.size()) {
+                this.telefonos.add(t[i]);
+                contador = 0;
+            }
         }
-        return (Integer[]) telExist.toArray();
-        
+
     }
+
     /**
      * Método que permite el borrado de telefonos del listado del sospechoso
+     *
      * @param elitel Array de telefonos a eliminar
      */
-    public void eliminaTelefono(int[] elitel){
+    public void eliminaTelefono(String[] elitel) {
         for (int i = 0; i < elitel.length; i++) {
             for (int j = 0; j < this.telefonos.size(); j++) {
-                if (elitel[i]==this.telefonos.get(j)) {
+                if (elitel[i].equals(this.telefonos.get(j))) {
                     this.telefonos.remove(j);
                 }
             }

@@ -15,7 +15,7 @@ public class Correo {
 
     //Atributos
     /* Variable que almacena el id del sospechoso*/
-    int id;
+    public int id;
     /*Variable para almacenar todos los correos del sospechoso*/
     public ArrayList<String> correos;
 
@@ -25,19 +25,9 @@ public class Correo {
      * @param id Id obtenida del sospechoso
      * @param dir ArrayList variable de direcciones a introducir
      */
-    public Correo(int id, ArrayList<String> dir) {
-        this.setCorreo((String[]) dir.toArray());
+    public Correo(int id, String[] dir) {
+        this.setCorreo(dir);
         this.id = id;
-    }
-
-    /**
-     * Getter del ArrayList de correos. Permite obtener el listado de correos
-     * asociados al sospechoso
-     *
-     * @return
-     */
-    public ArrayList<String> getCorreo() {
-        return this.correos;
     }
 
     /**
@@ -47,36 +37,20 @@ public class Correo {
      * @param mail Array de correos a guardar
      */
     public void setCorreo(String[] mail) {
-        String[] cor = new String[existeCorreo(mail).length];
+        int contador = 0;
 
-        for (int i = 0; i < existeCorreo(mail).length; i++) {
-            cor[i] = existeCorreo(mail)[i];
-        }
-
-        for (int i = 0; i < cor.length; i++) {
-            this.correos.add(cor[i]);
-        }
-    }
-
-    /**
-     * Método de comprobación de existencia de correos ya guardados
-     *
-     * @param corre Array de correos
-     * @return
-     */
-    public String[] existeCorreo(String[] corre) {
-        ArrayList<String> almacen = new ArrayList<>();
-
-        for (int i = 0; i < corre.length; i++) {
+        for (int i = 0; i < mail.length; i++) {
             for (int j = 0; j < this.correos.size(); j++) {
-                if (!corre[i].equals(this.correos.get(j))) {
-                    almacen.add(corre[i]);
-
+                if (!mail[i].equals(this.correos.get(j))) {
+                    contador++;
                 }
+            }
+            if (contador == this.correos.size()) {
+                this.correos.add(mail[i]);
+                contador=0;
             }
         }
 
-        return (String[]) almacen.toArray();
     }
 
     /**

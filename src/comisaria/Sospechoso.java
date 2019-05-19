@@ -79,18 +79,19 @@ public class Sospechoso {
      * @param ant Recibe los antecedentes del sospechoso
      * @param hech Recibe los hechos del caso del sospechoso
      */
-    public Sospechoso(String n, String a, int[] tel, String[] cor, String[] direc, String[] mat, int[] sus, String ant, String hech) {
-        cambiaNombre(n);
+    public Sospechoso(String n, String a, String[] tel, String[] cor, String[] direc, String[] mat, int[] sus, String ant, String hech) {
         id = sumaId();
+        this.correo = new Correo(this.id, cor);
+        this.direccion = new Direccion(this.id, direc);
+        this.matricula = new Matricula(this.id, mat);
+        this.telefono = new Telefono(this.id, tel);
+        cambiaNombre(n);
         cambiaApellido(a);
-        cambiaTelefono(tel);
-        cambiaCorreo(cor);
-        cambiaDireccion(direc);
         cambiaMatricula(mat);
         añadeAcompanante(sus);
         cambiaAntecedente(ant);
         cambiaHechos(hech);
-        
+
     }
 
     /**
@@ -131,7 +132,7 @@ public class Sospechoso {
      *
      * @param telfo
      */
-    public void cambiaTelefono(int[] telfo) {
+    public void cambiaTelefono(String[] telfo) {
 
         this.telefono.setTelefono(telfo);
 

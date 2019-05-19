@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author jlove
+ * @author omar
  */
 public class Matricula {
 //Atributos
@@ -17,7 +17,7 @@ public class Matricula {
     /*Variable para almacenar todas las matrículas del sospechoso*/
     public ArrayList<String> matriculas;
     /* Variable que almacena el id del sospechoso*/
-    protected int id;
+    public int id;
 
     /**
      * Constructor para inicializar las variables
@@ -25,19 +25,9 @@ public class Matricula {
      * @param id Toma el id del sospechoso
      * @param mat Recibe un ArrayList variable de matrículas.
      */
-    public Matricula(int id, ArrayList<String> mat) {
-        this.setMatricula((String[]) mat.toArray());
+    public Matricula(int id, String[] mat) {
+        this.setMatricula(mat);
         this.id = id;
-    }
-
-    /**
-     * Método que devuelve el listado de matrículas completas.
-     *
-     * @return
-     */
-    public ArrayList<String> getMatriculas() {
-
-        return matriculas;
     }
 
     /**
@@ -47,38 +37,20 @@ public class Matricula {
      * @param a
      */
     public void setMatricula(String[] a) {
-
-        String[] dir = new String[existeMatricula(a).length];
-
-        for (int i = 0; i < existeMatricula(a).length; i++) {
-            dir[i] = existeMatricula(a)[i];
-        }
-
-        for (int i = 0; i < dir.length; i++) {
-            this.matriculas.add(dir[i]);
-        }
-
-    }
-
-    /**
-     * Recibe un Array de matrículas para guardar las que no lo estén ya.
-     *
-     * @param d
-     * @return String[] Devuelve un array de matrículas no guardadas
-     */
-    public String[] existeMatricula(String[] a) {
-        ArrayList<String> matExist = new ArrayList<>();
+        int contador = 0;
 
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < this.matriculas.size(); j++) {
-                if (!a[i].equals(matriculas.get(j))) {
-                    matExist.add(a[i]);
-
+                if (!a[i].equals(this.matriculas.get(j))) {
+                    contador++;
                 }
+            }
+            if (contador == this.matriculas.size()) {
+                this.matriculas.add(a[i]);
+                contador = 0;
             }
         }
 
-        return (String[]) matExist.toArray();
     }
 
     /**

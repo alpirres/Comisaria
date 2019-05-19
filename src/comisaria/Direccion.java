@@ -17,7 +17,7 @@ public class Direccion {
     /*Variable para almacenar todas las direcciones del sospechoso*/
     public ArrayList<String> direcciones;
     /* Variable que almacena el id del sospechoso*/
-    protected int id;
+    public int id;
 
     /**
      * Constructor de direccion para establecer las variables de forma incial.
@@ -25,19 +25,9 @@ public class Direccion {
      * @param id Recibe el id del sospechoso
      * @param dir Recibe el ArrayList de direcciones a guardar
      */
-    public Direccion(int id, ArrayList<String> dir) {
-        this.setDireccion((String[]) dir.toArray());
+    public Direccion(int id, String[] dir) {
+        this.setDireccion(dir);
         this.id = id;
-    }
-
-    /**
-     * Método para obtener las direcciones almacenadas
-     *
-     * @return
-     */
-    public ArrayList<String> getDireccion() {
-
-        return this.direcciones;
     }
 
     /**
@@ -47,38 +37,20 @@ public class Direccion {
      * @param di Array de direcciones a almacenar
      */
     public void setDireccion(String[] di) {
-        String[] dir = new String[existeDireccion(di).length];
+        int contador = 0;
 
-        for (int i = 0; i < existeDireccion(di).length; i++) {
-            dir[i] = existeDireccion(di)[i];
-        }
-
-        for (int i = 0; i < dir.length; i++) {
-            this.direcciones.add(dir[i]);
-        }
-
-    }
-
-    /**
-     * Recibe un Array de String, comprueba si hay alguna coincidencia y
-     * devuelve un ArrayList con las coincidencias.
-     *
-     * @param d Recibe un array de direcciones a comprobar.
-     * @return String[] Un Array de String con las direcciones a guardar
-     */
-    public String[] existeDireccion(String[] d) {
-        ArrayList<String> dirExist = new ArrayList<>();
-
-        for (int i = 0; i < d.length; i++) {
+        for (int i = 0; i < di.length; i++) {
             for (int j = 0; j < this.direcciones.size(); j++) {
-                if (!d[i].equals(direcciones.get(j))) {
-                    dirExist.add(d[i]);
-
+                if (!di[i].equals(this.direcciones.get(j))) {
+                    contador++;
                 }
+            }
+            if (contador == this.direcciones.size()) {
+                this.direcciones.add(di[i]);
+                contador = 0;
             }
         }
 
-        return (String[]) dirExist.toArray();
     }
 
     /**
