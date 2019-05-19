@@ -41,7 +41,7 @@ public class Correo {
 
         for (int i = 0; i < mail.length; i++) {
             for (int j = 0; j < this.correos.size(); j++) {
-                if (!mail[i].equals(this.correos.get(j))) {
+                if (mail[i] != this.correos.get(j) ) {
                     contador++;
                 }
             }
