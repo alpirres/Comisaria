@@ -31,6 +31,7 @@ public class Insert {
                 DirToConsulta(sosp);
                 TelToConsulta(sosp);
                 CorrToConsulta(sosp);
+                
 		return insertados;
 	}
         
