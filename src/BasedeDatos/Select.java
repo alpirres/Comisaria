@@ -87,11 +87,11 @@ public class Select {
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where t.NumTel=sosp.IDSosp"
+                + "where m.NumMat="+mt
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
-                +" and m.IDSosp="+mt+";";
+                +" and m.IDSosp=sosp.IDSosp;";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
@@ -137,9 +137,9 @@ public class Select {
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where t.NumTel=sosp.IDSosp"
+                + "where c.DirCorr="+corr
                 +" and t.IDSosp=sosp.IDSosp"
-                +" and c.IDSosp="+corr
+                +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
                 +" and m.IDSosp=sosp.IDSosp;";
         PreparedStatement preparedStmt = null;
@@ -186,10 +186,10 @@ public class Select {
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where t.NumTel=sosp.IDSosp"
+                + "where d.NomDir="+dir
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
-                +" and d.IDSosp="+dir
+                +" and d.IDSosp=sosp.IDSosp"
                 +" and m.IDSosp=sosp.IDSosp;";
         PreparedStatement preparedStmt = null;
         try {
