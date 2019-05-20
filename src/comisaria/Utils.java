@@ -66,7 +66,7 @@ public class Utils {
      */
     public static boolean validaDireccion(String direc) {
         boolean correcto = false;
-        String expresion = "^\\w+.\\d+$";
+        String expresion = "^(\\w+.?)+?(\\d+)?$";
         if (Pattern.matches(expresion,direc)) {
             correcto = true;
         }
