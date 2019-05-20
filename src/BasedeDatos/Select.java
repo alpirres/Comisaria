@@ -28,7 +28,7 @@ public class Select {
         int idfinal;
         String lineaSQL="Select sosp.IDSosp"
                         + "from SOSPECHOSO sosp"
-                        + "where sosp.IDSosp=max();";
+                        + "where sosp.IDSosp=(select max(idSosp) from SOSPECHOSO);";
 		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
 		ResultSet result = preparedStmt.executeQuery();
                 idfinal=result.getInt("IDSosp");
