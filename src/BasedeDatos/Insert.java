@@ -16,55 +16,46 @@ import java.sql.Statement;
  * @author jlove
  */
 public class Insert {
-        public static boolean insertSospechoso(Sospechoso sosp) throws SQLException
-	{
+        public boolean insertSospechoso(Sospechoso sosp) throws SQLException{
 		boolean insertados=true;
 		int i;
 		//Cadena donde irán las sentencias sql de creación de tablas
 		String lineaSQL;
 		//Objeto de tipo Statement
-		Statement sentencia;
-		
-		
-		
+		Statement sentencia;		
 		//comando sql generico para la inserción de sospechoso, y llamada a los metodos de inserts de las demas tablas
-		lineaSQL="INSERT INTO SOSPECHOSO (IDSosp, Nombre, Apellidos, Antecedentes) values ("+sosp.id+","+sosp.nombre+","+sosp.apellidos+","+sosp.antecedentes+");"
-                        +MatToConsulta(sosp)+DirToConsulta(sosp)+TelToConsulta(sosp)+CorrToConsulta(sosp);
-	try
-	{
-		
-		
-		//conectamos el objeto preparedStmt a la base de datos
-		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
-                preparedStmt.execute();
-                insertados=true;
-	
-         // habría que cerrar la conexion
-	}catch(SQLException se)
-	{
-		insertados=false;
-		se.printStackTrace();
-	}
-		
+		String cons="INSERT INTO SOSPECHOSO (IDSosp, Nombre, Apellidos, Antecedentes) values ("+sosp.id+","+sosp.nombre+","+sosp.apellidos+","+sosp.antecedentes+");";
+                ejecutaSQL(cons);
+                SospToConsulta(sosp);
+                MatToConsulta(sosp);
+                DirToConsulta(sosp);
+                TelToConsulta(sosp);
+                CorrToConsulta(sosp);
 		return insertados;
-		
-		
-		
-		
 	}
+        
+        public void SospToConsulta(Sospechoso sosp){
+            String cons;
+            for(int i=0; i<sosp.acompanante.size();i++){
+                cons="INSERT INTO ACOMPANIA ("+sosp.acompanante.get(i)+");";
+                ejecutaSQL(cons);
+            }
+        }
+        
         /**
          * Metodo que transforma cada matricula de un sospechoso en dos consulta SQL INSERT
          * una para la tabla MATRICULA y otra para la tabla POSEE(que une matricula con sospechoso)
          * @param sosp
          * @return devuelve un String el cual son las consultas INSERT
          */
-        public static String MatToConsulta(Sospechoso sosp){
-            StringBuilder cons=new StringBuilder();
+        public void MatToConsulta(Sospechoso sosp){
+            String cons;
             for(int i=0; i<sosp.matricula.matriculas.size();i++){
-                cons.append("INSERT INTO MATRICULA ("+sosp.matricula.matriculas.get(i)+");"
-                            +"INSERT INTO POSEE("+sosp.id+","+sosp.matricula.matriculas.get(i)+");");
+                cons="INSERT INTO MATRICULA ("+sosp.matricula.matriculas.get(i)+");";
+                ejecutaSQL(cons);
+                cons="INSERT INTO POSEE("+sosp.id+","+sosp.matricula.matriculas.get(i)+");";
+                ejecutaSQL(cons);
             }
-            return cons.toString();
         }
         /**
          * Metodo que transforma cada direccion de un sospechoso en dos consulta SQL INSERT
@@ -72,13 +63,14 @@ public class Insert {
          * @param sosp
          * @return devuelve un String el cual son las consultas INSERT
          */
-        public static String DirToConsulta(Sospechoso sosp){
-            StringBuilder cons=new StringBuilder();
+        public void DirToConsulta(Sospechoso sosp){
+            String cons;
             for(int i=0; i<sosp.direccion.direcciones.size();i++){
-                cons.append("INSERT INTO DIRECCION ("+sosp.direccion.direcciones.get(i)+");"
-                            +"INSERT INTO VIVE("+sosp.id+","+sosp.direccion.direcciones.get(i)+");");
+                cons="INSERT INTO DIRECCION ("+sosp.direccion.direcciones.get(i)+");";
+                ejecutaSQL(cons);
+                cons="INSERT INTO VIVE("+sosp.id+","+sosp.direccion.direcciones.get(i)+");";
+                ejecutaSQL(cons);
             }
-            return cons.toString();
         }
         /**
          * Metodo que transforma cada telefono de un sospechoso en dos consulta SQL INSERT
@@ -86,13 +78,14 @@ public class Insert {
          * @param sosp
          * @return devuelve un String el cual son las consultas INSERT
          */
-        public static String TelToConsulta(Sospechoso sosp){
-            StringBuilder cons=new StringBuilder();
+        public void TelToConsulta(Sospechoso sosp){
+            String cons;
             for(int i=0; i<sosp.telefono.telefonos.size();i++){
-                cons.append("INSERT INTO TELEFONO ("+sosp.telefono.telefonos.get(i)+");"
-                            +"INSERT INTO TIENE("+sosp.id+","+sosp.telefono.telefonos.get(i)+");");
+                cons="INSERT INTO TELEFONO ("+sosp.telefono.telefonos.get(i)+");";
+                ejecutaSQL(cons);
+                cons="INSERT INTO TIENE("+sosp.id+","+sosp.telefono.telefonos.get(i)+");";
+                ejecutaSQL(cons);
             }
-            return cons.toString();
         }
         /**
          * Metodo que transforma cada correo de un sospechoso en dos consulta SQL INSERT
@@ -100,12 +93,28 @@ public class Insert {
          * @param sosp
          * @return devuelve un String el cual son las consultas INSERT
          */
-        public static String CorrToConsulta(Sospechoso sosp){
-            StringBuilder cons=new StringBuilder();
+        public void CorrToConsulta(Sospechoso sosp){
+            String cons;
             for(int i=0; i<sosp.correo.correos.size();i++){
-                cons.append("INSERT INTO CORREO ("+sosp.correo.correos.get(i)+");"
-                            +"INSERT INTO USA("+sosp.id+","+sosp.correo.correos.get(i)+");");
+                cons="INSERT INTO CORREO ("+sosp.correo.correos.get(i)+");";
+                ejecutaSQL(cons);
+                cons="INSERT INTO USA("+sosp.id+","+sosp.correo.correos.get(i)+");";
+                ejecutaSQL(cons);
             }
-            return cons.toString();
         }
+        
+        public void ejecutaSQL(String lineaSQL){
+            try
+            {
+		//conectamos el objeto preparedStmt a la base de datos
+		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
+                preparedStmt.execute();
+	
+         // habría que cerrar la conexion
+            }catch(SQLException se)
+            {
+                    se.printStackTrace();
+            }
+        }
+        
 }
