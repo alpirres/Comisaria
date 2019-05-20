@@ -37,7 +37,7 @@ public class Insert {
         public void SospToConsulta(Sospechoso sosp){
             String cons;
             for(int i=0; i<sosp.acompanante.size();i++){
-                cons="INSERT INTO ACOMPANIA ("+sosp.acompanante.get(i)+");";
+                cons="INSERT INTO ACOMPANIA ("+sosp.id+","+sosp.acompanante.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
