@@ -25,15 +25,39 @@ public class Select {
      * @throws SQLException 
      */
     public static int getIDGlobal() throws SQLException{
-        int idfinal;
-        String lineaSQL="Select sosp.IDSosp"
-                        + "from SOSPECHOSO sosp"
+        int idfinal = 0;
+        
+        
+        System.out.println("wtf");
+        
+        
+        
+        
+        String lineaSQL="Select sosp.IDSosp "
+                        + "from SOSPECHOSO sosp "
                         + "where sosp.IDSosp=(select max(idSosp) from SOSPECHOSO);";
-		PreparedStatement preparedStmt;
-               
-                preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
+        System.out.println("wtf 2");
+		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
+                System.out.println("wtf 3");
 		ResultSet result = preparedStmt.executeQuery();
-                idfinal=result.getInt("IDSosp");
+                System.out.println(miConexion.getEstado());
+                while(result.next()){
+                    idfinal = result.getInt("IDSosp");
+                    System.out.println("ESTOY PROBANDO");
+                }
+                
+                if(idfinal == 0){
+                    System.out.println("ESTO ES UNA MIERDA");
+                    idfinal = 1;
+                }
+                System.out.println(miConexion.getEstado());
+                
+                System.out.println("wtf 4");
+                System.out.println("NAda");
+                System.out.println("NAda");
+                
+                System.out.println(result.getInt("IDSosp"));
+                //idfinal=result.getInt("IDSosp");
         return idfinal;
     }
        public ArrayList<SospSimple> buscarXNombre(String nom) throws SQLException{

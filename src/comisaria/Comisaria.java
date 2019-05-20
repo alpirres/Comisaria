@@ -29,6 +29,8 @@ public class Comisaria {
         //Realizamos la conexión 
         miConexion=new Conexion();
         miConexion.inicializar();
+        Principal gui = new Principal();
+       
         if (miConexion.conectar()==false) 
         { 
             System.out.println("No se ha podido conectar a la base de datos");

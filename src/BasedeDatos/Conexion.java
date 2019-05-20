@@ -73,7 +73,7 @@ public class Conexion {
     */ 
     public boolean conectar() throws Exception { 
         try { 
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
            // Setup the connection with the DB         
             miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useServerPrepStmts=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user="+this.login+"&password="+this.password);
             this.estado=true;
