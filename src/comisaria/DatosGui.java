@@ -19,11 +19,12 @@ import java.util.HashMap;
 public class DatosGui {
     
     
-    private HashMap<String, String> dirItemsMap = new HashMap<String, String>();
+    protected HashMap<String, String> dirItemsMap = new HashMap<String, String>();
     private HashMap<String, String> corItemsMap = new HashMap<String, String>();
     private HashMap<String, String> telItemsMap = new HashMap<String, String>();
     private HashMap<String, String> matItemsMap = new HashMap<String, String>();
     public ArrayList<Image> listaImagenes;
+    
     
     protected DatosGui(){
         
@@ -141,4 +142,24 @@ public class DatosGui {
         }
         return bytesImg;
     }    
+    
+    protected ArrayList<String> comprobarDir (){
+        ArrayList<String> noValidos = new ArrayList<String>();
+        
+            for(int i = 1; i<dirItemsMap.size(); i++){
+                System.out.println("Trying "+i);
+                if(dirItemsMap.get("Dirección "+i) != null){
+                    System.out.println("Aqui peta "+i);
+                    if(!Utils.validaDireccion(dirItemsMap.get("Dirección "+i))){
+                        noValidos.add("Dirección "+i);
+                        System.out.println("Aqui peta2 "+i);
+                    }
+                }
+            }
+            
+            
+        
+        return noValidos;
+    }
+        
 }
