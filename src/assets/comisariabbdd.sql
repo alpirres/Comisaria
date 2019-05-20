@@ -1,4 +1,4 @@
-DROP DATABASE `comisaria`;
+DROP DATABASE IF EXISTS `comisaria`;
 CREATE DATABASE `comisaria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `comisaria`;
 CREATE TABLE IF NOT EXISTS `correo` (
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `correo` (
 CREATE TABLE IF NOT EXISTS `direccion` (
   `IDSosp` int(20) unsigned NOT NULL,
   `NomDir` char(40) NOT NULL,
-  PRIMARY KEY (`IDSosp`,`NumTel`)
+  PRIMARY KEY (`IDSosp`,`NomDir`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 CREATE TABLE IF NOT EXISTS `matricula` (
   `IDSosp` int(20) unsigned NOT NULL,

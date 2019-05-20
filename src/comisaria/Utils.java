@@ -79,10 +79,12 @@ public class Utils {
      */
     public static boolean validaNombre(String nom) {
         boolean correcto = false;
-        String expresion = "^((([A-Z]|[Á-É-Í-Ó-Ú])([a-z]|[ñ]|[á-é-í-ó-ú])+)(.|\\s))+$";
+        String expresion = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$";
         if (Pattern.matches(expresion,nom)) {
             correcto = true;
         }
         return correcto;
     }
+    
+    
 }

@@ -33,7 +33,9 @@ public class Conexion {
     private boolean estado=false;//Estado de la conexión
     
     public Conexion() throws ParserConfigurationException, SAXException, IOException {
-        File file=new File("Conextobd.xml");
+        System.out.println(new File(".").getAbsolutePath());
+
+        File file=new File("src/assets/Conextobd.xml");
         DocumentBuilder dBuilder;
         dBuilder = DocumentBuilderFactory.newInstance()
                 .newDocumentBuilder();
@@ -73,7 +75,7 @@ public class Conexion {
         try { 
             Class.forName("com.mysql.cj.jdbc.Driver");
            // Setup the connection with the DB         
-            miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user="+this.login+"&password="+this.password);
+            miConexion= DriverManager.getConnection("jdbc:mysql://"+this.host+"/"+this.bbdd+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useServerPrepStmts=true&useLegacyDatetimeCode=false&serverTimezone=UTC&user="+this.login+"&password="+this.password);
             this.estado=true;
         } catch (Exception e) {            
             throw e;            

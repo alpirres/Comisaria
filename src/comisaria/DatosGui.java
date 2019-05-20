@@ -5,218 +5,254 @@
  */
 package comisaria;
 
-
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import BasedeDatos.Insert;
+import BasedeDatos.Select;
+import java.sql.SQLException;
+
 /**
  *
  * @author Nightm4re
  */
 public class DatosGui {
-    
-    
+
+    protected String nombre;
+    protected String apellidos;
+    protected String hechos;
+    protected String antecedentes;
     protected HashMap<String, String> dirItemsMap = new HashMap<String, String>();
     private HashMap<String, String> corItemsMap = new HashMap<String, String>();
     private HashMap<String, String> telItemsMap = new HashMap<String, String>();
     private HashMap<String, String> matItemsMap = new HashMap<String, String>();
-    public ArrayList<Image> listaImagenes;
-    
-    
-    protected DatosGui(){
-        
+    public ArrayList<Image> listaImagenes = new ArrayList<Image>();
+
+    protected DatosGui() {
+
     }
-    
-        //Metodos para Matriculas
-    
-    protected void anadirKeyValueMat(String key, String value){
-        matItemsMap.put(key,value);
-        System.out.println("Insertando // '"+value+"' en '"+key+"'");
-        
+
+    //Metodos para Matriculas
+    protected void anadirKeyValueMat(String key, String value) {
+        matItemsMap.put(key, value);
+        System.out.println("Insertando // '" + value + "' en '" + key + "'");
+
     }
-    
-    protected String getValueMat(String key){
+
+    protected String getValueMat(String key) {
         String devuelve;
-        
+
         devuelve = matItemsMap.get(key);
         return devuelve;
     }
-    
-    protected void setValueMat(String value, String key){
+
+    protected void setValueMat(String value, String key) {
         matItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '"+value+"' en '"+key+"'");
+        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
     }
-    
-    protected HashMap getItemsMapMat(){
-        
+
+    protected HashMap getItemsMapMat() {
+
         return matItemsMap;
     }
-    
-        //Metodos para Direccion
-    
-    protected void anadirKeyValueDir(String key, String value){
-        dirItemsMap.put(key,value);
-        System.out.println("Insertando // '"+value+"' en '"+key+"'");
-        
+
+    //Metodos para Direccion
+    protected void anadirKeyValueDir(String key, String value) {
+        dirItemsMap.put(key, value);
+        System.out.println("Insertando // '" + value + "' en '" + key + "'");
+
     }
-    
-    protected String getValueDir(String key){
+
+    protected String getValueDir(String key) {
         String devuelve;
-        
+
         devuelve = dirItemsMap.get(key);
         return devuelve;
     }
-    
-    protected void setValueDir(String value, String key){
+
+    protected void setValueDir(String value, String key) {
         dirItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '"+value+"' en '"+key+"'");
+        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
     }
-    
-    protected HashMap getItemsMapDir(){
-        
+
+    protected HashMap getItemsMapDir() {
+
         return dirItemsMap;
     }
-        
-    //Metodos para Correo
-    
-    protected void anadirKeyValueCor(String key, String value){
-        corItemsMap.put(key,value);
-        System.out.println("Insertando // '"+value+"' en '"+key+"'");
-        
-    }
-    
 
-    
-    protected String getValueCor(String key){
+    //Metodos para Correo
+    protected void anadirKeyValueCor(String key, String value) {
+        corItemsMap.put(key, value);
+        System.out.println("Insertando // '" + value + "' en '" + key + "'");
+
+    }
+
+    protected String getValueCor(String key) {
         String devuelve;
-        
+
         devuelve = corItemsMap.get(key);
         return devuelve;
     }
-    
-    protected void setValueCor(String value, String key){
+
+    protected void setValueCor(String value, String key) {
         corItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '"+value+"' en '"+key+"'");
+        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
     }
-    
-    protected HashMap getItemsMapCor(){
-        
+
+    protected HashMap getItemsMapCor() {
+
         return corItemsMap;
     }
-    
+
     //Metodos para numero
-    
-    protected void anadirKeyValueNum(String key, String value){
-        telItemsMap.put(key,value);
-        System.out.println("Insertando // '"+value+"' en '"+key+"'");
-        
+    protected void anadirKeyValueNum(String key, String value) {
+        telItemsMap.put(key, value);
+        System.out.println("Insertando // '" + value + "' en '" + key + "'");
+
     }
-    
-    protected String getValueNum(String key){
+
+    protected String getValueNum(String key) {
         String devuelve;
-        
+
         devuelve = telItemsMap.get(key);
         return devuelve;
     }
-    
-    protected void setValueNum(String value, String key){
+
+    protected void setValueNum(String value, String key) {
         telItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '"+value+"' en '"+key+"'");
+        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
     }
-    
-    protected HashMap getItemsMapNum(){
-        
+
+    protected HashMap getItemsMapNum() {
+
         return telItemsMap;
     }
-    
-    protected byte[] showImagen(File archivo){
-        byte[] bytesImg= new byte[1024*1000];
+
+    protected byte[] showImagen(File archivo) {
+        byte[] bytesImg = new byte[1024 * 1000];
         try {
             FileInputStream entrada = new FileInputStream(archivo);
             entrada.read(bytesImg);
-            
+
         } catch (Exception e) {
         }
         return bytesImg;
-    }    
-    
-    protected ArrayList<String> comprobarDir (){
+    }
+
+    protected ArrayList<String> comprobarDir() {
         ArrayList<String> noValidos = new ArrayList<String>();
-        
-            for(int i = 1; i<dirItemsMap.size(); i++){
-                System.out.println("Trying "+i);
-                if(dirItemsMap.get("Dirección "+i) != null){
-                    System.out.println("Aqui peta "+i);
-                    if(!Utils.validaDireccion(dirItemsMap.get("Dirección "+i))){
-                        noValidos.add("Dirección "+i);
-                        System.out.println("Aqui peta2 "+i);
-                    }
+
+        for (int i = 1; i < dirItemsMap.size(); i++) {
+            System.out.println("Trying " + i);
+            if (dirItemsMap.get("Dirección " + i) != null) {
+                System.out.println("Aqui peta " + i);
+                if (!Utils.validaDireccion(dirItemsMap.get("Dirección " + i))) {
+                    noValidos.add("Dirección " + i);
+                    System.out.println("Aqui peta2 " + i);
                 }
             }
-            
-            
-        
+        }
+
         return noValidos;
     }
-    
-    protected ArrayList<String> comprobarCor (){
+
+    protected ArrayList<String> comprobarCor() {
         ArrayList<String> noValidos = new ArrayList<String>();
-        
-            for(int i = 1; i<corItemsMap.size(); i++){
-                System.out.println("Trying "+i);
-                if(corItemsMap.get("Correo "+i) != null){
-                    System.out.println("Aqui peta "+i);
-                    if(!Utils.validaCorreo(corItemsMap.get("Correo "+i))){
-                        noValidos.add("Correo "+i);
-                        System.out.println("Aqui peta2 "+i);
-                    }
+
+        for (int i = 1; i < corItemsMap.size(); i++) {
+            System.out.println("Trying " + i);
+            if (corItemsMap.get("Correo " + i) != null) {
+                System.out.println("Aqui peta " + i);
+                if (!Utils.validaCorreo(corItemsMap.get("Correo " + i))) {
+                    noValidos.add("Correo " + i);
+                    System.out.println("Aqui peta2 " + i);
                 }
             }
-            
-            
-        
+        }
+
         return noValidos;
     }
-    
-    protected ArrayList<String> comprobarMat (){
+
+    protected ArrayList<String> comprobarMat() {
         ArrayList<String> noValidos = new ArrayList<String>();
-        
-            for(int i = 1; i<matItemsMap.size(); i++){
-                System.out.println("Trying "+i);
-                if(matItemsMap.get("Matrícula "+i) != null){
-                    System.out.println("Aqui peta "+i);
-                    if(!Utils.validaDireccion(matItemsMap.get("Matrícula "+i))){
-                        noValidos.add("Matrícula "+i);
-                        System.out.println("Aqui peta2 "+i);
-                    }
+
+        for (int i = 1; i < matItemsMap.size(); i++) {
+            System.out.println("Trying " + i);
+            if (matItemsMap.get("Matrícula " + i) != null) {
+                System.out.println("Aqui peta " + i);
+                if (!Utils.validaDireccion(matItemsMap.get("Matrícula " + i))) {
+                    noValidos.add("Matrícula " + i);
+                    System.out.println("Aqui peta2 " + i);
                 }
             }
-            
-            
-        
+        }
+
         return noValidos;
     }
-    
-    protected ArrayList<String> comprobarTel (){
+
+    protected ArrayList<String> comprobarTel() {
         ArrayList<String> noValidos = new ArrayList<String>();
-        
-            for(int i = 1; i<telItemsMap.size(); i++){
-                System.out.println("Trying "+i);
-                if(telItemsMap.get("Número "+i) != null){
-                    System.out.println("Aqui peta "+i);
-                    if(!Utils.validaDireccion(telItemsMap.get("Número "+i))){
-                        noValidos.add("Número "+i);
-                        System.out.println("Aqui peta2 "+i);
-                    }
+
+        for (int i = 1; i < telItemsMap.size(); i++) {
+            System.out.println("Trying " + i);
+            if (telItemsMap.get("Número " + i) != null) {
+                System.out.println("Aqui peta " + i);
+                if (!Utils.validaDireccion(telItemsMap.get("Número " + i))) {
+                    noValidos.add("Número " + i);
+                    System.out.println("Aqui peta2 " + i);
                 }
             }
-            
-            
-        
+        }
+
         return noValidos;
     }
+
+    protected boolean enviarSospechoso() {
+        boolean hecho = false;
+        Insert insertar = new Insert();
+        ArrayList<String> telefonos = new ArrayList<String>();
+        for (int i = 0; i < telefonos.size(); i++) {
+            telefonos.add(telItemsMap.get("Número " + i));
+
+        }
         
+        ArrayList<String> correos = new ArrayList<String>();
+        for (int i = 0; i < correos.size(); i++) {
+            correos.add(corItemsMap.get("Correo " + i));
+
+        }
+        
+        ArrayList<String> direcciones = new ArrayList<String>();
+        for (int i = 0; i < direcciones.size(); i++) {
+            direcciones.add(dirItemsMap.get("Dirección " + i));
+
+        }
+        
+        ArrayList<String> matriculas = new ArrayList<String>();
+        for (int i = 0; i < matriculas.size(); i++) {
+            matriculas.add(matItemsMap.get("Matrícula " + i));
+
+        }
+        
+        int[] sus = null;
+        
+        int id = 0;
+        try{
+        id = Select.getIDGlobal();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        SospSimple todb = new SospSimple(id, nombre, apellidos, antecedentes, telefonos, correos, direcciones, matriculas);
+        try{
+        hecho = insertar.insertSospechoso(todb);
+        }catch(SQLException e){
+            System.out.println("Error SQL");
+        }
+        return hecho;
+    }
+
 }

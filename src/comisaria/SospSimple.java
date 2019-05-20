@@ -16,10 +16,10 @@ public class SospSimple {
     public String nombre;
     public String apellidos;
     public String antecedentes;
-    public ArrayList telefonos=new ArrayList<>();
-    public ArrayList correo=new ArrayList<>();
-    public ArrayList direccion=new ArrayList<>();
-    public ArrayList matricula=new ArrayList<>();
+    public ArrayList<String> telefonos=new ArrayList<>();
+    public ArrayList<String> correo=new ArrayList<>();
+    public ArrayList<String> direccion=new ArrayList<>();
+    public ArrayList<String> matricula=new ArrayList<>();
     
     public SospSimple(int i, String n, String ap, String an, ArrayList t,ArrayList  c, ArrayList d, ArrayList m){
         this.id=i;
