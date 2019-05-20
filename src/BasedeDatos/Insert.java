@@ -16,7 +16,7 @@ import java.sql.Statement;
  * @author jlove
  */
 public class Insert {
-        public boolean insertSospechoso(Sospechoso sosp) throws SQLException{
+        public boolean insertSospechoso(SospSimple sosp) throws SQLException{
 		boolean insertados=true;
 		int i;
 		//Cadena donde irán las sentencias sql de creación de tablas
@@ -48,10 +48,10 @@ public class Insert {
          * una para la tabla MATRICULA y otra para la tabla POSEE(que une matricula con sospechoso)
          * @param sosp
          */
-        public void MatToConsulta(Sospechoso sosp){
+        public void MatToConsulta(SospSimple sosp){
             String cons;
-            for(int i=0; i<sosp.matricula.matriculas.size();i++){
-                cons="INSERT INTO MATRICULA ("+sosp.id+","+sosp.matricula.matriculas.get(i)+");";
+            for(int i=0; i<sosp.matricula.size();i++){
+                cons="INSERT INTO MATRICULA ("+sosp.id+","+sosp.matricula.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -60,10 +60,10 @@ public class Insert {
          * una para la tabla DIRECCION y otra para la tabla VIVE(que une direccion con sospechoso)
          * @param sosp
          */
-        public void DirToConsulta(Sospechoso sosp){
+        public void DirToConsulta(SospSimple sosp){
             String cons;
-            for(int i=0; i<sosp.direccion.direcciones.size();i++){
-                cons="INSERT INTO DIRECCION ("+sosp.id+","+sosp.direccion.direcciones.get(i)+");";
+            for(int i=0; i<sosp.direccion.size();i++){
+                cons="INSERT INTO DIRECCION ("+sosp.id+","+sosp.direccion.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -72,10 +72,10 @@ public class Insert {
          * una para la tabla TELEFONO y otra para la tabla TIENE(que une telefono con sospechoso)
          * @param sosp
          */
-        public void TelToConsulta(Sospechoso sosp){
+        public void TelToConsulta(SospSimple sosp){
             String cons;
-            for(int i=0; i<sosp.telefono.telefonos.size();i++){
-                cons="INSERT INTO TELEFONO ("+sosp.id+","+sosp.telefono.telefonos.get(i)+");";
+            for(int i=0; i<sosp.telefonos.size();i++){
+                cons="INSERT INTO TELEFONO ("+sosp.id+","+sosp.telefonos.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -84,10 +84,10 @@ public class Insert {
          * una para la tabla CORREO y otra para la tabla USA(que une correo con sospechoso)
          * @param sosp
          */
-        public void CorrToConsulta(Sospechoso sosp){
+        public void CorrToConsulta(SospSimple sosp){
             String cons;
-            for(int i=0; i<sosp.correo.correos.size();i++){
-                cons="INSERT INTO CORREO ("+sosp.id+","+sosp.correo.correos.get(i)+");";
+            for(int i=0; i<sosp.correo.size();i++){
+                cons="INSERT INTO CORREO ("+sosp.id+","+sosp.correo.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
