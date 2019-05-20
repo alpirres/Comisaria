@@ -26,34 +26,32 @@ public class Insert {
 		//comando sql generico para la inserción de sospechoso, y llamada a los metodos de inserts de las demas tablas
 		String cons="INSERT INTO SOSPECHOSO (IDSosp, Nombre, Apellidos, Antecedentes) values ("+sosp.id+","+sosp.nombre+","+sosp.apellidos+","+sosp.antecedentes+");";
                 ejecutaSQL(cons);
-                SospToConsulta(sosp);
+                //SospToConsulta(sosp);
                 MatToConsulta(sosp);
                 DirToConsulta(sosp);
                 TelToConsulta(sosp);
                 CorrToConsulta(sosp);
+               // FotoToConsulta(sosp);
 		return insertados;
 	}
-        
+        /*
         public void SospToConsulta(Sospechoso sosp){
             String cons;
             for(int i=0; i<sosp.acompanante.size();i++){
                 cons="INSERT INTO ACOMPANIA ("+sosp.id+","+sosp.acompanante.get(i)+");";
                 ejecutaSQL(cons);
             }
-        }
+        }*/
         
         /**
          * Metodo que transforma cada matricula de un sospechoso en dos consulta SQL INSERT
          * una para la tabla MATRICULA y otra para la tabla POSEE(que une matricula con sospechoso)
          * @param sosp
-         * @return devuelve un String el cual son las consultas INSERT
          */
         public void MatToConsulta(Sospechoso sosp){
             String cons;
             for(int i=0; i<sosp.matricula.matriculas.size();i++){
-                cons="INSERT INTO MATRICULA ("+sosp.matricula.matriculas.get(i)+");";
-                ejecutaSQL(cons);
-                cons="INSERT INTO POSEE("+sosp.id+","+sosp.matricula.matriculas.get(i)+");";
+                cons="INSERT INTO MATRICULA ("+sosp.id+","+sosp.matricula.matriculas.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -61,14 +59,11 @@ public class Insert {
          * Metodo que transforma cada direccion de un sospechoso en dos consulta SQL INSERT
          * una para la tabla DIRECCION y otra para la tabla VIVE(que une direccion con sospechoso)
          * @param sosp
-         * @return devuelve un String el cual son las consultas INSERT
          */
         public void DirToConsulta(Sospechoso sosp){
             String cons;
             for(int i=0; i<sosp.direccion.direcciones.size();i++){
-                cons="INSERT INTO DIRECCION ("+sosp.direccion.direcciones.get(i)+");";
-                ejecutaSQL(cons);
-                cons="INSERT INTO VIVE("+sosp.id+","+sosp.direccion.direcciones.get(i)+");";
+                cons="INSERT INTO DIRECCION ("+sosp.id+","+sosp.direccion.direcciones.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -76,14 +71,11 @@ public class Insert {
          * Metodo que transforma cada telefono de un sospechoso en dos consulta SQL INSERT
          * una para la tabla TELEFONO y otra para la tabla TIENE(que une telefono con sospechoso)
          * @param sosp
-         * @return devuelve un String el cual son las consultas INSERT
          */
         public void TelToConsulta(Sospechoso sosp){
             String cons;
             for(int i=0; i<sosp.telefono.telefonos.size();i++){
-                cons="INSERT INTO TELEFONO ("+sosp.telefono.telefonos.get(i)+");";
-                ejecutaSQL(cons);
-                cons="INSERT INTO TIENE("+sosp.id+","+sosp.telefono.telefonos.get(i)+");";
+                cons="INSERT INTO TELEFONO ("+sosp.id+","+sosp.telefono.telefonos.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -91,17 +83,20 @@ public class Insert {
          * Metodo que transforma cada correo de un sospechoso en dos consulta SQL INSERT
          * una para la tabla CORREO y otra para la tabla USA(que une correo con sospechoso)
          * @param sosp
-         * @return devuelve un String el cual son las consultas INSERT
          */
         public void CorrToConsulta(Sospechoso sosp){
             String cons;
             for(int i=0; i<sosp.correo.correos.size();i++){
-                cons="INSERT INTO CORREO ("+sosp.correo.correos.get(i)+");";
-                ejecutaSQL(cons);
-                cons="INSERT INTO USA("+sosp.id+","+sosp.correo.correos.get(i)+");";
+                cons="INSERT INTO CORREO ("+sosp.id+","+sosp.correo.correos.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
+        /*public void FotoToConsulta(Sospechoso sosp){
+            String cons;
+            for(int i=0; i<sosp.fotos.size(); i++){
+                cons="INSERT INTO FOTO ("+
+            }
+        }*/
         
         public void ejecutaSQL(String lineaSQL){
             try
