@@ -161,5 +161,62 @@ public class DatosGui {
         
         return noValidos;
     }
+    
+    protected ArrayList<String> comprobarCor (){
+        ArrayList<String> noValidos = new ArrayList<String>();
+        
+            for(int i = 1; i<corItemsMap.size(); i++){
+                System.out.println("Trying "+i);
+                if(corItemsMap.get("Correo "+i) != null){
+                    System.out.println("Aqui peta "+i);
+                    if(!Utils.validaCorreo(corItemsMap.get("Correo "+i))){
+                        noValidos.add("Correo "+i);
+                        System.out.println("Aqui peta2 "+i);
+                    }
+                }
+            }
+            
+            
+        
+        return noValidos;
+    }
+    
+    protected ArrayList<String> comprobarMat (){
+        ArrayList<String> noValidos = new ArrayList<String>();
+        
+            for(int i = 1; i<matItemsMap.size(); i++){
+                System.out.println("Trying "+i);
+                if(matItemsMap.get("Matrícula "+i) != null){
+                    System.out.println("Aqui peta "+i);
+                    if(!Utils.validaDireccion(matItemsMap.get("Matrícula "+i))){
+                        noValidos.add("Matrícula "+i);
+                        System.out.println("Aqui peta2 "+i);
+                    }
+                }
+            }
+            
+            
+        
+        return noValidos;
+    }
+    
+    protected ArrayList<String> comprobarTel (){
+        ArrayList<String> noValidos = new ArrayList<String>();
+        
+            for(int i = 1; i<telItemsMap.size(); i++){
+                System.out.println("Trying "+i);
+                if(telItemsMap.get("Número "+i) != null){
+                    System.out.println("Aqui peta "+i);
+                    if(!Utils.validaDireccion(telItemsMap.get("Número "+i))){
+                        noValidos.add("Número "+i);
+                        System.out.println("Aqui peta2 "+i);
+                    }
+                }
+            }
+            
+            
+        
+        return noValidos;
+    }
         
 }

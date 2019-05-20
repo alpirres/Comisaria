@@ -82,13 +82,10 @@ public class Principal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         fileChooser = new javax.swing.JFileChooser();
-        atencionDialog = new javax.swing.JDialog();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         erroresDialog = new javax.swing.JDialog();
-        jPanel4 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
+        jOptionPane1 = new javax.swing.JOptionPane();
+        jOptionPane2 = new javax.swing.JOptionPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -380,89 +377,28 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        atencionDialog.setLocationByPlatform(true);
-        atencionDialog.setMinimumSize(new java.awt.Dimension(440, 170));
-        atencionDialog.setModal(true);
-        atencionDialog.setResizable(false);
-        atencionDialog.setSize(new java.awt.Dimension(440, 170));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Debes seleccionar una imagen en formato JPG, PNG o GIF.");
-
-        jButton3.setText("Entendido");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel15)))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addGap(42, 42, 42)
-                .addComponent(jButton3)
-                .addGap(37, 37, 37))
-        );
-
-        javax.swing.GroupLayout atencionDialogLayout = new javax.swing.GroupLayout(atencionDialog.getContentPane());
-        atencionDialog.getContentPane().setLayout(atencionDialogLayout);
-        atencionDialogLayout.setHorizontalGroup(
-            atencionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        atencionDialogLayout.setVerticalGroup(
-            atencionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
+        erroresDialog.setAlwaysOnTop(true);
         erroresDialog.setMinimumSize(new java.awt.Dimension(440, 170));
-        erroresDialog.setResizable(false);
+        erroresDialog.setModal(true);
         erroresDialog.setSize(new java.awt.Dimension(440, 170));
 
         jLabel16.setText("jLabel16");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jLabel16)
-                .addContainerGap(181, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel16)
-                .addContainerGap(185, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout erroresDialogLayout = new javax.swing.GroupLayout(erroresDialog.getContentPane());
         erroresDialog.getContentPane().setLayout(erroresDialogLayout);
         erroresDialogLayout.setHorizontalGroup(
             erroresDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(erroresDialogLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel16)
+                .addContainerGap(377, Short.MAX_VALUE))
         );
         erroresDialogLayout.setVerticalGroup(
             erroresDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(erroresDialogLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jLabel16)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -554,6 +490,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel8.setText("Antecedentes:");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -591,7 +528,8 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -602,11 +540,11 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -643,11 +581,11 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(41, 41, 41)
                                 .addComponent(jButton2)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -707,12 +645,10 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void anadirSospechosoDatosWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_anadirSospechosoDatosWindowClosed
 
@@ -723,8 +659,7 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ComboBoxMatrItemStateChanged
 
-    private void ComboBoxMatrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxMatrActionPerformed
-
+    private void ComboBoxMatrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboBoxMatrMouseClicked
         String item = ComboBoxMatr.getSelectedItem().toString();
         if (item.equals("Añadir matrícula...")) {
             ComboBoxMatr.removeItemAt(ComboBoxMatr.getItemCount() - 1);
@@ -738,11 +673,6 @@ public class Principal extends javax.swing.JFrame {
         }
 
         jTextField6.setText(datosGui.getValueMat(ComboBoxMatr.getSelectedItem().toString()));
-
-    }//GEN-LAST:event_ComboBoxMatrActionPerformed
-
-    private void ComboBoxMatrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboBoxMatrMouseClicked
-
 
     }//GEN-LAST:event_ComboBoxMatrMouseClicked
 
@@ -773,23 +703,6 @@ public class Principal extends javax.swing.JFrame {
         System.out.println(datosGui.getItemsMapNum().toString());
     }//GEN-LAST:event_jTextField4KeyReleased
 
-    private void ComboBoxNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxNumActionPerformed
-
-        String item = ComboBoxNum.getSelectedItem().toString();
-        if (item.equals("Añadir número...")) {
-            ComboBoxNum.removeItemAt(ComboBoxNum.getItemCount() - 1);
-            int numObjetos = ComboBoxNum.getItemCount() + 1;
-
-            datosGui.anadirKeyValueNum("Número " + numObjetos, "");
-            ComboBoxNum.addItem("Número " + numObjetos);
-            ComboBoxNum.setSelectedIndex(ComboBoxNum.getItemCount() - 1);
-            ComboBoxNum.addItem("Añadir número...");
-            //System.out.println(datosGui.getItemsMapMat().toString());
-        }
-
-        jTextField4.setText(datosGui.getValueNum(ComboBoxNum.getSelectedItem().toString()));
-    }//GEN-LAST:event_ComboBoxNumActionPerformed
-
     private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
         if (!jTextField5.getText().equals(null)) {
             datosGui.setValueCor(jTextField5.getText(), ComboBoxCorr.getSelectedItem().toString());
@@ -804,60 +717,68 @@ public class Principal extends javax.swing.JFrame {
         System.out.println(datosGui.getItemsMapDir().toString());
     }//GEN-LAST:event_jTextField7KeyReleased
 
-    private void ComboBoxCorrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxCorrActionPerformed
-
-        String item = ComboBoxCorr.getSelectedItem().toString();
-        if (item.equals("Añadir correo...")) {
-            ComboBoxCorr.removeItemAt(ComboBoxCorr.getItemCount() - 1);
-            int numObjetos = ComboBoxCorr.getItemCount() + 1;
-
-            datosGui.anadirKeyValueCor("Correo " + numObjetos, "");
-            ComboBoxCorr.addItem("Correo " + numObjetos);
-            ComboBoxCorr.setSelectedIndex(ComboBoxCorr.getItemCount() - 1);
-            ComboBoxCorr.addItem("Añadir correo...");
-            //System.out.println(datosGui.getItemsMapMat().toString());
-        }
-
-        jTextField5.setText(datosGui.getValueCor(ComboBoxCorr.getSelectedItem().toString()));
-    }//GEN-LAST:event_ComboBoxCorrActionPerformed
-
-    private void ComboBoxDireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxDireActionPerformed
-
-        String item = ComboBoxDire.getSelectedItem().toString();
-        if (item.equals("Añadir dirección...")) {
-            ComboBoxDire.removeItemAt(ComboBoxDire.getItemCount() - 1);
-            int numObjetos = ComboBoxDire.getItemCount() + 1;
-
-            datosGui.anadirKeyValueDir("Dirección " + numObjetos, "");
-            ComboBoxDire.addItem("Dirección " + numObjetos);
-            ComboBoxDire.setSelectedIndex(ComboBoxDire.getItemCount() - 1);
-            ComboBoxDire.addItem("Añadir dirección...");
-        }
-
-        jTextField7.setText(datosGui.getValueDir(ComboBoxDire.getSelectedItem().toString()));
-        System.out.println(datosGui.getValueDir(ComboBoxDire.getSelectedItem().toString()));
-        
-    }//GEN-LAST:event_ComboBoxDireActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-        System.out.println(datosGui.dirItemsMap.toString()+" "+ (datosGui.dirItemsMap.size()));
+
+        System.out.println(datosGui.dirItemsMap.toString() + " " + (datosGui.dirItemsMap.size()));
         ArrayList<String> esValido = datosGui.comprobarDir();
         StringBuilder sb = new StringBuilder("Hay errores en los siguientes campos: ");
-        
-        if (esValido.size()!=0){
+
+        if (esValido.size() != 0) {
             System.out.println("Entrando");
             System.out.println(esValido.toString());
-            for(String str : esValido){
-                sb.append(str+" ");
+            for (String str : esValido) {
+                sb.append(str + ", ");
+                System.out.println("Insertando dir");
             }
-            
+
             jLabel16.setText(sb.toString());
-            erroresDialog.setVisible(true);
-            
+
         }
-        
-        
+
+        esValido = datosGui.comprobarCor();
+
+        if (esValido.size() != 0) {
+            System.out.println("Entrando");
+            System.out.println(esValido.toString());
+            for (String str : esValido) {
+                sb.append(str + ", ");
+                System.out.println("Insertando cor");
+            }
+
+            jLabel16.setText(sb.toString());
+
+        }
+
+        esValido = datosGui.comprobarMat();
+
+        if (esValido.size() != 0) {
+            System.out.println("Entrando");
+            System.out.println(esValido.toString());
+            for (String str : esValido) {
+                sb.append(str + ", ");
+                System.out.println("Insertando mat");
+            }
+
+            jLabel16.setText(sb.toString());
+
+        }
+
+        esValido = datosGui.comprobarTel();
+
+        if (esValido.size() != 0) {
+            System.out.println("Entrando");
+            System.out.println(esValido.toString());
+            for (String str : esValido) {
+                sb.append(str + ", ");
+                System.out.println("Insertando tel");
+            }
+        }
+
+        if (!sb.toString().equals("Hay errores en los siguientes campos: ")) {
+            System.out.println(sb);
+            jOptionPane2.showMessageDialog(null, sb.toString());
+        }
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -867,8 +788,6 @@ public class Principal extends javax.swing.JFrame {
 
         JLabel labelPrimero;
 
-        
-        
         int returnVal = fileChooser.showOpenDialog(fileChooser);
 
         File archivo;
@@ -880,58 +799,57 @@ public class Principal extends javax.swing.JFrame {
 
         boolean fixed = false;
 
-        if(returnVal == JFileChooser.APPROVE_OPTION){
-        if (archivo.canRead()) {
-            if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
-                bytesImg = datosGui.showImagen(archivo);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            if (archivo.canRead()) {
+                if (archivo.getName().endsWith("jpg") || archivo.getName().endsWith("png") || archivo.getName().endsWith("gif")) {
+                    bytesImg = datosGui.showImagen(archivo);
 
-                BufferedImage image = null;
-                Image resImage = null;
-                try {
-                    image = ImageIO.read(new ByteArrayInputStream(bytesImg));
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    BufferedImage image = null;
+                    Image resImage = null;
+                    try {
+                        image = ImageIO.read(new ByteArrayInputStream(bytesImg));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    resImage = image.getScaledInstance(visorImagenes.getWidth() / 4 - 10, visorImagenes.getHeight() / 2 - 10,
+                            Image.SCALE_SMOOTH);
+                    System.out.println("IMAGEN REESCALADA SEGUNDA " + resImage.getWidth(rootPane) + " & " + resImage.getHeight(rootPane));
+                    System.out.println("CONTENEDOR VISOR/4 " + contenedorVisor.getWidth() + " & " + contenedorVisor.getHeight());
+
+                    Icon icono = new ImageIcon(resImage);
+
+                    nuevoLabel = new JLabel("", icono, JLabel.CENTER);
+                    nuevoLabel.setSize(visorImagenes.getWidth() / 4, visorImagenes.getHeight() / 2);
+                    contenedorVisor.add(nuevoLabel);
+                    contenedorVisor.add(Box.createRigidArea(new Dimension(10, 0)));
+                    nuevoLabel.setIcon(new ImageIcon(resImage));
+
+                    nuevoLabel.setVisible(true);
+                } else {
+                    jOptionPane1.showMessageDialog(null, "Debes seleccionar una imagen en formato JPG, PNG o GIF.");
                 }
-                resImage = image.getScaledInstance(visorImagenes.getWidth() / 4 -10, visorImagenes.getHeight() / 2 - 10,
-                    Image.SCALE_SMOOTH);
-                System.out.println("IMAGEN REESCALADA SEGUNDA " + resImage.getWidth(rootPane) + " & " + resImage.getHeight(rootPane));
-                System.out.println("CONTENEDOR VISOR/4 " + contenedorVisor.getWidth() + " & " + contenedorVisor.getHeight());
 
-                Icon icono = new ImageIcon(resImage);
-
-                nuevoLabel = new JLabel("", icono, JLabel.CENTER);
-                nuevoLabel.setSize(visorImagenes.getWidth() / 4, visorImagenes.getHeight() / 2);
-                contenedorVisor.add(nuevoLabel);
-                contenedorVisor.add(Box.createRigidArea(new Dimension(10, 0)));
-                nuevoLabel.setIcon(new ImageIcon(resImage));
-
-                nuevoLabel.setVisible(true);
-            }else{
-                atencionDialog.setVisible(true);
             }
 
-        }
-
-        if (contenedorVisor.getComponentCount() > 8) {
-            if (!fixed) {
-                Dimension d = new Dimension(contenedorVisor.getWidth() + (int) nuevoLabel.getSize().getWidth(), contenedorVisor.getHeight());
-                contenedorVisor.setPreferredSize(d);
-                fixed = true;
+            if (contenedorVisor.getComponentCount() > 8) {
+                if (!fixed) {
+                    Dimension d = new Dimension(contenedorVisor.getWidth() + (int) nuevoLabel.getSize().getWidth(), contenedorVisor.getHeight());
+                    contenedorVisor.setPreferredSize(d);
+                    fixed = true;
+                }
             }
-        }
-        
 
-        contenedorVisor.setComponentOrientation(
-            ComponentOrientation.LEFT_TO_RIGHT);
+            contenedorVisor.setComponentOrientation(
+                    ComponentOrientation.LEFT_TO_RIGHT);
 
-        for (int i = 0; i < contenedorVisor.getComponentCount(); i++) {
-            System.out.println(contenedorVisor.getComponent(i).toString());
-            System.out.println(contenedorVisor.getComponent(i).getClass());
+            for (int i = 0; i < contenedorVisor.getComponentCount(); i++) {
+                System.out.println(contenedorVisor.getComponent(i).toString());
+                System.out.println(contenedorVisor.getComponent(i).getClass());
 
-        }
+            }
 
-        visorImagenes.revalidate();
-        }else{
+            visorImagenes.revalidate();
+        } else {
             System.out.println("NADA");
         }
 
@@ -939,9 +857,25 @@ public class Principal extends javax.swing.JFrame {
         System.out.println("Jpanel " + contenedorVisor.getPreferredSize().getSize() + " x " + contenedorVisor.getPreferredSize().getWidth());
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        atencionDialog.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void ComboBoxCorrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxCorrActionPerformed
+
+    }//GEN-LAST:event_ComboBoxCorrActionPerformed
+
+    private void ComboBoxNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxNumActionPerformed
+
+    }//GEN-LAST:event_ComboBoxNumActionPerformed
+
+    private void ComboBoxMatrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxMatrActionPerformed
+
+    }//GEN-LAST:event_ComboBoxMatrActionPerformed
+
+    private void ComboBoxDireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxDireActionPerformed
+
+    }//GEN-LAST:event_ComboBoxDireActionPerformed
 
     /**
      * @param args the command line arguments
@@ -984,13 +918,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxMatr;
     private javax.swing.JComboBox<String> ComboBoxNum;
     private javax.swing.JDialog anadirSospechosoDatos;
-    private javax.swing.JDialog atencionDialog;
     private javax.swing.JPanel contenedorVisor;
     private javax.swing.JDialog erroresDialog;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -1000,7 +932,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -1014,10 +945,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JOptionPane jOptionPane1;
+    private javax.swing.JOptionPane jOptionPane2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane6;
