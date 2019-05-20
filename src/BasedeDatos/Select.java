@@ -9,7 +9,6 @@ import comisaria.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.logging.Level;
@@ -54,24 +53,31 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
-                    HashSet<String> correos=new HashSet<>();
-                    HashSet<String> matriculas=new HashSet<>();
-
+                    ArrayList<Integer> telefonos=new ArrayList<>();
+                    ArrayList<String> correos=new ArrayList<>();
+                    ArrayList<String> direcciones=new ArrayList<>();
+                    ArrayList<String> matriculas=new ArrayList<>();
+                    
                     rs.next();
 
                     do{
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
+                            telefonos.add(rs.getInt("NumTel"));
+                            correos.add(rs.getString("DirCorreo"));
+                            direcciones.add(rs.getString("NomDir"));
+                            matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
                               rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              rs.getInt("NumTel"), rs.getString("DirCorreo"), rs.getString("NomDir"),
-                              rs.getString("NumMat"));
+                              telefonos , correos, direcciones, matriculas);
                             
                             suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            correos.add(rs.getString("correo"));
-                            matriculas.add(rs.getString("matriculas"));
+                            telefonos.add(rs.getInt("NumTel"));
+                            correos.add(rs.getString("DirCorreo"));
+                            direcciones.add(rs.getString("NomDir"));
+                            matriculas.add(rs.getString("NumMat"));
                         }
                     }while(rs.next());
                 }
