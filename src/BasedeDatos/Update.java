@@ -174,7 +174,7 @@ public class Update {
         //Número de filas actualizadas
         int nFilas=0;
         //Cadena update
-        lineaSQL="update USA set dircorreo = ? where IDSosp = ?";
+        lineaSQL="update CORREO set dircorreo = ? where IDSosp = ?";
         try{
             //conectamos el objeto preparedStmt a la base de datos
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
@@ -210,7 +210,7 @@ public class Update {
         //Número de filas actualizadas
         int nFilas=0;
         //Cadena update
-        lineaSQL="update POSEE set NumMat = ? where IDSosp = ?";
+        lineaSQL="update MATRICULA set NumMat = ? where IDSosp = ?";
         try{
             //conectamos el objeto preparedStmt a la base de datos
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
@@ -245,7 +245,7 @@ public class Update {
         //Número de filas actualizadas
         int nFilas=0;
         //Cadena update
-        lineaSQL="update VIVE set nomdir = ? where IDSosp = ?";
+        lineaSQL="update DIRECCION set nomdir = ? where IDSosp = ?";
         try{
             //conectamos el objeto preparedStmt a la base de datos
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
@@ -280,7 +280,7 @@ public class Update {
         //Número de filas actualizadas
         int nFilas=0;
         //Cadena update
-        lineaSQL="update Usa set dircorreo = ? where IDSosp = ?";
+        lineaSQL="update TELEFONO set dircorreo = ? where IDSosp = ?";
         try{
             //conectamos el objeto preparedStmt a la base de datos
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
