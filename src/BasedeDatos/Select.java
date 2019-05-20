@@ -36,15 +36,15 @@ public class Select {
         return idfinal;
     }
     
-    public ArrayList<Sospechoso> buscarXTelefono(String tlf) throws SQLException{
-        ArrayList<Sospechoso> suspects = new ArrayList<>();
-        String lineaSQL="Select sosp.*,t.NumTel, u.DirCorreo, v.NomDir, p.NumMat "
-                + "from sospechoso sosp, tiene t, usa u, vive v, posee p "
+    public ArrayList<SospSimple> buscarXTelefono(String tlf) throws SQLException{
+        ArrayList<SospSimple> suspects = new ArrayList<>();
+        String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
+                + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
                 + "where t.NumTel="+tlf
                 +" and t.IDSosp=sosp.IDSosp"
-                +" and u.IDSosp=sosp.IDSosp"
-                +" and v.IDSosp=sosp.IDSosp"
-                +" and p.IDSosp=sosp.IDSosp";
+                +" and c.IDSosp=sosp.IDSosp"
+                +" and d.IDSosp=sosp.IDSosp"
+                +" and m.IDSosp=sosp.IDSosp";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
@@ -53,29 +53,27 @@ public class Select {
         }
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
-                    int id=rs.getInt("id_sospechoso");
+                    int id=rs.getInt("IDSosp");
                     HashSet<String> correos=new HashSet<>();
                     HashSet<String> matriculas=new HashSet<>();
 
                     rs.next();
 
                     do{
-                        if(rs.getInt("id_sospechoso")!=id){
+                        if(rs.getInt("IDSosp")!=id){
                             rs.previous();
-                            Sospechoso nuevo=new Sospechoso(rs.getString("nombre"),
-                              rs.getString("apellidos"), rs.getString("telefono"),
-                              new ArrayList<>(correos), new ArrayList<>(matriculas));
-
+                            SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),
+                              rs.getInt("NumTel"), rs.getString("DirCorreo"), rs.getString("NomDir"),
+                              rs.getString("NumMat"));
+                            
+                            suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             correos.add(rs.getString("correo"));
                             matriculas.add(rs.getString("matriculas"));
                         }
                     }while(rs.next());
-
-
-                    suspects.add(nuevo);
-
                 }
         return suspects;
     }
@@ -104,7 +102,7 @@ public class Select {
                             //Sospechoso nuevo=new Sospechoso(rs.getString("nombre"),
                             //  rs.getString("apellido1"), rs.getString("apellido2"), rs.getString("dni"),
                             //  new ArrayList<>(correos), new ArrayList<>(matriculas), null, null, null, null, null, null);
-
+                            // suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             correos.add(rs.getString("correo"));
@@ -113,7 +111,7 @@ public class Select {
                     }while(rs.next());
 
 
-                    suspects.add(nuevo);
+                   
 
                 }
 
