@@ -450,6 +450,9 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
             }
@@ -962,40 +965,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         
-        Select select = new Select();
-        DefaultTableModel tableModel = null;
-        
-        ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
-        
-        String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
-        
-        try{
-        listaSospechosos = select.buscarXNombre(jTextField1.getText());
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
-        
-        
-        for (int i = 0; i < listaSospechosos.size(); i++){
-   String nombre = listaSospechosos.get(i).nombre;
-   String apellidos = listaSospechosos.get(i).apellidos;
-   String telefono = listaSospechosos.get(i).telToString();
-   String correo = listaSospechosos.get(i).corToString();
-   String direcciones = listaSospechosos.get(i).dirToString();
-   String matriculas = listaSospechosos.get(i).matToString();
 
-   Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
-
-        }
-        
-        tableModel = new DefaultTableModel(col, listaSospechosos.size());
-        if(tableModel == null){
-            String[] fail = {"No se encuentra","e","e","e","e","e"};
-            tableModel.addRow(fail);
-        }else{
-           jTable1.setModel(tableModel);
-        }
         
         
     }//GEN-LAST:event_jTextField1KeyTyped
@@ -1020,6 +990,57 @@ public class Principal extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+                Select select = new Select();
+        DefaultTableModel tableModel = null;
+        
+        ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
+        
+        String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
+        
+        String nombre = null;
+        String apellidos = null;
+        String telefono = null;
+        String correo = null;
+        String direcciones = null;
+        String matriculas = null;
+        
+        
+        
+        
+        try{
+        listaSospechosos = select.buscarXNombre(jTextField1.getText());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        tableModel = new DefaultTableModel(col, 0);
+        
+        if(listaSospechosos != null){
+        for (int i = 0; i < listaSospechosos.size(); i++){
+   nombre = listaSospechosos.get(i).nombre;
+   apellidos = listaSospechosos.get(i).apellidos;
+   telefono = listaSospechosos.get(i).telToString();
+   correo = listaSospechosos.get(i).corToString();
+   direcciones = listaSospechosos.get(i).dirToString();
+   matriculas = listaSospechosos.get(i).matToString();
+   
+   Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
+   tableModel.addRow(data);
+        }
+        } 
+        
+        
+        
+        
+        if(tableModel == null){
+            String[] fail = {"No se encuentra","e","e","e","e","e"};
+            tableModel.addRow(fail);
+        }else{
+           jTable1.setModel(tableModel);
+        }
+    }//GEN-LAST:event_jTextField1KeyReleased
 
     /*public void cargarDatosTabla(){
         Select select = new Select();
