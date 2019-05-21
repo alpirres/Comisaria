@@ -62,7 +62,8 @@ public class Select {
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
-                +" and m.IDSosp=sosp.IDSosp;";
+                +" and m.IDSosp=sosp.IDSosp"
+                +" group by sosp.nombre;";
         PreparedStatement preparedStmt = null;
         try {
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
