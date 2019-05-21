@@ -215,7 +215,7 @@ public class Insert {
             PreparedStatement preparedStmt = Comisaria.miConexion.getConexion().prepareStatement(lineaSQL);
 
             //creamos un nuevo socio
-            for (int i = 0; i < sosp.correo.size(); i++) {
+            for (int i = 0; i < sosp.fotos.size(); i++) {
                 preparedStmt.setInt(1, sosp.id);
                 preparedStmt.setInt(2, i+1);
                 preparedStmt.setString(3, sosp.fotos.get(i).descripciones.get(i));
