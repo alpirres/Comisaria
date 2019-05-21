@@ -24,11 +24,12 @@ public class SospSimple {
     public ArrayList<String> matricula=new ArrayList<String>();
     public ArrayList<Foto> fotos = new ArrayList<Foto>();
     
-    public SospSimple(int i, String n, String ap, String an, ArrayList<String> t,ArrayList<String>  c, ArrayList<String> d, ArrayList<String> m, ArrayList<Foto> f){
+    public SospSimple(int i, String n, String ap, String an, String he, ArrayList<String> t,ArrayList<String>  c, ArrayList<String> d, ArrayList<String> m, ArrayList<Foto> f){
         this.id=i;
         this.nombre=n;
         this.apellidos=ap;
         this.antecedentes=an;
+        this.hechos=he;
         telefonos = t;
         System.out.println(t.get(0)+"es estos");
         correo=c;

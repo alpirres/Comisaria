@@ -55,7 +55,6 @@ public class Select {
     }
        public ArrayList<SospSimple> buscarXNombre(String nom) throws SQLException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
-        int iteracion=0;
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
                 + "where sosp.nombre like \"%"+nom+"%\""
@@ -73,7 +72,6 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         System.out.println("ID Nombre Apellidos ...");
         while(rs.next()){
-                    iteracion++;
                     int id=rs.getInt("IDSosp");
                     ArrayList<String> telefonos=new ArrayList<>();
                     ArrayList<String> correos=new ArrayList<>();
@@ -107,7 +105,7 @@ public class Select {
                     }*/
                     System.out.println("Entra 3");
                     SospSimple nuevo=new SospSimple(id, rs.getString("Nombre"),
-                            rs.getString("Apellidos"), rs.getString("Antecedentes"),
+                            rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
                             telefonos , correos, direcciones, matriculas, imagenes);
                     
                     suspects.add(nuevo);
@@ -147,8 +145,9 @@ public class Select {
                             correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
-                            SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
+                            SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"), 
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),rs.getString("Hechos"),
+                                    telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -196,8 +195,9 @@ public class Select {
                             correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
-                            SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
+                            SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"), 
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
+                                    telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -246,7 +246,8 @@ public class Select {
                             ArrayList<Foto> imagenes = new ArrayList<>();
                             
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
+                                    telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -296,7 +297,8 @@ public class Select {
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
+                                    telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -345,7 +347,8 @@ public class Select {
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
+                                    telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
