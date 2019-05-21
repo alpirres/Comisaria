@@ -29,7 +29,7 @@ public class DatosGui {
     public HashMap<String, String> corItemsMap = new HashMap<String, String>();
     public HashMap<String, String> telItemsMap = new HashMap<String, String>();
     public HashMap<String, String> matItemsMap = new HashMap<String, String>();
-    public ArrayList<Image> listaImagenes = new ArrayList<Image>();
+    public ArrayList<Foto> listaImagenes = new ArrayList<Foto>();
 
     protected DatosGui() {
 
@@ -249,7 +249,7 @@ public class DatosGui {
         }
 
         
-        SospSimple todb = new SospSimple(id, nombre, apellidos, antecedentes, telefonos, correos, direcciones, matriculas);
+        SospSimple todb = new SospSimple(id, nombre, apellidos, antecedentes, telefonos, correos, direcciones, matriculas, listaImagenes);
         try{
         hecho = insertar.insertSospechoso(todb);
         }catch(SQLException e){

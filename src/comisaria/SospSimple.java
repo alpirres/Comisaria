@@ -5,6 +5,7 @@
  */
 package comisaria;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +22,9 @@ public class SospSimple {
     public ArrayList<String> correo=new ArrayList<String>();
     public ArrayList<String> direccion=new ArrayList<String>();
     public ArrayList<String> matricula=new ArrayList<String>();
+    public ArrayList<Foto> fotos = new ArrayList<Foto>();
     
-    public SospSimple(int i, String n, String ap, String an, ArrayList<String> t,ArrayList<String>  c, ArrayList<String> d, ArrayList<String> m){
+    public SospSimple(int i, String n, String ap, String an, ArrayList<String> t,ArrayList<String>  c, ArrayList<String> d, ArrayList<String> m, ArrayList<Foto> f){
         this.id=i;
         this.nombre=n;
         this.apellidos=ap;
@@ -32,6 +34,7 @@ public class SospSimple {
         correo=c;
         direccion=d;
         matricula=m;
+        fotos = f;
     }
     
     public String toString(){

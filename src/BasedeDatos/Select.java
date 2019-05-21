@@ -75,6 +75,7 @@ public class Select {
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
+                    ArrayList<Foto> imagenes = new ArrayList<>();
                     
                     rs.next();
 
@@ -87,7 +88,7 @@ public class Select {
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
                               rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              telefonos , correos, direcciones, matriculas);
+                              telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -123,6 +124,7 @@ public class Select {
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
+                    ArrayList<Foto> imagenes = new ArrayList<>();
                     
                     rs.next();
 
@@ -134,7 +136,7 @@ public class Select {
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -171,6 +173,7 @@ public class Select {
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
+                    ArrayList<Foto> imagenes = new ArrayList<>();
                     
                     rs.next();
 
@@ -182,7 +185,7 @@ public class Select {
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -228,8 +231,10 @@ public class Select {
                             correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
+                            ArrayList<Foto> imagenes = new ArrayList<>();
+                            
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -267,6 +272,7 @@ public class Select {
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
+                    ArrayList<Foto> imagenes = new ArrayList<>();
                     
                     rs.next();
 
@@ -278,7 +284,7 @@ public class Select {
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
@@ -315,6 +321,7 @@ public class Select {
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
+                    ArrayList<Foto> imagenes = new ArrayList<>();
                     
                     rs.next();
 
@@ -326,7 +333,7 @@ public class Select {
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas, imagenes);
                             
                             suspects.add(nuevo);
                         }else{
