@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `direccion` (
 CREATE TABLE IF NOT EXISTS `foto` (
   `IDSosp` int(20) unsigned NOT NULL,
   `IDFoto` int(20) unsigned NOT NULL,
-  `Descripcion` text NOT NULL,
+  `Descripcion` varchar(100) NOT NULL,
   `ImgData` blob NOT NULL,
   PRIMARY KEY (`IDSosp`,`IDFoto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
