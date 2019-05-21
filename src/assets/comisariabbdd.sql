@@ -20,13 +20,13 @@ CREATE TABLE IF NOT EXISTS `sospechoso` (
   `IDSosp` int(20) unsigned NOT NULL,
   `Nombre` char(25) NOT NULL,
   `Apellidos` char(40) NOT NULL,
-  `Antecedentes` blob NOT NULL,
-  `Hechos` blob NOT NULL,
+  `Antecedentes` blob DEFAULT NULL,
+  `Hechos` blob DEFAULT NULL,
   PRIMARY KEY (`IDSosp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 CREATE TABLE IF NOT EXISTS `telefono` (
   `IDSosp` int(20) unsigned NOT NULL,
-  `NumTel` int(10) NOT NULL,
+  `NumTel` varchar(9) NOT NULL,
   PRIMARY KEY (`IDSosp`,`NumTel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ALTER TABLE `correo`

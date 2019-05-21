@@ -21,14 +21,14 @@ import java.sql.SQLException;
  */
 public class DatosGui {
 
-    protected String nombre;
-    protected String apellidos;
-    protected String hechos;
-    protected String antecedentes;
-    protected HashMap<String, String> dirItemsMap = new HashMap<String, String>();
-    private HashMap<String, String> corItemsMap = new HashMap<String, String>();
-    private HashMap<String, String> telItemsMap = new HashMap<String, String>();
-    private HashMap<String, String> matItemsMap = new HashMap<String, String>();
+    public String nombre;
+    public String apellidos;
+    public String hechos;
+    public String antecedentes;
+    public HashMap<String, String> dirItemsMap = new HashMap<String, String>();
+    public HashMap<String, String> corItemsMap = new HashMap<String, String>();
+    public HashMap<String, String> telItemsMap = new HashMap<String, String>();
+    public HashMap<String, String> matItemsMap = new HashMap<String, String>();
     public ArrayList<Image> listaImagenes = new ArrayList<Image>();
 
     protected DatosGui() {
@@ -114,7 +114,7 @@ public class DatosGui {
 
     }
 
-    protected String getValueNum(String key) {
+    public String getValueNum(String key) {
         String devuelve;
 
         devuelve = telItemsMap.get(key);
@@ -210,32 +210,45 @@ public class DatosGui {
         return noValidos;
     }
 
-    protected boolean enviarSospechoso() {
+    protected boolean enviarSospechoso() throws Exception {
         boolean hecho = false;
         Insert insertar = new Insert();
         ArrayList<String> telefonos = new ArrayList<String>();
-        for (int i = 0; i < telefonos.size(); i++) {
+        for (int i = 1; i < telItemsMap.size(); i++) {
             telefonos.add(telItemsMap.get("Número " + i));
-
         }
         
         ArrayList<String> correos = new ArrayList<String>();
-        for (int i = 0; i < correos.size(); i++) {
+        for (int i = 1; i < corItemsMap.size(); i++) {
             correos.add(corItemsMap.get("Correo " + i));
 
         }
         
         ArrayList<String> direcciones = new ArrayList<String>();
-        for (int i = 0; i < direcciones.size(); i++) {
+        for (int i = 1; i < dirItemsMap.size(); i++) {
             direcciones.add(dirItemsMap.get("Dirección " + i));
 
         }
         
         ArrayList<String> matriculas = new ArrayList<String>();
-        for (int i = 0; i < matriculas.size(); i++) {
+        for (int i = 1; i < matItemsMap.size(); i++) {
             matriculas.add(matItemsMap.get("Matrícula " + i));
+            
+        }
+        
+        for (int i = 0; i < matriculas.size(); i++) {
+            System.out.println(matriculas.get(i));
 
         }
+        
+        for (int i = 0; i < direcciones.size(); i++) {
+            System.out.println(direcciones.get(i));
+
+        }
+        
+        
+        
+        
         
         int[] sus = null;
         

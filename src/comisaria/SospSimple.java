@@ -16,6 +16,7 @@ public class SospSimple {
     public String nombre;
     public String apellidos;
     public String antecedentes;
+    public String hechos;
     public ArrayList<String> telefonos=new ArrayList<>();
     public ArrayList<String> correo=new ArrayList<>();
     public ArrayList<String> direccion=new ArrayList<>();

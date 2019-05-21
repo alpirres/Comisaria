@@ -116,6 +116,7 @@ public class Conexion {
                         System.out.println(">>"+inst[i]);
                     }
                 }
+                cerrarConexion();
             }catch(Exception e){
                 System.out.println("*** Error : "+e.toString());
                 e.printStackTrace();

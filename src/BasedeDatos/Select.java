@@ -56,7 +56,7 @@ public class Select {
                 System.out.println("NAda");
                 System.out.println("NAda");
                 
-                System.out.println(result.getInt("IDSosp"));
+                //System.out.println(result.getInt("IDSosp"));
                 //idfinal=result.getInt("IDSosp");
         return idfinal;
     }

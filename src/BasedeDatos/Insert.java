@@ -16,23 +16,40 @@ import java.sql.Statement;
  * @author jlove
  */
 public class Insert {
-        public boolean insertSospechoso(SospSimple sosp) throws SQLException{
-		boolean insertados=true;
-		int i;
-		//Cadena donde irán las sentencias sql de creación de tablas
-		String lineaSQL;
-		//Objeto de tipo Statement
-		Statement sentencia;		
-		//comando sql generico para la inserción de sospechoso, y llamada a los metodos de inserts de las demas tablas
-		String cons="INSERT INTO SOSPECHOSO (IDSosp, Nombre, Apellidos, Antecedentes) values ("+sosp.id+","+sosp.nombre+","+sosp.apellidos+","+sosp.antecedentes+");";
-                ejecutaSQL(cons);
-                //SospToConsulta(sosp);
-                MatToConsulta(sosp);
-                DirToConsulta(sosp);
-                TelToConsulta(sosp);
-                CorrToConsulta(sosp);
-               // FotoToConsulta(sosp);
-		return insertados;
+        public boolean insertSospechoso(SospSimple sosp) throws SQLException, Exception{
+            boolean insertados=true;
+            String lineaSQL;
+            //Objeto de tipo Statement
+            Statement sentencia;
+
+            //comando sql generico para la inserción
+            lineaSQL="INSERT INTO Sospechoso (IDSosp, Nombre, Apellidos, Antecedentes, Hechos) values (?, ?, ?, ?, ?)";
+            try{
+                //conectamos el objeto preparedStmt a la base de datos
+                Comisaria.miConexion.conectar();
+                PreparedStatement preparedStmt = Comisaria.miConexion.getConexion().prepareStatement(lineaSQL);
+
+                //creamos un nuevo socio
+
+                    preparedStmt.setInt(1, sosp.id);
+                    preparedStmt.setString(2, sosp.nombre);
+                    preparedStmt.setString(3, sosp.apellidos);
+                    preparedStmt.setString(4, sosp.antecedentes);
+                    preparedStmt.setString(5, sosp.hechos);
+
+                    // la ejecutamos
+                    preparedStmt.execute();
+                // habría que cerrar la conexion
+                    MatToConsulta(sosp);
+                    DirToConsulta(sosp);
+                    TelToConsulta(sosp);
+                    CorrToConsulta(sosp);
+                    Comisaria.miConexion.cerrarConexion();
+            }catch(SQLException se){
+                se.printStackTrace();
+            }
+                   // FotoToConsulta(sosp);
+            return insertados;
 	}
         /*
         public void SospToConsulta(Sospechoso sosp){
@@ -48,11 +65,28 @@ public class Insert {
          * una para la tabla MATRICULA y otra para la tabla POSEE(que une matricula con sospechoso)
          * @param sosp
          */
-        public void MatToConsulta(SospSimple sosp){
-            String cons;
-            for(int i=0; i<sosp.matricula.size();i++){
-                cons="INSERT INTO MATRICULA VALUES ("+sosp.id+","+sosp.matricula.get(i)+");";
-                ejecutaSQL(cons);
+        public void MatToConsulta(SospSimple sosp){ boolean insertados=true;
+            String lineaSQL;
+            //Objeto de tipo Statement
+            Statement sentencia;
+
+            //comando sql generico para la inserción
+            lineaSQL="INSERT INTO matricula (IDSosp, NumMat) values (?, ?)";
+            try{
+                //conectamos el objeto preparedStmt a la base de datos
+                
+                PreparedStatement preparedStmt = Comisaria.miConexion.getConexion().prepareStatement(lineaSQL);
+
+                //creamos un nuevo socio
+                  
+                for(int i=0; i <sosp.matricula.size();i++){
+                    preparedStmt.setInt(1, sosp.id);
+                    preparedStmt.setString(2, sosp.matricula.get(i));
+                    // la ejecutamos
+                    preparedStmt.execute();
+                }
+            }catch(SQLException se){
+                se.printStackTrace();
             }
         }
         /**
@@ -61,10 +95,27 @@ public class Insert {
          * @param sosp
          */
         public void DirToConsulta(SospSimple sosp){
-            String cons;
-            for(int i=0; i<sosp.direccion.size();i++){
-                cons="INSERT INTO DIRECCION VALUES ("+sosp.id+","+sosp.direccion.get(i)+");";
-                ejecutaSQL(cons);
+            String lineaSQL;
+            //Objeto de tipo Statement
+            Statement sentencia;
+
+            //comando sql generico para la inserción
+            lineaSQL="INSERT INTO direccion (IDSosp, NomDir) values (?, ?)";
+            try{
+                //conectamos el objeto preparedStmt a la base de datos
+                
+                PreparedStatement preparedStmt = Comisaria.miConexion.getConexion().prepareStatement(lineaSQL);
+
+                //creamos un nuevo socio
+                  
+                for(int i=0; i <sosp.direccion.size();i++){
+                    preparedStmt.setInt(1, sosp.id);
+                    preparedStmt.setString(2, sosp.direccion.get(i));
+                    // la ejecutamos
+                    preparedStmt.execute();
+                }
+            }catch(SQLException se){
+                se.printStackTrace();
             }
         }
         /**
@@ -73,10 +124,27 @@ public class Insert {
          * @param sosp
          */
         public void TelToConsulta(SospSimple sosp){
-            String cons;
-            for(int i=0; i<sosp.telefonos.size();i++){
-                cons="INSERT INTO TELEFONO VALUES ("+sosp.id+","+sosp.telefonos.get(i)+");";
-                ejecutaSQL(cons);
+            String lineaSQL;
+            //Objeto de tipo Statement
+            Statement sentencia;
+
+            //comando sql generico para la inserción
+            lineaSQL="INSERT INTO telefono (IDSosp, NumTel) values (?, ?)";
+            try{
+                //conectamos el objeto preparedStmt a la base de datos
+                
+                PreparedStatement preparedStmt = Comisaria.miConexion.getConexion().prepareStatement(lineaSQL);
+
+                //creamos un nuevo socio
+                  
+                for(int i=0; i <sosp.telefonos.size();i++){
+                    preparedStmt.setInt(1, sosp.id);
+                    preparedStmt.setString(2, sosp.telefonos.get(i));
+                    // la ejecutamos
+                    preparedStmt.execute();
+                }
+            }catch(SQLException se){
+                se.printStackTrace();
             }
         }
         /**
@@ -85,10 +153,27 @@ public class Insert {
          * @param sosp
          */
         public void CorrToConsulta(SospSimple sosp){
-            String cons;
-            for(int i=0; i<sosp.correo.size();i++){
-                cons="INSERT INTO CORREO VALUES ("+sosp.id+","+sosp.correo.get(i)+");";
-                ejecutaSQL(cons);
+            String lineaSQL;
+            //Objeto de tipo Statement
+            Statement sentencia;
+
+            //comando sql generico para la inserción
+            lineaSQL="INSERT INTO correo (IDSosp, dircorreo) values (?, ?)";
+            try{
+                //conectamos el objeto preparedStmt a la base de datos
+                
+                PreparedStatement preparedStmt = Comisaria.miConexion.getConexion().prepareStatement(lineaSQL);
+
+                //creamos un nuevo socio
+                  
+                for(int i=0; i <sosp.correo.size();i++){
+                    preparedStmt.setInt(1, sosp.id);
+                    preparedStmt.setString(2, sosp.correo.get(i));
+                    // la ejecutamos
+                    preparedStmt.execute();
+                }
+            }catch(SQLException se){
+                se.printStackTrace();
             }
         }
         /*public void FotoToConsulta(Sospechoso sosp){
@@ -97,19 +182,5 @@ public class Insert {
                 cons="INSERT INTO FOTO ("+
             }
         }*/
-        
-        public void ejecutaSQL(String lineaSQL){
-            try
-            {
-		//conectamos el objeto preparedStmt a la base de datos
-		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
-                preparedStmt.execute();
-	
-         // habría que cerrar la conexion
-            }catch(SQLException se)
-            {
-                    se.printStackTrace();
-            }
-        }
         
 }
