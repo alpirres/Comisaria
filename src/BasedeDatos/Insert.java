@@ -51,7 +51,7 @@ public class Insert {
         public void MatToConsulta(SospSimple sosp){
             String cons;
             for(int i=0; i<sosp.matricula.size();i++){
-                cons="INSERT INTO MATRICULA ("+sosp.id+","+sosp.matricula.get(i)+");";
+                cons="INSERT INTO MATRICULA VALUES ("+sosp.id+","+sosp.matricula.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -63,7 +63,7 @@ public class Insert {
         public void DirToConsulta(SospSimple sosp){
             String cons;
             for(int i=0; i<sosp.direccion.size();i++){
-                cons="INSERT INTO DIRECCION ("+sosp.id+","+sosp.direccion.get(i)+");";
+                cons="INSERT INTO DIRECCION VALUES ("+sosp.id+","+sosp.direccion.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -75,7 +75,7 @@ public class Insert {
         public void TelToConsulta(SospSimple sosp){
             String cons;
             for(int i=0; i<sosp.telefonos.size();i++){
-                cons="INSERT INTO TELEFONO ("+sosp.id+","+sosp.telefonos.get(i)+");";
+                cons="INSERT INTO TELEFONO VALUES ("+sosp.id+","+sosp.telefonos.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
@@ -87,7 +87,7 @@ public class Insert {
         public void CorrToConsulta(SospSimple sosp){
             String cons;
             for(int i=0; i<sosp.correo.size();i++){
-                cons="INSERT INTO CORREO ("+sosp.id+","+sosp.correo.get(i)+");";
+                cons="INSERT INTO CORREO VALUES ("+sosp.id+","+sosp.correo.get(i)+");";
                 ejecutaSQL(cons);
             }
         }
