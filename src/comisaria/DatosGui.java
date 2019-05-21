@@ -249,7 +249,7 @@ public class DatosGui {
         }
 
         
-        SospSimple todb = new SospSimple(id, nombre, apellidos, antecedentes, telefonos, correos, direcciones, matriculas, listaImagenes);
+        SospSimple todb = new SospSimple(id, nombre, apellidos, antecedentes,hechos, telefonos, correos, direcciones, matriculas, listaImagenes);
         try{
         hecho = insertar.insertSospechoso(todb);
         }catch(SQLException e){
