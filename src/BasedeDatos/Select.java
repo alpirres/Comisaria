@@ -69,6 +69,7 @@ public class Select {
             Logger.getLogger(Select.class.getName()).log(Level.SEVERE, null, ex);
         }
         ResultSet rs = preparedStmt.executeQuery();
+        System.out.println("ID Nombre Apellidos ...");
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
                     ArrayList<String> telefonos=new ArrayList<>();
@@ -76,29 +77,29 @@ public class Select {
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
                     ArrayList<Foto> imagenes = new ArrayList<>();
-                    
-                    rs.next();
 
-                    do{
-                        if(rs.getInt("IDSosp")!=id){
-                            rs.previous();
-                            telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCor"));
-                            direcciones.add(rs.getString("NomDir"));
-                            matriculas.add(rs.getString("NumMat"));
-                            SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              telefonos , correos, direcciones, matriculas, imagenes);
-                            
-                            suspects.add(nuevo);
-                        }else{
-                            //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCor"));
-                            direcciones.add(rs.getString("NomDir"));
-                            matriculas.add(rs.getString("NumMat"));
-                        }
-                    }while(rs.next());
+                    telefonos.add(rs.getString("NumTel"));
+                    correos.add(rs.getString("DirCor"));
+                    direcciones.add(rs.getString("NomDir"));
+                    matriculas.add(rs.getString("NumMat"));
+                    
+                    System.out.println(rs.getInt("IDSosp")+rs.getString("Nombre")+rs.getString("Apellidos")+rs.getString("Antecedentes")+rs.getString("NumTel")+rs.getString("DirCor")+rs.getString("NomDir")+rs.getString("NumMat"));
+                    rs.next();
+                    if(rs.getInt("IDSosp")!=id){
+                        
+                    }else{
+                        //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
+                        
+                        telefonos.add(rs.getString("NumTel"));
+                        correos.add(rs.getString("DirCor"));
+                        direcciones.add(rs.getString("NomDir"));
+                        matriculas.add(rs.getString("NumMat"));
+                    }
+                    SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
+                            rs.getString("Apellidos"), rs.getString("Antecedentes"),
+                            telefonos , correos, direcciones, matriculas, imagenes);
+                    
+                    suspects.add(nuevo);
                 }
         return suspects;
        }
