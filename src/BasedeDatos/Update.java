@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 /**
  *
  * @author alfon
@@ -166,7 +167,7 @@ public class Update {
      * @throws SQLException
      * @throws Exception 
      */
-    public static int actualizarEmail(Correo corr) throws SQLException, Exception{
+    public static int actualizarEmail(int id, ArrayList<String> corr) throws SQLException, Exception{
         //Cadena donde irán las sentencias sql
         String lineaSQL;
         //Objeto de tipo Statement
@@ -180,9 +181,9 @@ public class Update {
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
 			
             //agregamos los valores que faltan a la linea SQL
-            for(int i=0;i<corr.correos.size();i++){
-                preparedStmt.setString (1, corr.correos.get(i));
-                preparedStmt.setInt (2, corr.id);
+            for(int i=0;i<corr.size();i++){
+                preparedStmt.setString (1, corr.get(i));
+                preparedStmt.setInt (2, id);
 
                 // la ejecutamos
                 nFilas=preparedStmt.executeUpdate();
@@ -202,7 +203,7 @@ public class Update {
      * @throws SQLException
      * @throws Exception 
      */
-    public static int actualizarMatricula(Matricula mat) throws SQLException, Exception{
+    public static int actualizarMatricula(int id,ArrayList<String> mat) throws SQLException, Exception{
         //Cadena donde irán las sentencias sql
         String lineaSQL;
         //Objeto de tipo Statement
@@ -216,9 +217,9 @@ public class Update {
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
 			
             //agregamos los valores que faltan a la linea SQL
-            for(int i=0;i<mat.matriculas.size();i++){
-                preparedStmt.setString (1, mat.matriculas.get(i));
-                preparedStmt.setInt (2, mat.id);
+            for(int i=0;i<mat.size();i++){
+                preparedStmt.setString (1, mat.get(i));
+                preparedStmt.setInt (2, id);
                 // la ejecutamos
                 nFilas=preparedStmt.executeUpdate();
             }
@@ -237,7 +238,7 @@ public class Update {
      * @throws SQLException
      * @throws Exception 
      */
-    public static int actualizarDireccion(Direccion dir) throws SQLException, Exception{
+    public static int actualizarDireccion(int id, ArrayList<String> dir) throws SQLException, Exception{
         //Cadena donde irán las sentencias sql
         String lineaSQL;
         //Objeto de tipo Statement
@@ -251,9 +252,9 @@ public class Update {
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
 			
             //agregamos los valores que faltan a la linea SQL
-            for(int i=0;i<dir.direcciones.size();i++){
-                preparedStmt.setString (1, dir.direcciones.get(i));
-                preparedStmt.setInt (2, dir.id);
+            for(int i=0;i<dir.size();i++){
+                preparedStmt.setString (1, dir.get(i));
+                preparedStmt.setInt (2, id);
                 // la ejecutamos
                 nFilas=preparedStmt.executeUpdate();
             }
@@ -272,7 +273,7 @@ public class Update {
      * @throws SQLException
      * @throws Exception 
      */
-    public static int actualizarTlf(Telefono tlf) throws SQLException, Exception{
+    public static int actualizarTlf(int id, ArrayList<String> tlf) throws SQLException, Exception{
         //Cadena donde irán las sentencias sql
         String lineaSQL;
         //Objeto de tipo Statement
@@ -286,9 +287,9 @@ public class Update {
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
 			
             //agregamos los valores que faltan a la linea SQL
-            for(int i=0;i<tlf.telefonos.size();i++){
-                preparedStmt.setString (1, tlf.telefonos.get(i));
-                preparedStmt.setInt (2, tlf.id);
+            for(int i=0;i<tlf.size();i++){
+                preparedStmt.setString (1, tlf.get(i));
+                preparedStmt.setInt (2, id);
                 // la ejecutamos
                 nFilas=preparedStmt.executeUpdate();
             }

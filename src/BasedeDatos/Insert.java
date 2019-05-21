@@ -140,6 +140,10 @@ public class Insert {
                 for(int i=0; i <sosp.telefonos.size();i++){
                     preparedStmt.setInt(1, sosp.id);
                     preparedStmt.setString(2, sosp.telefonos.get(i));
+                    
+                        System.out.println(sosp.telefonos.size());
+                        System.out.println("IMPRIMIENDO TELEFONOS "+sosp.telefonos.get(i));
+                    
                     // la ejecutamos
                     preparedStmt.execute();
                 }

@@ -78,7 +78,7 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
-                    ArrayList<Integer> telefonos=new ArrayList<>();
+                    ArrayList<String> telefonos=new ArrayList<>();
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
@@ -88,7 +88,7 @@ public class Select {
                     do{
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
@@ -99,7 +99,7 @@ public class Select {
                             suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
@@ -126,7 +126,7 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
-                    ArrayList<Integer> telefonos=new ArrayList<>();
+                    ArrayList<String> telefonos=new ArrayList<>();
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
@@ -136,18 +136,17 @@ public class Select {
                     do{
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
                             
                             suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
@@ -175,7 +174,7 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
-                    ArrayList<Integer> telefonos=new ArrayList<>();
+                    ArrayList<String> telefonos=new ArrayList<>();
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
@@ -185,18 +184,17 @@ public class Select {
                     do{
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
                             
                             suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
@@ -223,7 +221,7 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
-                    ArrayList<Integer> telefonos=new ArrayList<>();
+                    ArrayList<String> telefonos=new ArrayList<>();
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
@@ -233,18 +231,17 @@ public class Select {
                     do{
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
                             
                             suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
@@ -273,7 +270,7 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
-                    ArrayList<Integer> telefonos=new ArrayList<>();
+                    ArrayList<String> telefonos=new ArrayList<>();
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
@@ -283,18 +280,17 @@ public class Select {
                     do{
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
                             
                             suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
@@ -322,7 +318,7 @@ public class Select {
         ResultSet rs = preparedStmt.executeQuery();
         while(rs.next()){
                     int id=rs.getInt("IDSosp");
-                    ArrayList<Integer> telefonos=new ArrayList<>();
+                    ArrayList<String> telefonos=new ArrayList<>();
                     ArrayList<String> correos=new ArrayList<>();
                     ArrayList<String> direcciones=new ArrayList<>();
                     ArrayList<String> matriculas=new ArrayList<>();
@@ -332,18 +328,17 @@ public class Select {
                     do{
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
-                              rs.getString("Apellidos"), rs.getString("Antecedentes"),
-                              telefonos , correos, direcciones, matriculas);
+                              rs.getString("Apellidos"), rs.getString("Antecedentes"),telefonos , correos, direcciones, matriculas);
                             
                             suspects.add(nuevo);
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            telefonos.add(rs.getInt("NumTel"));
+                            telefonos.add(rs.getString("NumTel"));
                             correos.add(rs.getString("DirCorreo"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
@@ -357,9 +352,9 @@ public class Select {
      * SIN TERMINAR
      * @throws SQLException 
      */
-    public static ArrayList<Sospechoso> selectAllSosp() throws SQLException
+    public static ArrayList<SospSimple> selectAllSosp() throws SQLException
 	{
-		ArrayList<Sospechoso> suspects = new ArrayList<>();
+		ArrayList<SospSimple> suspects = new ArrayList<>();
 
 		String lineaSQL="Select * from SOSPECHOSO";
 		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);

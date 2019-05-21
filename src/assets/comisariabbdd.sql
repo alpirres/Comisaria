@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS `comisaria`;
-CREATE DATABASE `comisaria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `comisaria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `comisaria`;
 CREATE TABLE IF NOT EXISTS `correo` (
   `IDSosp` int(20) unsigned NOT NULL,

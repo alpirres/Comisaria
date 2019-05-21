@@ -215,7 +215,8 @@ public class DatosGui {
         Insert insertar = new Insert();
         ArrayList<String> telefonos = new ArrayList<String>();
         for (int i = 1; i < telItemsMap.size(); i++) {
-            telefonos.add(telItemsMap.get("Número " + i));
+            telefonos.add(getValueNum("Teléfono " + i));
+           
         }
         
         ArrayList<String> correos = new ArrayList<String>();
@@ -236,21 +237,9 @@ public class DatosGui {
             
         }
         
-        for (int i = 0; i < matriculas.size(); i++) {
-            System.out.println(matriculas.get(i));
+        
+        
 
-        }
-        
-        for (int i = 0; i < direcciones.size(); i++) {
-            System.out.println(direcciones.get(i));
-
-        }
-        
-        
-        
-        
-        
-        int[] sus = null;
         
         int id = 0;
         try{
@@ -259,6 +248,7 @@ public class DatosGui {
             e.printStackTrace();
         }
 
+        
         SospSimple todb = new SospSimple(id, nombre, apellidos, antecedentes, telefonos, correos, direcciones, matriculas);
         try{
         hecho = insertar.insertSospechoso(todb);
