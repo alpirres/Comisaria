@@ -703,7 +703,7 @@ public class Principal extends javax.swing.JFrame {
         if (!jTextField6.getText().equals(null)) {
             datosGui.setValueMat(jTextField6.getText(), ComboBoxMatr.getSelectedItem().toString());
         }
-        System.out.println(datosGui.getItemsMapMat().toString());
+        
 
     }//GEN-LAST:event_jTextField6KeyReleased
 
@@ -711,36 +711,36 @@ public class Principal extends javax.swing.JFrame {
         if (!jTextField4.getText().equals(null)) {
             datosGui.setValueNum(jTextField4.getText(), ComboBoxNum.getSelectedItem().toString());
         }
-        System.out.println(datosGui.getItemsMapNum().toString());
+        
     }//GEN-LAST:event_jTextField4KeyReleased
 
     private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
         if (!jTextField5.getText().equals(null)) {
             datosGui.setValueCor(jTextField5.getText(), ComboBoxCorr.getSelectedItem().toString());
         }
-        System.out.println(datosGui.getItemsMapCor().toString());
+        
     }//GEN-LAST:event_jTextField5KeyReleased
 
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
         if (!jTextField7.getText().equals(null)) {
             datosGui.setValueDir(jTextField7.getText(), ComboBoxDire.getSelectedItem().toString());
         }
-        System.out.println(datosGui.getItemsMapDir().toString());
+        
     }//GEN-LAST:event_jTextField7KeyReleased
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         datosGui.nombre = jTextField2.getText().trim();
         datosGui.apellidos = jTextField3.getText().trim();
-        System.out.println(datosGui.dirItemsMap.toString() + " " + (datosGui.dirItemsMap.size()));
+        
         ArrayList<String> esValido = datosGui.comprobarDir();
         StringBuilder sb = new StringBuilder("Hay errores en los siguientes campos: ");
 
         if (esValido.size() != 0) {
-            System.out.println("Entrando");
-            System.out.println(esValido.toString().trim());
+            
+            
             for (String str : esValido) {
                 sb.append(str + ", ");
-                System.out.println("Insertando dir");
+                
             }
 
             jLabel16.setText(sb.toString());
@@ -750,11 +750,10 @@ public class Principal extends javax.swing.JFrame {
         esValido = datosGui.comprobarCor();
 
         if (esValido.size() != 0) {
-            System.out.println("Entrando");
-            System.out.println(esValido.toString().trim());
+            
             for (String str : esValido) {
                 sb.append(str + ", ");
-                System.out.println("Insertando cor");
+                
             }
 
             jLabel16.setText(sb.toString());
@@ -764,11 +763,10 @@ public class Principal extends javax.swing.JFrame {
         esValido = datosGui.comprobarMat();
 
         if (esValido.size() != 0) {
-            System.out.println("Entrando");
-            System.out.println(esValido.toString().trim());
+            
             for (String str : esValido) {
                 sb.append(str + ", ");
-                System.out.println("Insertando mat");
+                
             }
 
             jLabel16.setText(sb.toString());
@@ -778,11 +776,10 @@ public class Principal extends javax.swing.JFrame {
         esValido = datosGui.comprobarTel();
 
         if (esValido.size() != 0) {
-            System.out.println("Entrando");
-            System.out.println(esValido.toString().trim());
+            
             for (String str : esValido) {
                 sb.append(str + ", ");
-                System.out.println("Insertando tel");
+                
             }
         }
         
@@ -802,6 +799,8 @@ public class Principal extends javax.swing.JFrame {
             
             try {
                 datosGui.enviarSospechoso();
+                anadirSospechosoDatos.setVisible(false);
+                
             } catch (Exception ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -845,8 +844,7 @@ public class Principal extends javax.swing.JFrame {
                     }
                     resImage = image.getScaledInstance(visorImagenes.getWidth() / 4 - 10, visorImagenes.getHeight() / 2 - 10,
                             Image.SCALE_SMOOTH);
-                    System.out.println("IMAGEN REESCALADA SEGUNDA " + resImage.getWidth(rootPane) + " & " + resImage.getHeight(rootPane));
-                    System.out.println("CONTENEDOR VISOR/4 " + contenedorVisor.getWidth() + " & " + contenedorVisor.getHeight());
+
 
                     Icon icono = new ImageIcon(resImage);
 
@@ -883,8 +881,6 @@ public class Principal extends javax.swing.JFrame {
                     ComponentOrientation.LEFT_TO_RIGHT);
 
             for (int i = 0; i < contenedorVisor.getComponentCount(); i++) {
-                System.out.println(contenedorVisor.getComponent(i).toString());
-                System.out.println(contenedorVisor.getComponent(i).getClass());
 
             }
 
@@ -893,8 +889,7 @@ public class Principal extends javax.swing.JFrame {
             System.out.println("NADA");
         }
 
-        System.out.println("jscroll " + visorImagenes.getHeight() + " x " + visorImagenes.getWidth());
-        System.out.println("Jpanel " + contenedorVisor.getPreferredSize().getSize() + " x " + contenedorVisor.getPreferredSize().getWidth());
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -968,6 +963,7 @@ public class Principal extends javax.swing.JFrame {
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         
         Select select = new Select();
+        DefaultTableModel tableModel = null;
         
         ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
         
@@ -979,14 +975,7 @@ public class Principal extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
-        if(listaSospechosos!=null){
-        for(int i=0; i<listaSospechosos.size();i++){
-            System.out.println(i+" "+listaSospechosos.get(i).toString());
-            
-        }
-        }else{
-            System.out.println("VACIO1451513513n513o5n31o5nontouenowt");
-        }
+        
         
         for (int i = 0; i < listaSospechosos.size(); i++){
    String nombre = listaSospechosos.get(i).nombre;
@@ -998,11 +987,15 @@ public class Principal extends javax.swing.JFrame {
 
    Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
 
-   DefaultTableModel tableModel = new DefaultTableModel(col, 0);
-   tableModel.addRow(data);
         }
         
-        
+        tableModel = new DefaultTableModel(col, listaSospechosos.size());
+        if(tableModel == null){
+            String[] fail = {"No se encuentra","e","e","e","e","e"};
+            tableModel.addRow(fail);
+        }else{
+           jTable1.setModel(tableModel);
+        }
         
         
     }//GEN-LAST:event_jTextField1KeyTyped
