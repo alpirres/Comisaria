@@ -38,31 +38,24 @@ public class Select {
                         + "where sosp.IDSosp=(select max(idSosp) from SOSPECHOSO);";
         System.out.println("wtf 2");
 		PreparedStatement preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
-                System.out.println("wtf 3");
+                
 		ResultSet result = preparedStmt.executeQuery();
-                System.out.println(miConexion.getEstado());
+                
                 while(result.next()){
                     idfinal = result.getInt("IDSosp");
                     System.out.println("ESTOY PROBANDO");
                 }
                 
-                if(idfinal == 0){
-                    System.out.println("ESTO ES UNA MIERDA");
-                    idfinal = 1;
-                }
-                System.out.println(miConexion.getEstado());
                 
-                System.out.println("wtf 4");
-                System.out.println("NAda");
-                System.out.println("NAda");
+                System.out.println(idfinal);
                 
                 //System.out.println(result.getInt("IDSosp"));
                 //idfinal=result.getInt("IDSosp");
-        return idfinal;
+        return idfinal+1;
     }
        public ArrayList<SospSimple> buscarXNombre(String nom) throws SQLException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
-        String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
+        String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
                 + "where sosp.nombre like \"%"+nom+"%\""
                 +" and t.IDSosp=sosp.IDSosp"
@@ -89,7 +82,7 @@ public class Select {
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
@@ -100,7 +93,7 @@ public class Select {
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                         }
@@ -110,7 +103,7 @@ public class Select {
        }
        public ArrayList<SospSimple> buscarXApellidos(String aps)throws SQLException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
-        String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
+        String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
                 + "where sosp.apellidos like \"%"+aps+"%\" "
                 +" and t.IDSosp=sosp.IDSosp"
@@ -137,7 +130,7 @@ public class Select {
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
@@ -147,7 +140,7 @@ public class Select {
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                         }
@@ -158,7 +151,7 @@ public class Select {
        
     public ArrayList<SospSimple> buscarXTelefono(String tlf) throws SQLException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
-        String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
+        String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
                 + "where t.NumTel="+tlf
                 +" and t.IDSosp=sosp.IDSosp"
@@ -185,7 +178,7 @@ public class Select {
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
@@ -195,7 +188,7 @@ public class Select {
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                         }
@@ -205,7 +198,7 @@ public class Select {
     }
     public ArrayList<SospSimple> buscarXMatricula(String mt) throws SQLException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
-        String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
+        String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
                 + "where m.NumMat="+mt
                 +" and t.IDSosp=sosp.IDSosp"
@@ -232,7 +225,7 @@ public class Select {
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
@@ -242,7 +235,7 @@ public class Select {
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                         }
@@ -254,9 +247,9 @@ public class Select {
     
     public ArrayList<SospSimple> buscarXCorreo(String corr) throws SQLException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
-        String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
+        String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where c.DirCorr="+corr
+                + "where c.DirCor="+corr
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
@@ -281,7 +274,7 @@ public class Select {
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
@@ -291,7 +284,7 @@ public class Select {
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                         }
@@ -302,7 +295,7 @@ public class Select {
     
     public ArrayList<SospSimple> buscarXDireccion(String dir) throws SQLException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
-        String lineaSQL="Select sosp.*,t.NumTel, c.DirCorreo, d.NomDir, m.NumMat "
+        String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
                 + "where d.NomDir="+dir
                 +" and t.IDSosp=sosp.IDSosp"
@@ -329,7 +322,7 @@ public class Select {
                         if(rs.getInt("IDSosp")!=id){
                             rs.previous();
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                             SospSimple nuevo=new SospSimple(rs.getInt("IDSosp"), rs.getString("Nombre"),
@@ -339,7 +332,7 @@ public class Select {
                         }else{
                             //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
                             telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCorreo"));
+                            correos.add(rs.getString("DirCor"));
                             direcciones.add(rs.getString("NomDir"));
                             matriculas.add(rs.getString("NumMat"));
                         }

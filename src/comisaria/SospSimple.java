@@ -33,4 +33,59 @@ public class SospSimple {
         direccion=d;
         matricula=m;
     }
+    
+    public String toString(){
+        return this.nombre+" "+ this.apellidos +" "+this.correo+" "+this.direccion+" "+this.matricula+" "+this.hechos+" "+this.antecedentes;
+    }
+    
+    public String telToString(){
+        StringBuilder sb = new StringBuilder("");
+            if(telefonos.size()!=0 && telefonos != null){
+                for(int i=0;i<telefonos.size();i++){
+                    sb.append(telefonos.get(i)+", ");
+                }
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
+    
+    public String corToString(){
+        StringBuilder sb = new StringBuilder("");
+            if(correo.size()!=0 && correo != null){
+                for(int i=0;i<correo.size();i++){
+                    sb.append(correo.get(i)+", ");
+                }
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
+    
+    public String dirToString(){
+        StringBuilder sb = new StringBuilder("");
+            if(direccion.size()!=0 && direccion != null){
+                for(int i=0;i<direccion.size();i++){
+                    sb.append(direccion.get(i)+", ");
+                }
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
+    
+    public String matToString(){
+        StringBuilder sb = new StringBuilder("");
+            if(matricula.size()!=0 && matricula != null){
+                for(int i=0;i<matricula.size();i++){
+                    sb.append(matricula.get(i)+", ");
+                }
+            }
+            sb.deleteCharAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
+    }
+    
+    
+    
 }

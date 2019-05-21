@@ -5,20 +5,16 @@
  */
 package comisaria;
 
-import java.awt.BorderLayout;
+import BasedeDatos.Select;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -27,11 +23,9 @@ import javax.swing.BoxLayout;
 import static javax.swing.BoxLayout.X_AXIS;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -40,13 +34,14 @@ import javax.swing.JPanel;
 public class Principal extends javax.swing.JFrame {
 
     DatosGui datosGui = new DatosGui();
+    boolean firstInput = true;
 
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-
+        //cargarDatosTabla();
     }
 
     /**
@@ -106,6 +101,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -417,10 +413,20 @@ public class Principal extends javax.swing.JFrame {
         jTable1.setRowHeight(50);
         jScrollPane3.setViewportView(jTable1);
 
-        jTextField1.setText("Nombre, lugar, matrícula....");
+        jTextField1.setText("Nombre, lugar, matrícula...");
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
             }
         });
 
@@ -511,6 +517,8 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1.setMinimumSize(new java.awt.Dimension(164, 94));
         jScrollPane1.setViewportView(jTextArea1);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Teléfonos", "Correos", "Direcciones", "Matrículas" }));
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -531,7 +539,9 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel1)
-                                .addGap(357, 357, 357))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(visorImagenes1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
@@ -588,7 +598,9 @@ public class Principal extends javax.swing.JFrame {
                                         .addComponent(jButton2))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                            .addComponent(jComboBox1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -596,11 +608,6 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-
-
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -762,6 +769,7 @@ public class Principal extends javax.swing.JFrame {
 
         if (!sb.toString().equals("Hay errores en los siguientes campos: ")) {
             System.out.println(sb);
+            sb.deleteCharAt(sb.length() - 1);
             jOptionPane2.showMessageDialog(null, sb.toString());
         }else{
             
@@ -927,6 +935,91 @@ public class Principal extends javax.swing.JFrame {
         System.out.println(datosGui.getValueDir(ComboBoxDire.getSelectedItem().toString()));
     }//GEN-LAST:event_ComboBoxDireActionPerformed
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        
+        Select select = new Select();
+        
+        ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
+        
+        String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
+        
+        try{
+        listaSospechosos = select.buscarXNombre(jTextField1.getText());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        if(listaSospechosos!=null){
+        for(int i=0; i<listaSospechosos.size();i++){
+            System.out.println(i+" "+listaSospechosos.get(i).toString());
+            
+        }
+        }else{
+            System.out.println("VACIO1451513513n513o5n31o5nontouenowt");
+        }
+        
+        for (int i = 0; i < listaSospechosos.size(); i++){
+   String nombre = listaSospechosos.get(i).nombre;
+   String apellidos = listaSospechosos.get(i).apellidos;
+   String telefono = listaSospechosos.get(i).telToString();
+   String correo = listaSospechosos.get(i).corToString();
+   String direcciones = listaSospechosos.get(i).dirToString();
+   String matriculas = listaSospechosos.get(i).matToString();
+
+   Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
+
+   DefaultTableModel tableModel = new DefaultTableModel(col, 0);
+   tableModel.addRow(data);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        if(firstInput){
+            jTextField1.setText("");
+            firstInput=false;
+            
+        }
+    }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    /*public void cargarDatosTabla(){
+        Select select = new Select();
+        
+        ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
+        
+        String col[] = {"Pos","Team","P", "W", "L", "D", "MP", "GF", "GA", "GD"};
+        
+        
+        try{
+        listaSospechosos = Select.selectAllSosp();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        for(int i=0; i<listaSospechosos.size();i++){
+            System.out.println(i+" "+listaSospechosos.get(i).toString());
+            
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel(col, listaSospechosos.size());
+        
+        
+        
+    }*/
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -976,6 +1069,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

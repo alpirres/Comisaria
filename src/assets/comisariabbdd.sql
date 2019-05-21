@@ -2,8 +2,8 @@ CREATE DATABASE IF NOT EXISTS `comisaria` DEFAULT CHARACTER SET latin1 COLLATE l
 USE `comisaria`;
 CREATE TABLE IF NOT EXISTS `correo` (
   `IDSosp` int(20) unsigned NOT NULL,
-  `dircorreo` char(30) NOT NULL,
-  PRIMARY KEY (`IDSosp`,`dircorreo`)
+  `DirCor` char(30) NOT NULL,
+  PRIMARY KEY (`IDSosp`,`DirCor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 CREATE TABLE IF NOT EXISTS `direccion` (
   `IDSosp` int(20) unsigned NOT NULL,

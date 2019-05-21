@@ -121,7 +121,7 @@ public class Conexion {
                 System.out.println("*** Error : "+e.toString());
                 e.printStackTrace();
             }
-            this.miConexion.close();
+            
     }
     /*Método: getConexion() 
     Tipo: Connection 
