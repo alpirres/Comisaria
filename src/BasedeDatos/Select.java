@@ -6,11 +6,17 @@
 package BasedeDatos;
 import static comisaria.Comisaria.miConexion;
 import comisaria.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -151,7 +157,7 @@ public class Select {
         return suspects;
        }
        
-    public ArrayList<SospSimple> buscarXTelefono(String tlf) throws SQLException{
+    public ArrayList<SospSimple> buscarXTelefono(String tlf) throws SQLException, IOException{
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
@@ -180,6 +186,8 @@ public class Select {
                     correos.add(rs.getString("DirCor"));
                     direcciones.add(rs.getString("NomDir"));
                     matriculas.add(rs.getString("NumMat"));
+                    imagenes.get(0).imagenes.add(fromRsToFile(rs, suspects));
+                    imagenes.get(0).descripciones.add(rs.getString("Descripcion"));
                     
                     SospSimple nuevo=new SospSimple(id, rs.getString("Nombre"),
                             rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
@@ -308,7 +316,8 @@ public class Select {
     }
     
     /**
-     * SIN TERMINAR
+     * 
+     * @return 
      * @throws SQLException 
      */
     public static ArrayList<SospSimple> selectAllSosp() throws SQLException
@@ -334,4 +343,17 @@ public class Select {
         return suspects;
 
 	}
-}
+    public File fromRsToFile(ResultSet rs, ArrayList<SospSimple> suspects) throws SQLException, IOException{
+        
+        int id=rs.getInt("IDsosp");
+        InputStream initialStream = rs.getBinaryStream("ImgData");
+        byte[] buffer = new byte[initialStream.available()];
+        initialStream.read(buffer);
+
+        File targetFile = suspects.get(id).fotos.get(0).imagenes.get(0);
+        OutputStream outStream = new FileOutputStream(targetFile);
+        outStream.write(buffer);
+
+        return targetFile;
+    }
+    }
