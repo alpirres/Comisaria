@@ -801,8 +801,11 @@ public class Principal extends javax.swing.JFrame {
             
             
             try {
-                datosGui.enviarSospechoso();
+                boolean t = datosGui.enviarSospechoso();
                 anadirSospechosoDatos.setVisible(false);
+                if(t){
+                    cargarDatosTabla();
+                }
                 
             } catch (Exception ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
