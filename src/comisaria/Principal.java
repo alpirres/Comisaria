@@ -1014,7 +1014,7 @@ public class Principal extends javax.swing.JFrame {
                 }
                 break;
 
-            case "Correos":
+            case "Correo":
                 try {
                     listaSospechosos = select.buscarXCorreo(jTextField1.getText());
                 } catch (Exception e) {
