@@ -87,27 +87,7 @@ public class Select {
                     correos.add(rs.getString("DirCor"));
                     direcciones.add(rs.getString("NomDir"));
                     matriculas.add(rs.getString("NumMat"));
-                    
-                    System.out.println(rs.getInt("IDSosp")+rs.getString("Nombre")+rs.getString("Apellidos")+rs.getString("Antecedentes")+ rs.getString("Hechos")+rs.getString("NumTel")+rs.getString("DirCor")+rs.getString("NomDir")+rs.getString("NumMat"));
-                   /* rs.next();
-                    do{ 
-                        iteracion++;
-                        if(rs.getInt("IDSosp")!=id){
-                           System.out.println("Entra 1");
-                        }else{
-                            //hay que recoorrer las filas pertenecientes al mismo sujeto creando los arraylist correspondientes.
-                            System.out.println("Entra 2");
-                            telefonos.add(rs.getString("NumTel"));
-                            correos.add(rs.getString("DirCor"));
-                            direcciones.add(rs.getString("NomDir"));
-                            matriculas.add(rs.getString("NumMat"));
-                            
-                        }
-                    }while(rs.next()==true);
-                    for(int i=0;i<iteracion;i++){
-                        rs.previous();
-                    }*/
-                    System.out.println("Entra 3");
+              
                     SospSimple nuevo=new SospSimple(id, rs.getString("Nombre"),
                             rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
                             telefonos , correos, direcciones, matriculas, imagenes);
