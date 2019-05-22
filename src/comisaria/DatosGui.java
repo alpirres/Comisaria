@@ -38,8 +38,7 @@ public class DatosGui {
     //Metodos para Matriculas
     protected void anadirKeyValueMat(String key, String value) {
         matItemsMap.put(key, value);
-        System.out.println("Insertando // '" + value + "' en '" + key + "'");
-
+        
     }
 
     protected String getValueMat(String key) {
@@ -51,7 +50,7 @@ public class DatosGui {
 
     protected void setValueMat(String value, String key) {
         matItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
+        
     }
 
     protected HashMap getItemsMapMat() {
@@ -62,7 +61,7 @@ public class DatosGui {
     //Metodos para Direccion
     protected void anadirKeyValueDir(String key, String value) {
         dirItemsMap.put(key, value);
-        System.out.println("Insertando // '" + value + "' en '" + key + "'");
+        
 
     }
 
@@ -75,7 +74,7 @@ public class DatosGui {
 
     protected void setValueDir(String value, String key) {
         dirItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
+        
     }
 
     protected HashMap getItemsMapDir() {
@@ -86,7 +85,7 @@ public class DatosGui {
     //Metodos para Correo
     protected void anadirKeyValueCor(String key, String value) {
         corItemsMap.put(key, value);
-        System.out.println("Insertando // '" + value + "' en '" + key + "'");
+        
 
     }
 
@@ -99,7 +98,7 @@ public class DatosGui {
 
     protected void setValueCor(String value, String key) {
         corItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
+        
     }
 
     protected HashMap getItemsMapCor() {
@@ -110,7 +109,6 @@ public class DatosGui {
     //Metodos para numero
     protected void anadirKeyValueNum(String key, String value) {
         telItemsMap.put(key, value);
-        System.out.println("Insertando // '" + value + "' en '" + key + "'");
 
     }
 
@@ -123,7 +121,7 @@ public class DatosGui {
 
     protected void setValueNum(String value, String key) {
         telItemsMap.replace(key, value);
-        System.out.println("Reemplazando -- '" + value + "' en '" + key + "'");
+
     }
 
     protected HashMap getItemsMapNum() {
@@ -146,12 +144,12 @@ public class DatosGui {
         ArrayList<String> noValidos = new ArrayList<String>();
 
         for (int i = 1; i < dirItemsMap.size(); i++) {
-            System.out.println("Trying " + i);
+            
             if (dirItemsMap.get("Dirección " + i) != null) {
-                System.out.println("Aqui peta " + i);
+                
                 if (!Utils.validaDireccion(dirItemsMap.get("Dirección " + i))) {
                     noValidos.add("Dirección " + i);
-                    System.out.println("Aqui peta2 " + i);
+                    
                 }
             }
         }
@@ -163,12 +161,12 @@ public class DatosGui {
         ArrayList<String> noValidos = new ArrayList<String>();
 
         for (int i = 1; i < corItemsMap.size(); i++) {
-            System.out.println("Trying " + i);
+            
             if (corItemsMap.get("Correo " + i) != null) {
-                System.out.println("Aqui peta " + i);
+                
                 if (!Utils.validaCorreo(corItemsMap.get("Correo " + i))) {
                     noValidos.add("Correo " + i);
-                    System.out.println("Aqui peta2 " + i);
+                    
                 }
             }
         }
@@ -180,12 +178,12 @@ public class DatosGui {
         ArrayList<String> noValidos = new ArrayList<String>();
 
         for (int i = 1; i < matItemsMap.size(); i++) {
-            System.out.println("Trying " + i);
+            
             if (matItemsMap.get("Matrícula " + i) != null) {
-                System.out.println("Aqui peta " + i);
+                
                 if (!Utils.validaDireccion(matItemsMap.get("Matrícula " + i))) {
                     noValidos.add("Matrícula " + i);
-                    System.out.println("Aqui peta2 " + i);
+                    
                 }
             }
         }
@@ -197,12 +195,12 @@ public class DatosGui {
         ArrayList<String> noValidos = new ArrayList<String>();
 
         for (int i = 1; i < telItemsMap.size(); i++) {
-            System.out.println("Trying " + i);
+            
             if (telItemsMap.get("Número " + i) != null) {
-                System.out.println("Aqui peta " + i);
+                
                 if (!Utils.validaDireccion(telItemsMap.get("Número " + i))) {
                     noValidos.add("Número " + i);
-                    System.out.println("Aqui peta2 " + i);
+                    
                 }
             }
         }

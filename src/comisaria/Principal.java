@@ -545,7 +545,7 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1.setMinimumSize(new java.awt.Dimension(164, 94));
         jScrollPane1.setViewportView(jTextArea1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Teléfonos", "Correos", "Direcciones", "Matrículas" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Apellido", "Teléfono", "Correo", "Dirección", "Matrícula" }));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -789,7 +789,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         if (!sb.toString().equals("Hay errores en los siguientes campos: ")) {
-            System.out.println(sb);
+            
             sb.deleteCharAt(sb.length() - 1);
             jOptionPane2.showMessageDialog(null, sb.toString());
         } else {
@@ -879,11 +879,7 @@ public class Principal extends javax.swing.JFrame {
             }
 
             visorImagenes.revalidate();
-        } else {
-            System.out.println("NADA");
         }
-
-
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -951,7 +947,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         jTextField7.setText(datosGui.getValueDir(ComboBoxDire.getSelectedItem().toString()));
-        System.out.println(datosGui.getValueDir(ComboBoxDire.getSelectedItem().toString()));
+        
     }//GEN-LAST:event_ComboBoxDireActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
@@ -1075,7 +1071,7 @@ public class Principal extends javax.swing.JFrame {
 
         ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
 
-        String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
+        String col[] = {"Nombre", "Apellido", "Teléfono", "Correo", "Dirección", "Matrícula"};
 
         String nombre = null;
         String apellidos = null;

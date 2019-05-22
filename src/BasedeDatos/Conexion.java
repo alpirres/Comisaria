@@ -35,7 +35,7 @@ public class Conexion {
     private boolean estado = false;//Estado de la conexión
 
     public Conexion() throws ParserConfigurationException, SAXException, IOException {
-        System.out.println(new File(".").getAbsolutePath());
+        
 
         File file = new File("src/assets/Conextobd.xml");
         DocumentBuilder dBuilder;
@@ -114,7 +114,7 @@ public class Conexion {
                 // in order to not execute empty statements
                 if (!inst[i].trim().equals("")) {
                     st.executeUpdate(inst[i]);
-                    System.out.println(">>" + inst[i]);
+                    
                 }
             }
             cerrarConexion();

@@ -841,10 +841,10 @@
           <StringArray count="6">
             <StringItem index="0" value="Nombre"/>
             <StringItem index="1" value="Apellido"/>
-            <StringItem index="2" value="Tel&#xe9;fonos"/>
-            <StringItem index="3" value="Correos"/>
-            <StringItem index="4" value="Direcciones"/>
-            <StringItem index="5" value="Matr&#xed;culas"/>
+            <StringItem index="2" value="Tel&#xe9;fono"/>
+            <StringItem index="3" value="Correo"/>
+            <StringItem index="4" value="Direcci&#xf3;n"/>
+            <StringItem index="5" value="Matr&#xed;cula"/>
           </StringArray>
         </Property>
       </Properties>

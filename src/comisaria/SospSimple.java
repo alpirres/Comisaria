@@ -47,7 +47,7 @@ public class SospSimple {
 
         if (telefonos != null) {
             if (telefonos.size() != 0) {
-                System.out.println("????????");
+                
                 for (int i = 0; i < telefonos.size(); i++) {
                     sb.append(telefonos.get(i) + " ");
                 }
@@ -92,8 +92,7 @@ public class SospSimple {
                 }
             }
         }
-
-        System.out.println("La longitud de sb es " + sb.length());
+        
         return sb.toString();
     }
 
