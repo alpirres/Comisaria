@@ -682,8 +682,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void anadirSospechosoDatosWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_anadirSospechosoDatosWindowClosed
@@ -706,7 +705,7 @@ public class Principal extends javax.swing.JFrame {
         if (!jTextField6.getText().equals(null)) {
             datosGui.setValueMat(jTextField6.getText(), ComboBoxMatr.getSelectedItem().toString());
         }
-        
+
 
     }//GEN-LAST:event_jTextField6KeyReleased
 
@@ -714,36 +713,35 @@ public class Principal extends javax.swing.JFrame {
         if (!jTextField4.getText().equals(null)) {
             datosGui.setValueNum(jTextField4.getText(), ComboBoxNum.getSelectedItem().toString());
         }
-        
+
     }//GEN-LAST:event_jTextField4KeyReleased
 
     private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
         if (!jTextField5.getText().equals(null)) {
             datosGui.setValueCor(jTextField5.getText(), ComboBoxCorr.getSelectedItem().toString());
         }
-        
+
     }//GEN-LAST:event_jTextField5KeyReleased
 
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
         if (!jTextField7.getText().equals(null)) {
             datosGui.setValueDir(jTextField7.getText(), ComboBoxDire.getSelectedItem().toString());
         }
-        
+
     }//GEN-LAST:event_jTextField7KeyReleased
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         datosGui.nombre = jTextField2.getText().trim();
         datosGui.apellidos = jTextField3.getText().trim();
-        
+
         ArrayList<String> esValido = datosGui.comprobarDir();
         StringBuilder sb = new StringBuilder("Hay errores en los siguientes campos: ");
 
         if (esValido.size() != 0) {
-            
-            
+
             for (String str : esValido) {
                 sb.append(str + ", ");
-                
+
             }
 
             jLabel16.setText(sb.toString());
@@ -753,10 +751,10 @@ public class Principal extends javax.swing.JFrame {
         esValido = datosGui.comprobarCor();
 
         if (esValido.size() != 0) {
-            
+
             for (String str : esValido) {
                 sb.append(str + ", ");
-                
+
             }
 
             jLabel16.setText(sb.toString());
@@ -766,10 +764,10 @@ public class Principal extends javax.swing.JFrame {
         esValido = datosGui.comprobarMat();
 
         if (esValido.size() != 0) {
-            
+
             for (String str : esValido) {
                 sb.append(str + ", ");
-                
+
             }
 
             jLabel16.setText(sb.toString());
@@ -779,41 +777,36 @@ public class Principal extends javax.swing.JFrame {
         esValido = datosGui.comprobarTel();
 
         if (esValido.size() != 0) {
-            
+
             for (String str : esValido) {
                 sb.append(str + ", ");
-                
+
             }
         }
-        
-        if(!Utils.validaNombre(datosGui.nombre.trim())){
+
+        if (!Utils.validaNombre(datosGui.nombre.trim())) {
             sb.append("Nombre, ");
         }
-        
-        
 
         if (!sb.toString().equals("Hay errores en los siguientes campos: ")) {
             System.out.println(sb);
             sb.deleteCharAt(sb.length() - 1);
             jOptionPane2.showMessageDialog(null, sb.toString());
-        }else{
-            
-            
-            
+        } else {
+
             try {
                 boolean t = datosGui.enviarSospechoso();
                 anadirSospechosoDatos.setVisible(false);
-                if(t){
+                if (t) {
                     cargarDatosTabla();
                 }
-                
+
             } catch (Exception ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
-        
-        
+
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -828,7 +821,6 @@ public class Principal extends javax.swing.JFrame {
 
         File archivo;
         byte[] bytesImg;
-        
 
         archivo = fileChooser.getSelectedFile();
 
@@ -851,7 +843,6 @@ public class Principal extends javax.swing.JFrame {
                     resImage = image.getScaledInstance(visorImagenes.getWidth() / 4 - 10, visorImagenes.getHeight() / 2 - 10,
                             Image.SCALE_SMOOTH);
 
-
                     Icon icono = new ImageIcon(resImage);
 
                     nuevoLabel = new JLabel("", icono, JLabel.CENTER);
@@ -861,14 +852,11 @@ public class Principal extends javax.swing.JFrame {
                     nuevoLabel.setIcon(new ImageIcon(resImage));
 
                     nuevoLabel.setVisible(true);
-                    
+
                     String desc = pideDesc();
-                    
-                    
-                    
+
                     datosGui.listaImagenes.add(new Foto(archivo, desc));
-                    
-                    
+
                 } else {
                     jOptionPane1.showMessageDialog(null, "Debes seleccionar una imagen en formato JPG, PNG o GIF.");
                 }
@@ -914,7 +902,7 @@ public class Principal extends javax.swing.JFrame {
             ComboBoxCorr.addItem("Añadir correo...");
             //System.out.println(datosGui.getItemsMapMat().toString());
         }
-        
+
         jTextField5.setText(datosGui.getValueCor(ComboBoxCorr.getSelectedItem().toString()));
     }//GEN-LAST:event_ComboBoxCorrActionPerformed
 
@@ -967,143 +955,166 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboBoxDireActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        
 
-        
-        
+
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        if(firstInput){
+        if (firstInput) {
             jTextField1.setText("");
-            firstInput=false;
-            
+            firstInput = false;
+
         }
     }//GEN-LAST:event_jTextField1MouseClicked
 
-    public String pideDesc(){
-        
-            String desc = JOptionPane.showInputDialog("Inserta una descripcion: ");
-        
-        
-        
+    public String pideDesc() {
+
+        String desc = JOptionPane.showInputDialog("Inserta una descripcion: ");
+
         return desc;
     }
-    
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-                Select select = new Select();
+        Select select = new Select();
         DefaultTableModel tableModel = null;
-        
+
         ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
-        
+
         String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
-        
+
         String nombre = null;
         String apellidos = null;
         String telefono = null;
         String correo = null;
         String direcciones = null;
         String matriculas = null;
-        
-        
-        
-        
-        try{
-        listaSospechosos = select.buscarXNombre(jTextField1.getText());
-        }catch(Exception e){
-            e.printStackTrace();
+
+        switch (jComboBox1.getSelectedItem().toString()) {
+            case "Nombre":
+                try {
+                    listaSospechosos = select.buscarXNombre(jTextField1.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "Apellido":
+                try {
+                    listaSospechosos = select.buscarXApellidos(jTextField1.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "Teléfono":
+                try {
+                    listaSospechosos = select.buscarXTelefono(jTextField1.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "Correos":
+                try {
+                    listaSospechosos = select.buscarXCorreo(jTextField1.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "Dirección":
+                try {
+                    listaSospechosos = select.buscarXDireccion(jTextField1.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "Matrícula":
+                try {
+                    listaSospechosos = select.buscarXMatricula(jTextField1.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+
         }
-        
+
         tableModel = new DefaultTableModel(col, 0);
-        
-        if(listaSospechosos != null){
-        for (int i = 0; i < listaSospechosos.size(); i++){
-   nombre = listaSospechosos.get(i).nombre;
-   apellidos = listaSospechosos.get(i).apellidos;
-   telefono = listaSospechosos.get(i).telToString();
-   correo = listaSospechosos.get(i).corToString();
-   direcciones = listaSospechosos.get(i).dirToString();
-   matriculas = listaSospechosos.get(i).matToString();
-   
-   Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
-   tableModel.addRow(data);
+
+        if (listaSospechosos != null) {
+            for (int i = 0; i < listaSospechosos.size(); i++) {
+                nombre = listaSospechosos.get(i).nombre;
+                apellidos = listaSospechosos.get(i).apellidos;
+                telefono = listaSospechosos.get(i).telToString();
+                correo = listaSospechosos.get(i).corToString();
+                direcciones = listaSospechosos.get(i).dirToString();
+                matriculas = listaSospechosos.get(i).matToString();
+
+                Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
+                tableModel.addRow(data);
+            }
         }
-        } 
-        
-        
-        
-        
-        if(tableModel == null){
-            String[] fail = {"No se encuentra","e","e","e","e","e"};
+
+        if (tableModel == null) {
+            String[] fail = {"No se encuentra", "e", "e", "e", "e", "e"};
             tableModel.addRow(fail);
-        }else{
-           jTable1.setModel(tableModel);
+        } else {
+            jTable1.setModel(tableModel);
         }
     }//GEN-LAST:event_jTextField1KeyReleased
 
-    public void cargarDatosTabla(){
-        
+    public void cargarDatosTabla() {
+
         Select select = new Select();
         DefaultTableModel tableModel = null;
-        
+
         ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
-        
+
         String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
-        
+
         String nombre = null;
         String apellidos = null;
         String telefono = null;
         String correo = null;
         String direcciones = null;
         String matriculas = null;
-        
-        
-        
-        
-        try{
-        listaSospechosos = Select.selectAllSosp();
-        }catch(Exception e){
+
+        try {
+            listaSospechosos = Select.selectAllSosp();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         tableModel = new DefaultTableModel(col, 0);
-        
-        if(listaSospechosos != null){
-        for (int i = 0; i < listaSospechosos.size(); i++){
-   nombre = listaSospechosos.get(i).nombre;
-   apellidos = listaSospechosos.get(i).apellidos;
-   telefono = listaSospechosos.get(i).telToString();
-   correo = listaSospechosos.get(i).corToString();
-   direcciones = listaSospechosos.get(i).dirToString();
-   matriculas = listaSospechosos.get(i).matToString();
-   
-   Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
-   tableModel.addRow(data);
+
+        if (listaSospechosos != null) {
+            for (int i = 0; i < listaSospechosos.size(); i++) {
+                nombre = listaSospechosos.get(i).nombre;
+                apellidos = listaSospechosos.get(i).apellidos;
+                telefono = listaSospechosos.get(i).telToString();
+                correo = listaSospechosos.get(i).corToString();
+                direcciones = listaSospechosos.get(i).dirToString();
+                matriculas = listaSospechosos.get(i).matToString();
+
+                Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
+                tableModel.addRow(data);
+            }
         }
-        } 
-        
-        
-        
-        
-        if(tableModel == null){
-            String[] fail = {"No se encuentra","e","e","e","e","e"};
+
+        if (tableModel == null) {
+            String[] fail = {"No se encuentra", "e", "e", "e", "e", "e"};
             tableModel.addRow(fail);
-        }else{
-           jTable1.setModel(tableModel);
+        } else {
+            jTable1.setModel(tableModel);
         }
-        
+
     }
-    
-    
-    
-    
-    
-    
-    
+
     /**
      * @param args the command line arguments
      */

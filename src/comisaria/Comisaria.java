@@ -27,18 +27,16 @@ public class Comisaria {
      */
     public static void main(String[] args) throws Exception {
         //Realizamos la conexión 
-        miConexion=new Conexion();
+        miConexion = new Conexion();
         miConexion.inicializar();
         Principal gui = new Principal();
-       
-        if (miConexion.conectar()==false) 
-        { 
+
+        if (miConexion.conectar() == false) {
             System.out.println("No se ha podido conectar a la base de datos");
         } else {
             System.out.println("Conexión satisfactoria a la base de datos");
             Principal.main(args);
         }
-         
 
     }
 

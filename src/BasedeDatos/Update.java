@@ -175,7 +175,7 @@ public class Update {
         //Número de filas actualizadas
         int nFilas=0;
         //Cadena update
-        lineaSQL="update CORREO set DirCor = ? where IDSosp = ?";
+        lineaSQL="update CORREO set dircorreo = ? where IDSosp = ?";
         try{
             //conectamos el objeto preparedStmt a la base de datos
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);
@@ -281,7 +281,7 @@ public class Update {
         //Número de filas actualizadas
         int nFilas=0;
         //Cadena update
-        lineaSQL="update TELEFONO set DirCor = ? where IDSosp = ?";
+        lineaSQL="update TELEFONO set dircorreo = ? where IDSosp = ?";
         try{
             //conectamos el objeto preparedStmt a la base de datos
             preparedStmt = miConexion.getConexion().prepareStatement(lineaSQL);

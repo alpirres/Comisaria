@@ -66,7 +66,6 @@ public class Insert {
                 ejecutaSQL(cons);
             }
         }*/
-
     /**
      * Metodo que transforma cada matricula de un sospechoso en dos consulta SQL
      * INSERT una para la tabla MATRICULA y otra para la tabla POSEE(que une
@@ -195,6 +194,7 @@ public class Insert {
             se.printStackTrace();
         }
     }
+
     /*public void FotoToConsulta(Sospechoso sosp){
             String cons;
             for(int i=0; i<sosp.fotos.size(); i++){
@@ -203,7 +203,7 @@ public class Insert {
         }*/
 
     public void FotoToConsulta(SospSimple sosp) {
-         String lineaSQL;
+        String lineaSQL;
         //Objeto de tipo Statement
         Statement sentencia;
 
@@ -217,11 +217,11 @@ public class Insert {
             //creamos un nuevo socio
             for (int i = 0; i < sosp.fotos.size(); i++) {
                 preparedStmt.setInt(1, sosp.id);
-                preparedStmt.setInt(2, i+1);
+                preparedStmt.setInt(2, i + 1);
                 preparedStmt.setString(3, sosp.fotos.get(i).descripciones.get(i));
-                FileInputStream fis = new FileInputStream (sosp.fotos.get(i).imagenes.get(i));
+                FileInputStream fis = new FileInputStream(sosp.fotos.get(i).imagenes.get(i));
                 preparedStmt.setBinaryStream(4, fis);
-                              
+
                 // la ejecutamos
                 preparedStmt.execute();
             }
