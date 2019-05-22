@@ -44,7 +44,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        //cargarDatosTabla();
+        cargarDatosTabla();
     }
 
     /**
@@ -1042,30 +1042,58 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField1KeyReleased
 
-    /*public void cargarDatosTabla(){
+    public void cargarDatosTabla(){
+        
         Select select = new Select();
+        DefaultTableModel tableModel = null;
         
         ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
         
-        String col[] = {"Pos","Team","P", "W", "L", "D", "MP", "GF", "GA", "GD"};
+        String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
+        
+        String nombre = null;
+        String apellidos = null;
+        String telefono = null;
+        String correo = null;
+        String direcciones = null;
+        String matriculas = null;
+        
+        
         
         
         try{
         listaSospechosos = Select.selectAllSosp();
-        }catch(SQLException e){
+        }catch(Exception e){
             e.printStackTrace();
         }
         
-        for(int i=0; i<listaSospechosos.size();i++){
-            System.out.println(i+" "+listaSospechosos.get(i).toString());
-            
+        tableModel = new DefaultTableModel(col, 0);
+        
+        if(listaSospechosos != null){
+        for (int i = 0; i < listaSospechosos.size(); i++){
+   nombre = listaSospechosos.get(i).nombre;
+   apellidos = listaSospechosos.get(i).apellidos;
+   telefono = listaSospechosos.get(i).telToString();
+   correo = listaSospechosos.get(i).corToString();
+   direcciones = listaSospechosos.get(i).dirToString();
+   matriculas = listaSospechosos.get(i).matToString();
+   
+   Object[] data = {nombre, apellidos, telefono, correo, direcciones, matriculas};
+   tableModel.addRow(data);
+        }
+        } 
+        
+        
+        
+        
+        if(tableModel == null){
+            String[] fail = {"No se encuentra","e","e","e","e","e"};
+            tableModel.addRow(fail);
+        }else{
+           jTable1.setModel(tableModel);
         }
         
-        DefaultTableModel tableModel = new DefaultTableModel(col, listaSospechosos.size());
-        
-        
-        
-    }*/
+    }
     
     
     

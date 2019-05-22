@@ -31,7 +31,6 @@ public class SospSimple {
         this.antecedentes=an;
         this.hechos=he;
         telefonos = t;
-        System.out.println(t.get(0)+"es estos");
         correo=c;
         direccion=d;
         matricula=m;
@@ -44,49 +43,59 @@ public class SospSimple {
     
     public String telToString(){
         StringBuilder sb = new StringBuilder("");
-            if(telefonos.size()!=0 && telefonos != null){
+        
+        if(telefonos != null){
+            if(telefonos.size()!=0){
+                System.out.println("????????");
                 for(int i=0;i<telefonos.size();i++){
                     sb.append(telefonos.get(i)+", ");
                 }
             }
-            sb.deleteCharAt(sb.length() - 1);
-            sb.deleteCharAt(sb.length() - 1);
+            }
+            
+            
         return sb.toString();
     }
     
     public String corToString(){
         StringBuilder sb = new StringBuilder("");
-            if(correo.size()!=0 && correo != null){
+        if(correo != null){
+            if(correo.size()!=0){
                 for(int i=0;i<correo.size();i++){
                     sb.append(correo.get(i)+", ");
                 }
             }
-            sb.deleteCharAt(sb.length() - 1);
-            sb.deleteCharAt(sb.length() - 1);
+        }
+            
         return sb.toString();
-    }
+        }
+    
+        
     
     public String dirToString(){
         StringBuilder sb = new StringBuilder("");
-            if(direccion.size()!=0 && direccion != null){
+        if(direccion != null){
+            if(direccion.size()!=0){
                 for(int i=0;i<direccion.size();i++){
                     sb.append(direccion.get(i)+", ");
                 }
             }
-            sb.deleteCharAt(sb.length() - 1);
-            sb.deleteCharAt(sb.length() - 1);
+        }
+            
         return sb.toString();
     }
     
     public String matToString(){
         StringBuilder sb = new StringBuilder("");
-            if(matricula.size()!=0 && matricula != null){
+        if(matricula != null){
+            if(matricula.size()!=0){
                 for(int i=0;i<matricula.size();i++){
                     sb.append(matricula.get(i)+", ");
                 }
             }
-            sb.deleteCharAt(sb.length() - 1);
-            sb.deleteCharAt(sb.length() - 1);
+        }
+         
+         
         return sb.toString();
     }
     
