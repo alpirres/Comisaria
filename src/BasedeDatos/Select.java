@@ -164,8 +164,8 @@ public class Select {
                     correos.add(rs.getString("DirCor"));
                     direcciones.add(rs.getString("NomDir"));
                     matriculas.add(rs.getString("NumMat"));
-                    imagenes.get(0).imagenes.add(fromRsToFile(rs, suspects));
-                    imagenes.get(0).descripciones.add(rs.getString("Descripcion"));
+                //  imagenes.get(0).imagenes.add(fromRsToFile(rs, suspects));
+                //  imagenes.get(0).descripciones.add(rs.getString("Descripcion"));
                     
                     SospSimple nuevo=new SospSimple(id, rs.getString("Nombre"),
                             rs.getString("Apellidos"), rs.getString("Antecedentes"), rs.getString("Hechos"),
