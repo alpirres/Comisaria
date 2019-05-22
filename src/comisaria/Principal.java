@@ -432,7 +432,7 @@ public class Principal extends javax.swing.JFrame {
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return false;
             }
         });
         jTable1.setRowHeight(50);
@@ -980,7 +980,7 @@ public class Principal extends javax.swing.JFrame {
 
         ArrayList<SospSimple> listaSospechosos = new ArrayList<SospSimple>();
 
-        String col[] = {"Nombre", "Apellido/s", "Teléfonos", "Correos", "Direcciones", "Matrículas"};
+        String col[] = {"Nombre", "Apellido", "Teléfono", "Correo", "Dirección", "Matrícula"};
 
         String nombre = null;
         String apellidos = null;
