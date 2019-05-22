@@ -139,7 +139,7 @@ public class Select {
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where t.NumTel="+tlf
+                + "where t.NumTel like \"%"+tlf+"%\" "
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
@@ -179,7 +179,7 @@ public class Select {
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where m.NumMat="+mt
+                + "where m.NumMat like \"%"+mt+"%\" "
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
@@ -219,7 +219,7 @@ public class Select {
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where c.DirCor="+corr
+                + "where c.DirCor like \"%"+corr+"%\" "
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
@@ -258,7 +258,7 @@ public class Select {
         ArrayList<SospSimple> suspects = new ArrayList<>();
         String lineaSQL="Select sosp.*,t.NumTel, c.DirCor, d.NomDir, m.NumMat "
                 + "from sospechoso sosp, telefono t, direccion d, correo c, matricula m "
-                + "where d.NomDir="+dir
+                + "where d.NomDir like \"%"+dir+"%\" "
                 +" and t.IDSosp=sosp.IDSosp"
                 +" and c.IDSosp=sosp.IDSosp"
                 +" and d.IDSosp=sosp.IDSosp"
